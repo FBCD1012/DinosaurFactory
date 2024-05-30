@@ -2,7 +2,9 @@ package com.example.nftmarket.entity;
 
 
 import com.example.nftmarket.utils.DinosaurDetails;
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 
 /**
@@ -10,6 +12,8 @@ import lombok.Data;
  * @Params:母恐龙是否可以进行生育
  * */
 @Data
+@Accessors(chain = true)
+@Builder
 public class Dinosaur {
     //哈希值
     String DinosaurId;
