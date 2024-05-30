@@ -16,7 +16,6 @@ public class Dinosaur {
     Boolean DinosaurSex;
     String DinosaurType;
     Boolean isBreeding;
-
     //Details
     String DinosaurColor;
     String DinosaurClothing;
@@ -24,5 +23,5 @@ public class Dinosaur {
     String DinosaurOwner;
     String DinosaurRarity;
     String DinosaurPhotoUri;
-    Integer DinosaurPrice;
+    Double DinosaurPrice;
 }

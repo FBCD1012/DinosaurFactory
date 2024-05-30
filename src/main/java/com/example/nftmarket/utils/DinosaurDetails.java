@@ -7,19 +7,18 @@ import java.util.Random;
  * @Params:实现恐龙装饰细节的随机操作
  */
 public class DinosaurDetails {
-    private static Random random=new Random();
+    private static final Random random=new Random();
 
-    enum DinosaurSex{
+    public enum DinosaurSex{
         MALE,FEMALE
     }
-
-    enum DinosaurType{
+    public enum DinosaurType{
         Triceratops,TyrannosaurusRex,Raptor,ChineseDragon
     }
-    enum Color{
+    public enum Color{
         RED,YELLOW,BLUE,BLACK,GREEN
     }
-    enum Clothing{
+    public enum Clothing{
         JACKET,SHIRTS,ASTRONAUTS,SUIT
     }
 
@@ -28,12 +27,12 @@ public class DinosaurDetails {
         return dinosaurSex[random.nextInt(dinosaurSex.length)];
     }
 
-    public static DinosaurType  getTheRandomType(){
+    public static DinosaurType getTheRandomType(){
         DinosaurType[] dinosaurType=DinosaurType.values();
         return dinosaurType[random.nextInt(dinosaurType.length)];
     }
 
-    public static Color  getTheRandomColor(){
+    public static Color getTheRandomColor(){
         Color[] colors=Color.values();
         return colors[random.nextInt(colors.length)];
     }
