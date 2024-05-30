@@ -12,17 +12,19 @@ public class DinosaurTests {
     @Test
     void DinosaurTest() {
         DinosaurRandomUtils dinosaurRandomUtils=new DinosaurRandomUtils();
-        Dinosaur dinosaur=new Dinosaur();
-        dinosaur.setDinosaurId(Hash.sha3String(String.valueOf(dinosaur)));
-        dinosaur.setDinosaurColor(dinosaurRandomUtils.getTheRandomColor());
-        dinosaur.setDinosaurType(dinosaurRandomUtils.getTheRandomType());
-        dinosaur.setDinosaurClothing(dinosaurRandomUtils.getTheRandomClothing());
-        dinosaur.setDinosaurRarity(dinosaurRandomUtils.getTheRarity());
-        dinosaur.setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex());
-        dinosaur.setIsBreeding(true);
-        dinosaur.setDinosaurSex("MALE");
-        dinosaur.setDinosaurPrice(dinosaurRandomUtils.getThePrice());
-        dinosaur.setDinosaurPhotoUri(null);
+        Dinosaur dinosaur= Dinosaur
+                .builder()
+                .build()
+                .setDinosaurId(Hash.sha3String("fbcd"))
+                .setDinosaurColor(dinosaurRandomUtils.getTheRandomColor())
+                .setDinosaurClothing(dinosaurRandomUtils.getTheRandomClothing())
+                .setDinosaurType(dinosaurRandomUtils.getTheRandomType())
+                .setDinosaurRarity(dinosaurRandomUtils.getTheRarity())
+                .setDinosaurPrice(dinosaurRandomUtils.getThePrice())
+                .setIsBreeding(true)
+                .setDinosaurPhotoUri(null)
+                .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
+                .setDinosaurOwner(null);
         System.out.println(dinosaur);
     }
 }

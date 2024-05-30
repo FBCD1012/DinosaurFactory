@@ -1,7 +1,5 @@
 package com.example.nftmarket.structs;
 
-import ch.qos.logback.core.testUtil.NPEAppender;
-
 public class HashTree {
     //根节点特性：1.父母哈希为零 2.只有子哈希 3.节点的类型必定是蛋类型
     Node root1;
