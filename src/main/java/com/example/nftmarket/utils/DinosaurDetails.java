@@ -23,22 +23,22 @@ public class DinosaurDetails {
         JACKET,SHIRTS,ASTRONAUTS,SUIT
     }
 
-    public static String  getTheRandomType(){
+    public static DinosaurSex  getTheRandomSex(){
         DinosaurSex[] dinosaurSex=DinosaurSex.values();
-        return dinosaurSex[random.nextInt(dinosaurSex.length)].toString();
+        return dinosaurSex[random.nextInt(dinosaurSex.length)];
     }
 
-    public static String  getTheRandomSex(){
+    public static DinosaurType  getTheRandomType(){
         DinosaurType[] dinosaurType=DinosaurType.values();
-        return dinosaurType[random.nextInt(dinosaurType.length)].toString();
+        return dinosaurType[random.nextInt(dinosaurType.length)];
     }
 
-    public static String  getTheRandomColor(){
+    public static Color  getTheRandomColor(){
         Color[] colors=Color.values();
-        return colors[random.nextInt(colors.length)].toString();
+        return colors[random.nextInt(colors.length)];
     }
-    public static String getTheRandomClothing() {
+    public static Clothing getTheRandomClothing() {
         Clothing[] clothing=Clothing.values();
-        return clothing[random.nextInt(clothing.length)].toString();
+        return clothing[random.nextInt(clothing.length)];
     }
 }

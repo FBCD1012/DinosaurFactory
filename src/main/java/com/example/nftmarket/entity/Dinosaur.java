@@ -1,6 +1,7 @@
 package com.example.nftmarket.entity;
 
 
+import com.example.nftmarket.utils.DinosaurDetails;
 import lombok.Data;
 
 
