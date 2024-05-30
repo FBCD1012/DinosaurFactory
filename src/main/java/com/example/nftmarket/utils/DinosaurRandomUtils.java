@@ -9,25 +9,32 @@ public class DinosaurRandomUtils {
     private static final DinosaurDetails.Color theRandomColor = DinosaurDetails.getTheRandomColor();
     private static final DinosaurDetails.DinosaurType theRandomType = DinosaurDetails.getTheRandomType();
     private static final DinosaurDetails.Clothing theRandomClothing = DinosaurDetails.getTheRandomClothing();
-    private static final DinosaurRarity dinosaurRarity=new DinosaurRarityImpl();
+    private static final DinosaurDetails.DinosaurSex theRandomDinosaurSex=DinosaurDetails.getTheRandomSex();
+    private static final DinosaurRarity dinosaurRarity = new DinosaurRarityImpl();
 
-    public String getTheRandomColor(){
+    public String getTheRandomColor() {
         return String.valueOf(theRandomColor);
     }
-    public String getTheRandomType(){
+
+    public String getTheRandomType() {
         return String.valueOf(theRandomType);
     }
-    public String getTheRandomClothing(){
+
+    public String getTheRandomClothing() {
         return String.valueOf(theRandomClothing);
+    }
+    public String getTheRandomDinosaurSex(){
+        return String.valueOf(theRandomDinosaurSex);
     }
     private static RarityUtils.Rarities getDinosaurRarityImpl() {
         return dinosaurRarity.giveDinosaurRarity(theRandomType, theRandomClothing, theRandomColor);
     }
-    public String getTheRarity(){
+
+    public String getTheRarity() {
         return getDinosaurRarityImpl().toString();
     }
 
-    public Double getThePrice(){
+    public Double getThePrice() {
         return dinosaurRarity.giveDinosaurPrice(getDinosaurRarityImpl(), theRandomColor);
     }
 }

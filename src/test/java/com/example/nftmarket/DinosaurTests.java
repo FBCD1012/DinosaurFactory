@@ -18,8 +18,9 @@ public class DinosaurTests {
         dinosaur.setDinosaurType(dinosaurRandomUtils.getTheRandomType());
         dinosaur.setDinosaurClothing(dinosaurRandomUtils.getTheRandomClothing());
         dinosaur.setDinosaurRarity(dinosaurRandomUtils.getTheRarity());
+        dinosaur.setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex());
         dinosaur.setIsBreeding(true);
-        dinosaur.setDinosaurSex(true);
+        dinosaur.setDinosaurSex("MALE");
         dinosaur.setDinosaurPrice(dinosaurRandomUtils.getThePrice());
         dinosaur.setDinosaurPhotoUri(null);
         System.out.println(dinosaur);
