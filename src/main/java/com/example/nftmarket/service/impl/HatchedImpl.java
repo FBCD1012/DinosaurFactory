@@ -1,7 +1,7 @@
 package com.example.nftmarket.service.impl;
 
 import com.example.nftmarket.entity.Dinosaur;
-import com.example.nftmarket.entity.DinosaurAgg;
+import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.service.Hatched;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class HatchedImpl implements Hatched {
     @Override
-    public boolean isHatched(DinosaurAgg dinosaurAgg) {
-        return dinosaurAgg.isHatched();
+    public boolean isHatched(DinosaurEgg dinosaurEgg) {
+        return dinosaurEgg.isHatched();
     }
 
     @Override
-    public Dinosaur toHatch(DinosaurAgg dinosaurAgg) {
-        boolean hatched = isHatched(dinosaurAgg);
+    public Dinosaur toHatch(DinosaurEgg dinosaurEgg) {
+        boolean hatched = isHatched(dinosaurEgg);
         if (hatched){
             Dinosaur dinosaur=new Dinosaur();
         }
