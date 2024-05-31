@@ -17,7 +17,7 @@ public class SimpleNodeChainTests {
         Node<DinosaurEgg> dinosaurEgg2=new Node<>(dinosaurEgg);
         Node<Dinosaur> dinosaur2=new Node<>(dinosaur);
         Node<Dinosaur> dinosaur3=new Node<>(dinosaur4);
-        SimpleNodeChain<DinosaurEgg> dinosaurEggSimpleNodeChain=new SimpleNodeChain<>(dinosaurEgg2);
+        SimpleNodeChain dinosaurEggSimpleNodeChain=new SimpleNodeChain(dinosaurEgg2);
         dinosaurEggSimpleNodeChain.setNodeChain(dinosaur2,dinosaur3);
         System.out.println(dinosaurEggSimpleNodeChain);
         System.out.println(dinosaurEggSimpleNodeChain.getRoot());

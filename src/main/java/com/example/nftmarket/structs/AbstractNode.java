@@ -8,6 +8,8 @@ public class AbstractNode {
    String Hash;
    //此处是伏笔
    String Male;
+   //此处直接就是相关的内容属性
+   SimpleNodeChain simpleNodeChain;
    Node<AbstractNode> leftNode;
    Node<AbstractNode> rightNode;
 
