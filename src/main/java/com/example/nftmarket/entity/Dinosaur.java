@@ -18,6 +18,8 @@ public class Dinosaur {
     String DinosaurId;
     String DinosaurSex;
     String DinosaurType;
+    //龙蛋哈希
+    String DinosaurSource;
     Boolean isBreeding;
     //Details
     String DinosaurColor;

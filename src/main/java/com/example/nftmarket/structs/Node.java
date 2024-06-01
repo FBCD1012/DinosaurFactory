@@ -10,12 +10,14 @@ public class Node<D> {
     Node<Dinosaur> fatherNode;
     Node<Dinosaur> motherNode;
     Node<DinosaurEgg> childNode;
+    Node<DinosaurEgg> sourceNode;
     D nodeInfo;
 
-    public Node(D nodeInfo) {
+    public Node(D nodeInfo,Node<DinosaurEgg> sourceNode) {
         this.fatherNode=null;
         this.motherNode=null;
         this.childNode=null;
+        this.sourceNode =sourceNode;
         this.nodeInfo=nodeInfo;
     }
 }
