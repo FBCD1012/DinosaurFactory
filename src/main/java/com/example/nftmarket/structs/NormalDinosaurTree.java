@@ -20,7 +20,6 @@ public class NormalDinosaurTree {
     public void addNode(SimpleNodeChain chain){
         root=addNode(root, chain);
     }
-
     public void traverserPreOrder(AbstractNode root){
         if (root!=null){
             System.out.println(root.simpleNodeChain);

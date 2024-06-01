@@ -6,11 +6,19 @@ import com.example.nftmarket.service.impl.DinosaurRarityImpl;
 
 //优化了整体的类的相关信息的嵌入，测试并不需要更多的冗余调用了，究极完美的封装操作
 public class DinosaurRandomUtils {
-    private static final DinosaurDetails.Color theRandomColor = DinosaurDetails.getTheRandomColor();
-    private static final DinosaurDetails.DinosaurType theRandomType = DinosaurDetails.getTheRandomType();
-    private static final DinosaurDetails.Clothing theRandomClothing = DinosaurDetails.getTheRandomClothing();
-    private static final DinosaurDetails.DinosaurSex theRandomDinosaurSex=DinosaurDetails.getTheRandomSex();
-    private static final DinosaurRarity dinosaurRarity = new DinosaurRarityImpl();
+    static DinosaurDetails.Color theRandomColor;
+    static DinosaurDetails.DinosaurType theRandomType;
+    static DinosaurDetails.Clothing theRandomClothing;
+    static DinosaurDetails.DinosaurSex theRandomDinosaurSex;
+    static DinosaurRarity dinosaurRarity;
+
+    public DinosaurRandomUtils() {
+        theRandomColor = DinosaurDetails.getTheRandomColor();
+        theRandomType = DinosaurDetails.getTheRandomType();
+        theRandomClothing= DinosaurDetails.getTheRandomClothing();
+        theRandomDinosaurSex=DinosaurDetails.getTheRandomSex();
+        dinosaurRarity = new DinosaurRarityImpl();
+    }
 
     public String getTheRandomColor() {
         return String.valueOf(theRandomColor);

@@ -7,7 +7,7 @@ import java.util.Random;
  * @Params:实现恐龙装饰细节的随机操作
  */
 public class DinosaurDetails {
-    private static final Random random=new Random();
+    static Random random=new Random();
 
     public enum DinosaurSex{
         MALE,FEMALE

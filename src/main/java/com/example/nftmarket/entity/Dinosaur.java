@@ -1,8 +1,10 @@
 package com.example.nftmarket.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 
@@ -18,8 +20,6 @@ public class Dinosaur {
     String DinosaurId;
     String DinosaurSex;
     String DinosaurType;
-    //龙蛋哈希
-    String DinosaurSource;
     Boolean isBreeding;
     //Details
     String DinosaurColor;
@@ -29,4 +29,5 @@ public class Dinosaur {
     String DinosaurRarity;
     String DinosaurPhotoUri;
     Double DinosaurPrice;
+
 }

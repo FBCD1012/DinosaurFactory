@@ -11,6 +11,8 @@ import org.web3j.crypto.Hash;
 public class DinosaurTests {
     @Test
     void DinosaurTest() {
+
+        while (true){
         DinosaurRandomUtils dinosaurRandomUtils=new DinosaurRandomUtils();
         Dinosaur dinosaur= Dinosaur
                 .builder()
@@ -26,5 +28,7 @@ public class DinosaurTests {
                 .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
                 .setDinosaurOwner(null);
         System.out.println(dinosaur);
+        }
     }
+
 }

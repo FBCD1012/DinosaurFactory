@@ -18,10 +18,9 @@ public class HatchedImpl implements Hatched {
     }
 
     @Override
-    public Dinosaur toHatch(Person person, DinosaurEgg dinosaurEgg) {
+    public Dinosaur toHatch(Person person, DinosaurEgg dinosaurEgg,DinosaurRandomUtils dinosaurRandomUtils) {
         boolean hatched = isHatched(dinosaurEgg);
         if (hatched){
-            DinosaurRandomUtils dinosaurRandomUtils=new DinosaurRandomUtils();
             //定义一个新规则：蛋的地址进行一次哈希就是孵化出来的恐龙的哈希
             return Dinosaur
                     .builder()
@@ -35,7 +34,7 @@ public class HatchedImpl implements Hatched {
                     .setIsBreeding(true)
                     .setDinosaurPhotoUri(null)
                     .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
-                    .setDinosaurOwner(person.getPersonHash());
+                    .setDinosaurOwner(Hash.sha3String(person.toString()));
         }
         return null;
     }

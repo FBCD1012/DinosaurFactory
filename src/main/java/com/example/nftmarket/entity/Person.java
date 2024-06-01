@@ -13,8 +13,12 @@ public class Person {
     Integer DinosaurCounts;
     //个人拥有的代币数量
     Integer DinosaurCoinCounts;
-    //孵化仓(利用栈的数据结构来进行操作，两个恐龙入栈，孵化出恐龙蛋之后出栈)
-    String HatchRepository;
+    //雄性恐龙储存集合
+    List<Dinosaur> MaleDinosaurRepository;
+    //雌性恐龙储存集合
+    List<Dinosaur> FeMaleDinosaurRepository;
+    //龙蛋储存集合
+    List<DinosaurEgg> dinosaurEggsRepository;
     //售卖仓(直接使用集合来进行恐龙售卖信息的操作)
     List<Dinosaur> DinosaurSaleRepository;
 }
