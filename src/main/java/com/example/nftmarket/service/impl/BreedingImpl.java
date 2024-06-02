@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 //实现恐龙交配方法
 @Service
 public class BreedingImpl implements Breeding {
+    //此处注意结合相关数据结构进行操作
     @Override
     public DinosaurEgg creatDinosaurEgg(Person person, Dinosaur dinosaurMother, Dinosaur dinosaurFather) {
         if (dinosaurMother.getSaleSate().equals("售卖中") || dinosaurFather.getSaleSate().equals("售卖中")){
