@@ -2,6 +2,7 @@ package com.example.nftmarket.service;
 
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
+import com.example.nftmarket.entity.Person;
 
 public interface Breeding {
 
@@ -11,9 +12,11 @@ public interface Breeding {
      * @LogicSetting:初步进行交配时间为3h
      * @Output:恐龙蛋对象
      * */
-    DinosaurEgg creatDinosaurEgg(Dinosaur dinosaurFather,Dinosaur dinosaurMother);
+    DinosaurEgg creatDinosaurEgg(Person person, Dinosaur dinosaurFather, Dinosaur dinosaurMother);
 
+    Dinosaur getTheDinosaurMother(Person person, Integer index);
 
+    Dinosaur getTheDinosaurFather(Person person, Integer index);
 
     /**
      * @Params:母恐龙对象

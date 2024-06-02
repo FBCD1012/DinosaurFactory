@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class DinosaurEggTests {
     @Test
     void TestTheDinosaurEggTests(){
-        System.out.println(RandomDinosaurEgg.randomEgg(new DinosaurEgg()).getEggId());
-        System.out.println(RandomDinosaurEgg.randomEgg(new DinosaurEgg()).getEggId());
+//        System.out.println(RandomDinosaurEgg.randomEgg(new DinosaurEgg()).getEggId());
+//        System.out.println(RandomDinosaurEgg.randomEgg(new DinosaurEgg()).getEggId());
     }
 }

@@ -8,6 +8,6 @@ import org.web3j.crypto.Hash;
  * */
 public class HashUtils {
     public static String getHashIndex(Object object){
-        return Hash.sha3String(String.valueOf(object));
+        return Hash.sha3String(String.valueOf(object.hashCode()));
     }
 }
