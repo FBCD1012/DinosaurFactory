@@ -32,12 +32,13 @@ public class PersonContentImpl implements PersonContent {
         System.out.println("You have successfully hatched a dinosaur");
         Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(eggIndex)
                 ,new DinosaurRandomUtils());
-        List<DinosaurEgg> theDinosaurEgg = getTheDinosaurEgg(person);
-        theDinosaurEgg.remove((int)eggIndex);
         switch (dinosaur.getDinosaurSex()) {
             case "MALE" -> person.getMaleDinosaurRepository().add(dinosaur);
             case "FEMALE" -> person.getFeMaleDinosaurRepository().add(dinosaur);
         }
+        List<DinosaurEgg> theDinosaurEgg = getTheDinosaurEgg(person);
+        DinosaurEgg dinosaurEgg = theDinosaurEgg.get(eggIndex);
+        dinosaurEgg.setHatched(false);
         return dinosaur;
     }
 

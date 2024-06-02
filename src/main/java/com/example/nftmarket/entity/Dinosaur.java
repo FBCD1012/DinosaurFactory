@@ -29,5 +29,9 @@ public class Dinosaur {
     String DinosaurRarity;
     String DinosaurPhotoUri;
     Double DinosaurPrice;
+    //恐龙的卵生哈希
+    String SourceHash;
+    //售卖状态
+    String SaleSate;
 
 }

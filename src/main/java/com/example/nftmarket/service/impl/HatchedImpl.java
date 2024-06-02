@@ -34,6 +34,8 @@ public class HatchedImpl implements Hatched {
                     .setIsBreeding(true)
                     .setDinosaurPhotoUri(null)
                     .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
+                    .setSourceHash(dinosaurEgg.getEggId())
+                    .setSaleSate("空闲")
                     .setDinosaurOwner(Hash.sha3String(person.toString()));
         }
         return null;
