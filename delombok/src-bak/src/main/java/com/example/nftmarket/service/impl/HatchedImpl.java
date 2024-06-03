@@ -5,6 +5,7 @@ import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
+import com.example.nftmarket.utils.HashUtils;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.Hash;
 

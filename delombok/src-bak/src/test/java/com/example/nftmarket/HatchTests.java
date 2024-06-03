@@ -11,8 +11,8 @@ import com.example.nftmarket.service.impl.BreedingImpl;
 import com.example.nftmarket.service.impl.PersonContentImpl;
 import com.example.nftmarket.service.impl.TheTreeRelationImpl;
 import com.example.nftmarket.structs.Node;
+import com.example.nftmarket.structs.NormalDinosaurTree;
 import com.example.nftmarket.structs.SimpleNodeChain;
-import com.example.nftmarket.utils.TreeUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.web3j.crypto.Hash;
@@ -90,10 +90,10 @@ public class HatchTests {
                 dinosaurEgg);
         TheTreeRelation theTreeRelation2=new TheTreeRelationImpl();
         SimpleNodeChain simpleNodeChain1 = theTreeRelation2.setTheSimpleNodeChain(dinosaurEggsRepository.get(0), person.getMaleDinosaurRepository().get(0), person.getFeMaleDinosaurRepository().get(0), null);
-//        TreeUtils treeUtils=new TreeUtils(person);
-//        System.out.println(treeUtils.setTheTreeNode(simpleNodeChain));
-//        System.out.println(treeUtils.setTheTreeNode(simpleNodeChain1));
-//        System.out.println("------------------------------------------");
-//        treeUtils.traverserPreOrder();
+        NormalDinosaurTree normalDinosaurTre=new NormalDinosaurTree();
+        normalDinosaurTre.addNode(simpleNodeChain);
+        normalDinosaurTre.addNode(simpleNodeChain1);
+        System.out.println("------------------------------------------");
+        normalDinosaurTre.traverserPreOrder(normalDinosaurTre.getRoot());
     }
 }

@@ -1,17 +1,11 @@
 package com.example.nftmarket.structs;
 
 import com.example.nftmarket.entity.DinosaurEgg;
-import com.example.nftmarket.entity.Person;
 
 public class NormalDinosaurTree {
-    Person personInfo;
     AbstractNode root;
 
-    public NormalDinosaurTree(Person personInfo) {
-        this.personInfo = personInfo;
-    }
-
-    private AbstractNode addNode(AbstractNode currentNode, SimpleNodeChain chain){
+    private AbstractNode addNode(AbstractNode currentNode,SimpleNodeChain chain){
         if(currentNode==null){
             return new AbstractNode(chain);
         }

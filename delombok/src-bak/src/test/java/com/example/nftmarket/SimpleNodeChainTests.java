@@ -41,10 +41,10 @@ public class SimpleNodeChainTests {
         dinosaurEggSimpleNodeChain.setNodeChain(dinosaur2,dinosaur3);
 
 
-////        NormalDinosaurTree normalDinosaurTree=new NormalDinosaurTree();
-//        normalDinosaurTree.addNode(dinosaurEggSimpleNodeChain);
-//        normalDinosaurTree.addNode(simpleNodeChain);
-//        normalDinosaurTree.addNode(dinosaurEggSimpleNodeChain14);
-//        normalDinosaurTree.traverserPreOrder(normalDinosaurTree.getRoot());
+        NormalDinosaurTree normalDinosaurTree=new NormalDinosaurTree();
+        normalDinosaurTree.addNode(dinosaurEggSimpleNodeChain);
+        normalDinosaurTree.addNode(simpleNodeChain);
+        normalDinosaurTree.addNode(dinosaurEggSimpleNodeChain14);
+        normalDinosaurTree.traverserPreOrder(normalDinosaurTree.getRoot());
     }
 }

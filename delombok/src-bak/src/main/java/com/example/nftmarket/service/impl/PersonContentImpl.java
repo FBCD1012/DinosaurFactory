@@ -47,6 +47,8 @@ public class PersonContentImpl implements PersonContent {
     public List<DinosaurEgg> getTheDinosaurEgg(Person person) {
         return person.getDinosaurEggsRepository();
     }
+
+
     //获取用户的所有恐龙数量，包括母恐龙以及父恐龙数量
     @Override
     public int getDinosaurCounts(Person person) {
