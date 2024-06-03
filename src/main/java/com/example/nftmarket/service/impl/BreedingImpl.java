@@ -22,6 +22,9 @@ public class BreedingImpl implements Breeding {
         dinosaurEgg.setEggId(HashUtils.getHashIndex(dinosaurEgg));
         dinosaurEgg.setHatched(true);
         person.getDinosaurEggsRepository().add(dinosaurEgg);
+        //一旦孵化出一个蛋之后，恐龙母亲就不能进行相关操作了
+        dinosaurMother.setIsBreeding(false);
+        dinosaurFather.setIsBreeding(false);
         return dinosaurEgg;
     }
     //内部检验方法进行恐龙是否能够进行孵化操作
@@ -38,10 +41,18 @@ public class BreedingImpl implements Breeding {
     }
 
     public Dinosaur getTheDinosaurFather(Person person, Integer index) {
-        return person.getMaleDinosaurRepository().get(index);
+        Dinosaur dinosaur = person.getMaleDinosaurRepository().get(index);
+        if (dinosaur==null){
+            System.out.println("your dinosaur is null");
+            return null;
+        }else if (!isBreeding(dinosaur)){
+            System.out.println("your father-dinosaur is not breeding");
+            return null;
+        }
+        return dinosaur;
     }
     @Override
-    public boolean isBreeding(Dinosaur dinosaurMother) {
-        return dinosaurMother.getIsBreeding();
+    public boolean isBreeding(Dinosaur dinosaurMotherOrFather) {
+        return dinosaurMotherOrFather.getIsBreeding();
     }
 }

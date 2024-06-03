@@ -7,8 +7,9 @@ import lombok.Data;
  **/
 @Data
 public class DinosaurEgg {
-    String eggId;
+    String EggId;
     String DinosaurFather;
     String DinosaurMother;
+    String ChildHash;
     boolean isHatched;
 }

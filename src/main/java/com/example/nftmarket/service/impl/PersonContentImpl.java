@@ -20,8 +20,8 @@ public class PersonContentImpl implements PersonContent {
         RandomDinosaurEgg randomDinosaurEg=new RandomDinosaurEgg();
         //@Data的tostring会导致我们进行哈希值操作的时候出现一些相同内容的哈希，进而导致我们获取到的哈希值出现一定的异常情况
         // ，所以说我们此处直接获取对象的HashCode地址进行操作
-        DinosaurEgg dinosaurEgg = randomDinosaurEg.randomEgg(dinosaurEg,String.valueOf(dinosaurEg.hashCode()));
-        DinosaurEgg dinosaurEgg1 = randomDinosaurEg.randomEgg(dinosaurEg2,String.valueOf(dinosaurEg.hashCode()));
+        DinosaurEgg dinosaurEgg = randomDinosaurEg.randomEgg(dinosaurEg);
+        DinosaurEgg dinosaurEgg1 = randomDinosaurEg.randomEgg(dinosaurEg2);
         person.getDinosaurEggsRepository().add(dinosaurEgg); person.getDinosaurEggsRepository().add(dinosaurEgg1);
         return "You have obtained two official dinosaur eggs";
     }

@@ -15,7 +15,7 @@ public class TheTreeRelationImpl implements TheTreeRelation {
                                                  Dinosaur dinosaurMother,
                                                  Node<DinosaurEgg> sourceNode) {
         Node<DinosaurEgg> dinosaurEgg2=new Node<>(dinosaurEgg,null);
-        if (dinosaurFather.getSourceHash().equals(sourceNode.getNodeInfo().getEggId())){
+        if (sourceNode.getNodeInfo().getEggId().equals(dinosaurFather.getSourceHash())){
             dinosaurNodeFather=new Node<>(dinosaurFather,sourceNode);
         }else {
             dinosaurNodeFather=new Node<>(dinosaurFather,null);
