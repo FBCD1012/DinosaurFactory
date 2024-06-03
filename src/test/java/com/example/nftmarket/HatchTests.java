@@ -12,7 +12,6 @@ import com.example.nftmarket.service.impl.PersonContentImpl;
 import com.example.nftmarket.service.impl.TheTreeRelationImpl;
 import com.example.nftmarket.structs.Node;
 import com.example.nftmarket.structs.SimpleNodeChain;
-import com.example.nftmarket.utils.TreeUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.web3j.crypto.Hash;
@@ -77,7 +76,9 @@ public class HatchTests {
         person.getMaleDinosaurRepository().add(dinosaur4);
         System.out.println(person.getMaleDinosaurRepository());
         System.out.println(person.getFeMaleDinosaurRepository());
+        //只要通过我们的孵化操作，那么我们的孩子哈希值就能进行填充
         person.getDinosaurEggsRepository().get(0).setChildHash(dinosaur3.getDinosaurId());
+        //实现孵化操作的抽象理解
         breeding.creatDinosaurEgg(person, breeding.getTheDinosaurMother(person, 1),breeding.getTheDinosaurFather(person, 1));
         System.out.println(person.getDinosaurEggsRepository());
 

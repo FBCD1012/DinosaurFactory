@@ -7,9 +7,11 @@ import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
 import com.example.nftmarket.utils.RandomDinosaurEgg;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 //实现了新加入用户的两个免费蛋的增加操作
 public class PersonContentImpl implements PersonContent {
 

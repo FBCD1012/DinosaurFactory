@@ -5,10 +5,13 @@ import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.service.TheTreeRelation;
 import com.example.nftmarket.structs.Node;
 import com.example.nftmarket.structs.SimpleNodeChain;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TheTreeRelationImpl implements TheTreeRelation {
     Node<Dinosaur> dinosaurNodeFather;
     Node<Dinosaur> dinosaurNodeMother;
+    //设置内部抽象数据结果的目的其实已经达到了，Index的数字可以到前端中进行操作实现获取操作
     @Override
     public SimpleNodeChain setTheSimpleNodeChain(DinosaurEgg dinosaurEgg,
                                                  Dinosaur dinosaurFather,

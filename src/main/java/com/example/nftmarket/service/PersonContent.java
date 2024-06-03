@@ -13,7 +13,9 @@ public interface PersonContent {
     //孵化用户当前拥有的恐龙蛋操作
     Dinosaur toHatchTheDinosaurEgg(Person person, Integer index);
 
+    //获取龙蛋集合
     List<DinosaurEgg> getTheDinosaurEgg(Person person);
 
+    //获取龙的数量
     int getDinosaurCounts(Person person);
 }
