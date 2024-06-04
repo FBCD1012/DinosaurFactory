@@ -17,4 +17,5 @@ public interface SaleContent {
     Double getTheMarketHighestPrice();
     //获取市场最低价
     Double getTheLowestPrice();
+    Market getTheMarket();
 }

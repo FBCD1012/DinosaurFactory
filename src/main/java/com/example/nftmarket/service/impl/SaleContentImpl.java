@@ -15,7 +15,8 @@ import java.util.List;
 //实现具体的商城逻辑
 @Service
 public class SaleContentImpl implements SaleContent {
-    static Market market;
+    public static Market market;
+
     static {
          market=new Market();
     }
@@ -115,5 +116,10 @@ public class SaleContentImpl implements SaleContent {
                 .orElse(null);
         Assert.notNull(dinosaur, "市场无任何NFT售卖中");
         return dinosaur.getDinosaurPrice();
+    }
+
+    @Override
+    public Market getTheMarket() {
+        return market;
     }
 }

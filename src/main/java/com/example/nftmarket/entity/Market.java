@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class Market {
     //售卖恐龙的集合
-    List<Dinosaur> dinosaurs = new ArrayList<>();
+    List<Dinosaur> dinosaurs = new ArrayList <>();
 }
