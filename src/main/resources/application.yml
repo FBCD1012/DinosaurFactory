@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: NFT-Market
+  mvc:
+    static-path-pattern: /static/**
