@@ -19,7 +19,7 @@ body {
 .header__logo {
   display: block;
   width: 129px;
-  height: 25px;
+  height: 52px;
   background-image: url(../images/logo.svg);
   background-repeat: no-repeat;
 }

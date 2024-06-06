@@ -58,6 +58,12 @@
             <artifactId>jcommon</artifactId>
             <version>1.0.16</version>
         </dependency>
+        <!--elasticsearch-->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>8.13.4</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/jfree/jfreechart -->
         <dependency>
@@ -76,6 +82,10 @@
             <version>2.0.45</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

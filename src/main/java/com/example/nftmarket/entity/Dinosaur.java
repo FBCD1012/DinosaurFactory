@@ -15,6 +15,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @Builder
+@AllArgsConstructor
 public class Dinosaur {
     //哈希值
     String DinosaurId;
