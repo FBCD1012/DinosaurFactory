@@ -18,8 +18,8 @@ body {
 
 .header__logo {
   display: block;
-  width: 129px;
-  height: 52px;
+  width: 513px;
+  height: 70px;
   background-image: url(../images/logo.svg);
   background-repeat: no-repeat;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .form__input {
-  width: 700px;
+  width: 384px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   border: none;
@@ -390,48 +390,48 @@ body {
   display: none;
 }
 @media (max-width: 1130px){
-    .header, .container{
-        max-width: 900px;
-    }
-    .header__list{
-        gap: 20px;
-        font-size: 16px;
-    }
-    .form__input{
-        width: 260px;
-        padding: 13px 13px 13px 40px;
-        font-size: 14px;
-    }
-    .main__text{
-      flex-basis: 450px;
-    }
-    .main__title{
-      font-size: 43px;
-    }
-    .main__desc, .main__btn, .main__item, .desc, .card__linkm .collapsible{
-      font-size: 18px;
-    }
-    .main__image{
-      flex-basis: calc(100% - 450px - 30px);
-    }
-    .main__span{
-      font-size: 26px;
-    }
-    .main__list{
-      gap:40px;
-    }
-    .company__img{
-      height: 52px;
-    }
-    .title{
-      font-size: 36px;
-    }
-    .card__cover, .card__img{
-      height: 300px;
-    }
-    .card__price, .card__author, .card__nick{
-      font-size: 16px;
-    }
+  .header, .container{
+    max-width: 900px;
+  }
+  .header__list{
+    gap: 20px;
+    font-size: 16px;
+  }
+  .form__input{
+    width: 260px;
+    padding: 13px 13px 13px 40px;
+    font-size: 14px;
+  }
+  .main__text{
+    flex-basis: 450px;
+  }
+  .main__title{
+    font-size: 43px;
+  }
+  .main__desc, .main__btn, .main__item, .desc, .card__linkm .collapsible{
+    font-size: 18px;
+  }
+  .main__image{
+    flex-basis: calc(100% - 450px - 30px);
+  }
+  .main__span{
+    font-size: 26px;
+  }
+  .main__list{
+    gap:40px;
+  }
+  .company__img{
+    height: 52px;
+  }
+  .title{
+    font-size: 36px;
+  }
+  .card__cover, .card__img{
+    height: 300px;
+  }
+  .card__price, .card__author, .card__nick{
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 880px){
@@ -457,7 +457,7 @@ body {
     background-image: url(../images/search-mobile.svg);
   }
   .header__menu{
-    width: 27px;    
+    width: 27px;
     background-image: url(../images/menu-mobile.svg);
     margin-left: 22px;
   }

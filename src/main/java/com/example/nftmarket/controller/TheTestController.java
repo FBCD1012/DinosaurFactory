@@ -13,16 +13,14 @@ public class TheTestController {
         return "index";
     }
     //市场页面
-    @ResponseBody
     @RequestMapping(value = "/market")
     public String getTheMarketIndex(){
         return "market";
     }
     //个人信息页面
-    @ResponseBody
-    @RequestMapping(value="/personInfo")
+    @RequestMapping(value="/person")
     public String getThePersonInfo(){
-        return "personInfo";
+        return "person";
     }
 
 }

@@ -8,15 +8,15 @@
   <title>DinosaurHomePage</title>
   <link rel="stylesheet" href="/static/styles/normalize.min.css" />
   <link rel="stylesheet" href="/static/styles/style.css" />
+
 </head>
 <body>
-  <nav class="header__nav" style="align-content: center">
+<header class="header">
+  <a href="#" class="header__logo"></a>
+  <nav class="header__nav">
     <ul class="header__list">
       <li class="header__item">
-        <a href="#" class="header__link">Collections</a>
-      </li>
-      <li class="header__item">
-        <a href="#" class="header__link">Feature</a>
+        <a href="https://github.com/FBCD1012/DinosaurFactory" class="header__link" target="_blank">Our github repository</a>
       </li>
       <li class="header__item">
         <a href="#FAQ" class="header__link">FAQ</a>
@@ -28,6 +28,11 @@
       </li>
     </ul>
   </nav>
+  <div class="header__buttons">
+    <button class="header__search"></button>
+    <button class="header__menu"></button>
+  </div>
+</header>
 <section>
   <h1>Your personal Info</h1>
 </section>
