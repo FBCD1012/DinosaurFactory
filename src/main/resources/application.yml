@@ -4,10 +4,12 @@ spring:
     name: NFT-Market
   mvc:
     static-path-pattern: /static/**
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: dinosaurMarket
+  elasticsearch:
+    uris: http://localhost:9200/
+logging:
+  level:
+    # 输出es的查询参数(调试用)
+    tracer: TRACE
 server:
   port: 9090
+

@@ -385,6 +385,14 @@ body {
   margin-top: 118px;
   margin-bottom: 100px;
 }
+.slz {
+  border-radius: 10px;
+  padding: 51px 15px 64px;
+  text-align: center;
+  margin-top: 118px;
+  margin-bottom: 100px;
+}
+
 
 .banner__title {
   font-size: 50px;

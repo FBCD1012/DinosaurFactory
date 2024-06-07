@@ -5,16 +5,12 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.IOException;
 
 @Controller
 public class TheTestController {
@@ -35,10 +31,9 @@ public class TheTestController {
     //个人信息页面
     @SneakyThrows
     @RequestMapping(value="/person")
-    public String getThePersonInfo(HttpServletResponse httpServletResponse) {
+    public String getThePersonInfo() {
         Object userAdd = request.getSession().getAttribute("userAdd");
         if (userAdd==null){
-            httpServletResponse.getWriter().write("<script>alert('Please log in as user first')</script>");
             return "blankIndex";
         }else {
             System.out.println("用户登陆成功");

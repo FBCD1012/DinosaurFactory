@@ -4,8 +4,9 @@ package com.example.nftmarket.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 
 /**
@@ -16,8 +17,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Builder
 @AllArgsConstructor
+@Document(indexName = "dinosaur")
 public class Dinosaur {
     //哈希值
+    @Id
     String DinosaurId;
     String DinosaurSex;
     String DinosaurType;
