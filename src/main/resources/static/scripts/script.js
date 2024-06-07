@@ -36,7 +36,7 @@ if (typeof window.ethereum !== 'undefined') {
             });
     });
 
-    // 鼠标悬停事件，显示完整地址
+    // 鼠标悬停事件，显示完整地址f
     walletButton.addEventListener('mouseover', function() {
         ethereum.request({ method: 'eth_requestAccounts' })
             .then(function(accounts) {
