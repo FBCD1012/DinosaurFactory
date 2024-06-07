@@ -23,11 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class JfreeUtils{
-    public static void main(String[] args) {
-        testPie();
-        testLine();
-    }
-    public static String imagePath = "D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static";
+    public static String imagePath = "D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static\\images";
 
     public static void testPie(){
         //如 果不使用Font,中文将显示不出来
@@ -46,7 +42,7 @@ public class JfreeUtils{
         if (!p.exists()) {
             p.mkdirs();
         }
-        String imageName = System.currentTimeMillis() + "_饼图" + ".jpeg";
+        String imageName ="饼图.jpeg";
         File file = new File(p.getPath() + "/" + imageName);
         try {
             if(file.exists()) {
@@ -79,7 +75,7 @@ public class JfreeUtils{
         if (!p.exists()) {
             p.mkdirs();
         }
-        String imageName = System.currentTimeMillis() + "_折线图" + ".jpeg";
+        String imageName ="折线图.jpeg";
         File file = new File(p.getPath() + "/" + imageName);
         try {
             if(file.exists()) {

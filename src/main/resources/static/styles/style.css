@@ -218,6 +218,7 @@ body {
   padding-left: 130px;
   box-sizing: border-box;
   transition: .3s;
+  display: flow;
 }
 
 .card__item:hover {
