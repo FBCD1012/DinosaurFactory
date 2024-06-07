@@ -11,5 +11,6 @@ public class DinosaurEgg {
     String DinosaurFather;
     String DinosaurMother;
     String ChildHash;
+    String EggPhotoURI;
     boolean isHatched;
 }

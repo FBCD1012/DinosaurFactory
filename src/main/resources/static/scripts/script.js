@@ -1,3 +1,4 @@
+src="https://unpkg.com/axios/dist/axios.min.js"
 // collapsible
 let coll = document.getElementsByClassName("collapsible");
 let i;
@@ -28,19 +29,18 @@ if (typeof window.ethereum !== 'undefined') {
         ethereum.request({ method: 'eth_requestAccounts' })
             .then(function(accounts) {
                 // 连接成功，更新按钮显示为钱包地址的前几位
-                var shortAddress = accounts[0].substring(0, 6) + '...'; // 只显示前6位
-                walletButton.textContent = shortAddress;
+                 // 只显示前6位
+                walletButton.textContent = accounts[0].substring(0, 6) + '...';
                 // 将地址存储在变量中
                 userAddress = accounts[0];
-                console.log(userAddress);
+                postToTheAddress(userAddress)
                 // 添加鼠标悬停事件
                 walletButton.addEventListener('mouseover', function() {
                     walletButton.textContent = accounts[0];
                 });
                 // 添加鼠标移出事件
                 walletButton.addEventListener('mouseout', function() {
-                    var shortAddress = accounts[0].substring(0, 6) + '...';
-                    walletButton.textContent = shortAddress;
+                    walletButton.textContent = accounts[0].substring(0, 6) + '...';
                 });
             })
             .catch(function(error) {
@@ -52,6 +52,18 @@ if (typeof window.ethereum !== 'undefined') {
     // MetaMask未安装，显示错误消息或者提示用户安装MetaMask
     console.log('Please install the MetaMask extension!');
 }
-function getUseAddress(){
-    return userAddress;
+function postToTheAddress(userAddress){
+    axios.post("/address",{
+        userAdd: userAddress
+    },{
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then(({data})=>{
+        if (data.success) {
+            alert("User address obtained successfully :)")
+        }else {
+            alert("Failed to obtain user address :(")
+        }
+    })
 }
