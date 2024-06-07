@@ -29,27 +29,21 @@ if (typeof window.ethereum !== 'undefined') {
                 // 连接成功，更新按钮显示为钱包地址的前几位
                 var shortAddress = accounts[0].substring(0, 6) + '...'; // 只显示前6位
                 walletButton.textContent = shortAddress;
+
+                // 添加鼠标悬停事件
+                walletButton.addEventListener('mouseover', function() {
+                    walletButton.textContent = accounts[0];
+                });
+
+                // 添加鼠标移出事件
+                walletButton.addEventListener('mouseout', function() {
+                    var shortAddress = accounts[0].substring(0, 6) + '...';
+                    walletButton.textContent = shortAddress;
+                });
             })
             .catch(function(error) {
                 // 连接失败，打印错误信息
                 console.error(error);
-            });
-    });
-
-    // 鼠标悬停事件，显示完整地址
-    walletButton.addEventListener('mouseover', function() {
-        ethereum.request({ method: 'eth_requestAccounts' })
-            .then(function(accounts) {
-                walletButton.textContent = accounts[0];
-            });
-    });
-
-    // 鼠标移出事件，重新显示前几位
-    walletButton.addEventListener('mouseout', function() {
-        ethereum.request({ method: 'eth_requestAccounts' })
-            .then(function(accounts) {
-                var shortAddress = accounts[0].substring(0, 6) + '...';
-                walletButton.textContent = shortAddress;
             });
     });
 } else {
