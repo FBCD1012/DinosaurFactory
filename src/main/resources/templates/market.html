@@ -10,15 +10,34 @@
   <link rel="stylesheet" href="/static/styles/style.css" />
 </head>
 <body>
+<header class="header">
+  <a href="/" class="header__logo"></a>
+  <div class="form">
+    <button class="form__button"></button>
+    <input
+            class="form__input"
+            type="search"
+            placeholder="Search items and collections"
+    />
+    <input
+            class="submit__link submit__back"
+            type="submit"
+            value="确认"
+    />
+  </div>
+  <nav class="header__nav">
+    <ul class="header__list">
+      <li class="header__item">
+        <a href="#" id="walletButton" class="header__link header__link_gradient">Connect Wallet</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="header__buttons">
+    <button class="header__search"></button>
+    <button class="header__menu"></button>
+  </div>
+</header>
 
-<div class="form">
-  <button class="form__button"></button>
-  <input
-          class="form__input"
-          type="search"
-          placeholder="Search items and collections"
-  />
-</div>
 <section>
   <h2 class="title">Featured Artworks</h2>
   <p class="desc">Here are a lot of super nice dinosaur NFTs, choose the ones you like and buy them!!!</p>
@@ -196,6 +215,10 @@
     <div class="company">
     </div>
   </section>
+</div>
+<div class="banner">
+  <h3 class="banner__title">Back to my world.</h3>
+  <a href="/person" class="banner__link">Go</a>
 </div>
 <script src="/static/scripts/script.js"></script>
 </body>
