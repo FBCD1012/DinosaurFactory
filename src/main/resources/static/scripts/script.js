@@ -67,3 +67,52 @@ function postToTheAddress(userAddress){
         }
     })
 }
+//蛋的孵化
+var countdownIntervals = [null, null, null];
+var countdownTimes = [3 * 60 * 60, 3 * 60 * 60, 3 * 60 * 60]; // 每个按钮的倒计时时间（秒）
+var hatchButtons = [
+    document.getElementById("hatchButton1"),
+    document.getElementById("hatchButton2"),
+    document.getElementById("hatchButton3")
+];
+
+function toggleCountdown(index, event) {
+    event.preventDefault(); // 阻止默认链接行为
+    if (countdownIntervals[index]) {
+        // 如果倒计时正在运行，停止它
+        clearInterval(countdownIntervals[index]);
+        countdownIntervals[index] = null;
+        hatchButtons[index].textContent = "Hatch"; // 重置按钮文本
+    } else {
+        // 如果倒计时没有运行，启动它
+        startCountdown(index);
+    }
+}
+
+function startCountdown(index) {
+    countdownIntervals[index] = setInterval(function() {
+        countdownTimes[index]--;
+        if (countdownTimes[index] <= 0) {
+            clearInterval(countdownIntervals[index]);
+            countdownIntervals[index] = null;
+            sendMessage(index);
+        } else {
+            updateButtonText(index, countdownTimes[index]);
+        }
+    }, 1000);
+
+    // 启动倒计时后立即更新按钮文本
+    updateButtonText(index, countdownTimes[index]);
+}
+
+function updateButtonText(index, time) {
+    var hours = Math.floor(time / 3600);
+    var minutes = Math.floor((time % 3600) / 60);
+    var seconds = time % 60;
+    hatchButtons[index].textContent = "Countdown" +  "：" + hours + "h " + minutes + "m " + seconds + "s";
+}
+
+// 模拟发送消息的函数
+function sendMessage(index) {
+    alert("孵化" + (index + 1) + "完成！");
+}
