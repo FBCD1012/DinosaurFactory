@@ -35,4 +35,4 @@ build/
 ### complier contract
 .deps
 .states
-/src/contracts/artifacts/
+/src/contracts/artifacts
