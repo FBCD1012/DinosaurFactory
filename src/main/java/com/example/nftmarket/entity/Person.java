@@ -2,12 +2,16 @@ package com.example.nftmarket.entity;
 
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Document("person-info")
 public class Person {
+    @Id
     //个人的账户哈希值
     String PersonHash;
     //个人拥有的恐龙数量

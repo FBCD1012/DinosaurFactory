@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TheTestController {
-
     @Resource
     HttpServletRequest request;
     @RequestMapping(value = "/")
