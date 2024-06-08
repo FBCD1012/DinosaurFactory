@@ -35,3 +35,4 @@ build/
 ### complier contract
 .deps
 .states
+artifacts
