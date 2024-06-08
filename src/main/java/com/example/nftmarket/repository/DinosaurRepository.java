@@ -12,4 +12,5 @@ public interface DinosaurRepository extends ElasticsearchRepository<Dinosaur, St
     List<Dinosaur> findByDinosaurColor(String dinosaurColor);
     //性别查询
     List<Dinosaur> findByDinosaurSex(String dinosaurSex);
+
 }
