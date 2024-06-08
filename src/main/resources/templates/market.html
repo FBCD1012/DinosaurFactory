@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,13 +11,29 @@
 </head>
 <body>
 
-<div class="form">
-  <button class="form__button"></button>
-  <input
-          class="form__input"
-          type="search"
-          placeholder="Search items and collections"
-  />
+<!-- 搜索表单 -->
+<form th:action="@{/dinosaurs/search}" method="get">
+  <label for="keywords">Keywords:</label>
+  <input type="text" id="keywords" name="keywords" placeholder="Enter keywords">
+  <button type="submit">Search</button>
+</form>
+
+<!-- 显示搜索结果 -->
+<div th:if="${not #lists.isEmpty(dinosaurs)}">
+  <h2>Search Results:</h2>
+  <ul>
+    <li th:each="dinosaur : ${dinosaurs}">
+      <p th:text="${dinosaur.dinosaurId}"></p>
+      <p th:text="${dinosaur.dinosaurType}"></p>
+      <p th:text="${dinosaur.dinosaurColor}"></p>
+      <p th:text="${dinosaur.dinosaurSex}"></p>
+    </li>
+  </ul>
+</div>
+
+<!-- 如果没有搜索结果 -->
+<div th:if="${#lists.isEmpty(dinosaurs)}">
+  <p>No dinosaurs found.</p>
 </div>
 <section>
   <h2 class="title">Featured Artworks</h2>
