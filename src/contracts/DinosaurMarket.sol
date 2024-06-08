@@ -20,7 +20,7 @@ contract DinosaurMarket is IERC721Receiver {
     
     DFCoin public DFC;
     DinosaurToken public DT;
-    Market public market;
+    // Market public market;
 
  
     // 记录用户恐龙的TokenId对应的索引
@@ -42,12 +42,12 @@ contract DinosaurMarket is IERC721Receiver {
     // 记录恐龙的TokenId 的index
     mapping(uint256 => uint256) public dinosaur_indexToTokenId;
 
-    constructor(address _DFC, address _admin, address _market) {
-        owner = msg.sender;
-        admin = _admin;
-        DFC = DFCoin(_DFC);
+    constructor(address _DFC, address _admin) {
+        owner = msg.sender; // 市场拥有者
+        admin = _admin;     // 使用管理者
+        DFC = DFCoin(_DFC); 
         DT = new DinosaurToken(address(this));
-        market = Market(_market);
+        // market = Market(_market);
     }
 
     modifier onlyOwner() {
@@ -134,7 +134,7 @@ contract DinosaurMarket is IERC721Receiver {
     }
 
     /// ------------ 市场信息数据 ---------------
-    // 用户上架自己的恐龙NFT，将Token发送到Market
+    // 用户上架自己的恐龙NFT
     function onERC721Received(
         address operator,
         address from,
@@ -273,7 +273,7 @@ contract DinosaurMarket is IERC721Receiver {
 
         // 更新NFT接收者 tokenId和index之间的关系
         userOfDinosaurTokenIdToIndex[tx.origin][tokenId] = dinosaurAmountOfUser[tx.origin].length;
-        userOfDinosaurIndexToTokenId[owner][dinosaurAmountOfUser[tx.origin].length] = tokenId;
+        userOfDinosaurIndexToTokenId[tx.origin][dinosaurAmountOfUser[tx.origin].length] = tokenId;
 
         // 更新用户的恐龙信息
         userTokenToDinosaur[tx.origin][tokenId] = dinosaur;
@@ -286,7 +286,7 @@ contract DinosaurMarket is IERC721Receiver {
         // 数组操作
         uint256 last = dinosaurAmountOfUser[owner].length - 1;
         if (index != last) {
-            DinosaurData storage dinosaur = userTokenToDinosaur[owner][last];
+            DinosaurData storage dinosaur = dinosaurAmountOfUser[owner][last];
             dinosaurAmountOfUser[owner][index] = dinosaur;
         }
         dinosaurAmountOfUser[owner].pop();

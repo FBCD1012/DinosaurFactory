@@ -16,11 +16,6 @@
 						"internalType": "address",
 						"name": "_admin",
 						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_market",
-						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -222,75 +217,6 @@
 				"name": "cancelDinosaurSale",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "dinosaurAmountOfUser",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "DinosaurId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurSex",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurType",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isBreeding",
-						"type": "bool"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurColor",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurRarity",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurPhotoUri",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "DinosaurPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "SourceHash",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isSale",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -562,19 +488,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "market",
-				"outputs": [
-					{
-						"internalType": "contract Market",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -696,75 +609,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "userTokenToDinosaur",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "DinosaurId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurSex",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurType",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isBreeding",
-						"type": "bool"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurColor",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurRarity",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurPhotoUri",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "DinosaurPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "SourceHash",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isSale",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -1007,27 +851,27 @@
 			]
 		},
 		"contracts/DinosaurEggMarket.sol": {
-			"keccak256": "0xd9b114c2c53b47ec8e78b9c9e8613f738682f6ee8bc9e9fafdbad52aba478dc7",
+			"keccak256": "0x7e8ac1576d53f7d91c479e85894947e6547f6200a63210946e9e123c2e2fe7d7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3cee81e622a9a57f538c11f5d587fd4d7210f4dd450b1a41fa36843875ae062b",
-				"dweb:/ipfs/QmZcw4BPYyppUvSYdTD1dnm2jf8a9cV4eUTDypTjxXg9bk"
+				"bzz-raw://55bede9da52a219242f3abe2828b1c03939b8a04ae05ccd6728c0e843b0affff",
+				"dweb:/ipfs/Qmdd3Re147vt9CsczXc94dZhtLr13Xt7uaajVndYFZBXwA"
 			]
 		},
 		"contracts/DinosaurMarket.sol": {
-			"keccak256": "0xd657e7ad43c2c848be9b4b9fd13493164026a7eec4cb2031b23acdf3523d340e",
+			"keccak256": "0x11e778df65415e63a6ebe9c44f047f87501cc0c2e554d526d65859b0ff84deb9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bbd39165dcec0b15fe636f8d9adbcc458de1f1c69ad7eabf079e21ccb83f1e5",
-				"dweb:/ipfs/QmfEnmjQWNjsX9Mf8cSUgimQRaorEscSnpzEGawJjLDyXs"
+				"bzz-raw://a65c6332d9a7f2c9bcd57545f2dc8a0c81b91a74ed692d227ad613608706b4c7",
+				"dweb:/ipfs/QmTWDhUmnmQrUD2QZ4jG8KcxsFBX7yV19XhHFrtEwbTzmX"
 			]
 		},
 		"contracts/Market.sol": {
-			"keccak256": "0x46131240de39ed515ef587bc5fe14457f52e75a1fd6a5921125b8fe583b5fbed",
+			"keccak256": "0x92eac1ef5ac78d8bfc5687447bcc90fa05e0ebce4dde0c007f88940f1a0e9d3e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6dc25ba0efab44ad5bc838c9579192495e37d9ff52c2472f177b3a2d3e8c64db",
-				"dweb:/ipfs/QmTQMQ6TjJ9wbza5pHZpP6Udg22d3dchpoZy3iAX27LxMA"
+				"bzz-raw://42005a283e8f69fee93f0b7b7a8d3d9365b5bf63e299431a15a1ad51e716defe",
+				"dweb:/ipfs/QmaCVuzfHsviy3pZtZ9MmJijfmefc3m1wqK8D8zBBTdxkm"
 			]
 		},
 		"contracts/Storage_Information.sol": {

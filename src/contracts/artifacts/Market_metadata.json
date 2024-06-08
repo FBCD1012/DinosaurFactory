@@ -23,10 +23,10 @@
 			},
 			{
 				"inputs": [],
-				"name": "DFC",
+				"name": "DEM",
 				"outputs": [
 					{
-						"internalType": "contract DFCoin",
+						"internalType": "contract DinosaurEggMarket",
 						"name": "",
 						"type": "address"
 					}
@@ -36,10 +36,10 @@
 			},
 			{
 				"inputs": [],
-				"name": "DM",
+				"name": "DFC",
 				"outputs": [
 					{
-						"internalType": "contract DinosaurMarket",
+						"internalType": "contract DFCoin",
 						"name": "",
 						"type": "address"
 					}
@@ -62,13 +62,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "OnsaleDinosaur",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "admin",
 				"outputs": [
 					{
@@ -78,6 +71,58 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenIdA",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenIdB",
+						"type": "uint256"
+					}
+				],
+				"name": "mate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -96,7 +141,11 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"onERC721Received(address,address,uint256,bytes)": {
+					"details": "Whenever an {IERC721} `tokenId` token is transferred to this contract via {IERC721-safeTransferFrom} by `operator` from `from`, this function is called. It must return its Solidity selector to confirm the token transfer. If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted. The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`."
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
@@ -326,27 +375,27 @@
 			]
 		},
 		"contracts/DinosaurEggMarket.sol": {
-			"keccak256": "0xd9b114c2c53b47ec8e78b9c9e8613f738682f6ee8bc9e9fafdbad52aba478dc7",
+			"keccak256": "0x7fd383ab62f3d009ea68f6645a6a23f8497ffe126bd0917ccd88f8427e9652eb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3cee81e622a9a57f538c11f5d587fd4d7210f4dd450b1a41fa36843875ae062b",
-				"dweb:/ipfs/QmZcw4BPYyppUvSYdTD1dnm2jf8a9cV4eUTDypTjxXg9bk"
+				"bzz-raw://5c9220a6576b48570e6dcc24b0dd31f9445f1c25b041d61f9f7243d75b3ee9c3",
+				"dweb:/ipfs/QmRuZcWPm5m6i4jzUbctdL3bq4aZsCDP2hcxhw7tixz4Km"
 			]
 		},
 		"contracts/DinosaurMarket.sol": {
-			"keccak256": "0xd657e7ad43c2c848be9b4b9fd13493164026a7eec4cb2031b23acdf3523d340e",
+			"keccak256": "0x09366fab83c8f3cebd2fd4e47328f0bb6e716346b552a356169fc96670ce183f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bbd39165dcec0b15fe636f8d9adbcc458de1f1c69ad7eabf079e21ccb83f1e5",
-				"dweb:/ipfs/QmfEnmjQWNjsX9Mf8cSUgimQRaorEscSnpzEGawJjLDyXs"
+				"bzz-raw://e1ed572d19564b2f9685db60419264e90ebd48b7379a57937f9e822ab544fd9c",
+				"dweb:/ipfs/QmWZtdza78CQdHATngxMLgxxkfCucMTmsHHL3SDD3F2QDX"
 			]
 		},
 		"contracts/Market.sol": {
-			"keccak256": "0x46131240de39ed515ef587bc5fe14457f52e75a1fd6a5921125b8fe583b5fbed",
+			"keccak256": "0x93dc0f0ac6f6e6702682c82dc54a7bc4c4ddf83ebae1ca6f4aaf355a836ccfe3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6dc25ba0efab44ad5bc838c9579192495e37d9ff52c2472f177b3a2d3e8c64db",
-				"dweb:/ipfs/QmTQMQ6TjJ9wbza5pHZpP6Udg22d3dchpoZy3iAX27LxMA"
+				"bzz-raw://7c63ef528d83b5e4ac93a943f0af40d6ceb7741e98178f543e84dd9f055d081b",
+				"dweb:/ipfs/QmfEGqpAhkwocD3TpDoKBfGixqmVa2FBgAYznfieZFHULk"
 			]
 		},
 		"contracts/Storage_Information.sol": {

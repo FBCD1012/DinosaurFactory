@@ -22,36 +22,24 @@ contract DinosaurEggMarket is IERC721Receiver {
 
     // ============= 用户恐龙蛋信息 ================
     // 记录用户恐龙蛋的TokenId对应的索引
-    mapping(address => mapping(uint256 => uint256)) public userOfDinosaurEggTokenIdToIndex;
+    mapping(address => mapping(uint256 => uint256)) userOfDinosaurEggTokenIdToIndex;
     // 记录用户恐龙蛋的index对应的TokenId
-    mapping(address => mapping(uint256 => uint256)) public userOfDinosaurEggIndexToTokenId;
+    mapping(address => mapping(uint256 => uint256)) userOfDinosaurEggIndexToTokenId;
     // 记录用户的所有恐龙蛋的 TokenId
-    mapping(address => DinosaurEggData[]) public eggAmountOfUser; 
+    mapping(address => DinosaurEggData[]) eggAmountOfUser; 
     // 记录用户的某个TokenId对应的恐龙蛋信息
     mapping(address user => mapping(uint256 tokenId => DinosaurEggData)) public userTokenToEgg;
 
-    // 记录上架的所有恐龙蛋
-    DinosaurEggData[] public DinosaurEggList;
-
-    // 记录恐龙蛋的卖家
-    mapping(uint256 => address) public sellerOfEgg;
-
-    // 记录恐龙蛋Id所在的索引
-    mapping(uint256 => uint256) public idToIndexOfEgg;
-
-    // 记录恐龙蛋的TokenId的index
-    mapping(uint256 => uint256) public dinosaurEgg_indexToTokenId;
-
 
     constructor(address _DFC, address _admin) {
-        owner = msg.sender;
+        owner = msg.sender; // 所有权为market
         admin = _admin;
         DFC = DFCoin(_DFC);
         DE = new DinosaurEgg(address(this));
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "You are not owner");
+        require(msg.sender == owner || msg.sender == admin, "You are not owner or admin.");
         _;
     }
 
@@ -110,11 +98,52 @@ contract DinosaurEggMarket is IERC721Receiver {
 
     // 用户间交易恐龙蛋
     // NOTE: from需要提前对该合约授权
-    function exchangeDinosaur() external {
+    function exchangeDinosaur(uint256 tokenId) external {
 
-        
+        address owner = DE.ownerOf(tokenId);
+        DinosaurEggData storage egg = userTokenToEgg[owner][tokenId];
+
+        // 转移 EGG
+        DE.safeTransferFrom(owner, tx.origin, tokenId);
+
+        // 更新 egg 接收者tokenId和index之间的关系
+        userOfDinosaurEggIndexToTokenId[tx.origin][tokenId] = eggAmountOfUser[tx.origin].length;
+        userOfDinosaurEggTokenIdToIndex[tx.origin][eggAmountOfUser[tx.origin].length] = tokenId;
+
+        // 更新用户恐龙蛋信息
+        userTokenToEgg[tx.origin][tokenId] = egg;
+        eggAmountOfUser[tx.origin].push(egg);
+
+        // 删除用户信息
+        // 获取旧用户的龙蛋列表中tokenId对应的索引
+        uint256 index = userOfDinosaurEggTokenIdToIndex[owner][tokenId];
+        delete userOfDinosaurEggIndexToTokenId[owner][index];
+        delete userOfDinosaurEggIndexToTokenId[owner][tokenId];
+
+        // 数组操作
+        uint256 last = eggAmountOfUser[owner].length - 1;
+        if (index != last) {
+            DinosaurEggData storage egg = eggAmountOfUser[owner][last];
+            eggAmountOfUser[owner][index] = egg;
+        }
+        eggAmountOfUser[owner].pop();
+        delete userTokenToEgg[owner][tokenId];
     }
 
+    // 修改龙蛋的孵化状态
+    function setEggIsHatched(address user, uint256 tokenId) external onlyOwner {
+        userTokenToEgg[user][tokenId].isHatched = true;
+    }
+
+    // 返回用户的龙蛋列表
+    function getEggListOfUser(address user) public view returns (DinosaurEggData[] memory) {
+        return eggAmountOfUser[user];
+    }
+
+    // 返回用户的龙蛋
+    function getUserEggFromTokenId(address user, uint256 tokenId) public view returns(DinosaurEggData memory) {
+        return userTokenToEgg[user][tokenId];
+    }
 
     function onERC721Received(
         address operator,
