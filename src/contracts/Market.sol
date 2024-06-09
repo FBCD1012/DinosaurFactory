@@ -31,7 +31,10 @@ contract Market is IERC721Receiver {
         owner = msg.sender;
         DFC = DFCoin(_DFC);
         admin = _admin;
+        DM = new DinosaurMarket(_DFC, _admin);
+        DT = DM.DT();
         DEM = new DinosaurEggMarket(_DFC, _admin);
+        DE = DEM.DE();
     }
 
     /*
