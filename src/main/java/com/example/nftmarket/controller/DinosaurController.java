@@ -1,7 +1,7 @@
 package com.example.nftmarket.controller;
 
 import com.example.nftmarket.entity.Dinosaur;
-import com.example.nftmarket.repository.DinosaurRepository;
+import com.example.nftmarket.repository.elasticsearch.DinosaurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

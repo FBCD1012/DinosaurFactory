@@ -10,9 +10,9 @@ import java.io.IOException;
 public class IpfsUtils {
     static IPFS ipfs=new IPFS("/ip4/127.0.0.1/tcp/8080");
 
-    static String pathName="D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static\\images";
+    static String pathName="D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static\\images\\";
 
-    public static void download(String hash) throws IOException {
+    public static String download(String hash) throws IOException {
         Multihash filePointer = Multihash.fromBase58(hash);
         byte[] data = ipfs.cat(filePointer);
         if(data != null){
@@ -25,5 +25,6 @@ public class IpfsUtils {
             fos.flush();
             fos.close();
         }
+        return "文件下载成功";
     }
 }

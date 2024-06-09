@@ -1,4 +1,4 @@
-package com.example.nftmarket.repository;
+package com.example.nftmarket.repository.elasticsearch;
 
 import com.example.nftmarket.entity.Dinosaur;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
