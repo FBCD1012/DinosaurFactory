@@ -42,8 +42,8 @@ contract DinosaurMarket is IERC721Receiver {
     // 记录恐龙的TokenId 的index
     mapping(uint256 => uint256) public dinosaur_indexToTokenId;
 
-    constructor(address _DFC, address _admin) {
-        owner = msg.sender; // 市场拥有者
+    constructor(address _DFC, address _admin, address _market) {
+        owner = _market; // 市场拥有者
         admin = _admin;     // 使用管理者
         DFC = DFCoin(_DFC); 
         DT = new DinosaurToken(address(this));
