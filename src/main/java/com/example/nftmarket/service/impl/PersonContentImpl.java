@@ -7,6 +7,7 @@ import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
 import com.example.nftmarket.utils.RandomDinosaurEgg;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,16 +15,17 @@ import java.util.List;
 @Service
 //实现了新加入用户的两个免费蛋的增加操作
 public class PersonContentImpl implements PersonContent {
+    @Resource
+    RandomDinosaurEgg randomDinosaurEgg;
 
     @Override
     public String addTheDinosaurEgg(Person person) {
         DinosaurEgg dinosaurEg=new DinosaurEgg();
         DinosaurEgg dinosaurEg2=new DinosaurEgg();
-        RandomDinosaurEgg randomDinosaurEg=new RandomDinosaurEgg();
         //@Data的tostring会导致我们进行哈希值操作的时候出现一些相同内容的哈希，进而导致我们获取到的哈希值出现一定的异常情况
         // ，所以说我们此处直接获取对象的HashCode地址进行操作
-        DinosaurEgg dinosaurEgg = randomDinosaurEg.randomEgg(dinosaurEg);
-        DinosaurEgg dinosaurEgg1 = randomDinosaurEg.randomEgg(dinosaurEg2);
+        DinosaurEgg dinosaurEgg = randomDinosaurEgg.randomEgg(dinosaurEg);
+        DinosaurEgg dinosaurEgg1 = randomDinosaurEgg.randomEgg(dinosaurEg2);
         person.getDinosaurEggsRepository().add(dinosaurEgg); person.getDinosaurEggsRepository().add(dinosaurEgg1);
         return "You have obtained two official dinosaur eggs";
     }

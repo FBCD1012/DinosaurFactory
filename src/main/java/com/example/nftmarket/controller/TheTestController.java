@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,8 +24,8 @@ public class TheTestController {
     //市场页面
     @RequestMapping(value = "/market")
     public String getTheMarketIndex(){
-        JfreeUtils.testPie();
-        JfreeUtils.testLine();
+//        JfreeUtils.testPie();
+//        JfreeUtils.testLine();
         return "market";
     }
     //个人信息页面
@@ -35,6 +36,7 @@ public class TheTestController {
         if (userAdd==null){
             return "blankIndex";
         }else {
+            //TODO 此处调用合约逻辑检验用户是否具备恐龙蛋
             System.out.println("用户登陆成功");
             System.out.println(request.getSession().getAttribute("userAdd"));
         }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -36,43 +37,21 @@
 </section>
 <section>
   <h2 class="title">Your Dinosaur   Eggs</h2>
-  <div class="card" style="display: flex;flex-wrap: wrap">
-    <div class="card__item">
+  <div class="banner" id="eggBanner">
+    <h3 class="banner__title">Hatch The Egg</h3>
+    <a  class="banner__button" href="/getDinosaurInfo" onclick="postTheInfo()">Get Started</a>
+  </div>
+
+  <div id="card" class="card" style="display: flex;flex-wrap: wrap">
+    <div class="card__item" >
       <div class="card__cover">
-        <img class="card__img" src="/static/images/image01.png" alt="" />
+        <img class="card__img"  alt="" />
       </div>
       <div class="card__info">
         <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
+          <p class="card__nick" ></p>
+          <p class="card__author"></p>
         </div>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image02.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image03.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-        <p class="card__bid">
-          Current Bid <span class="card__price">0.005ETH</span>
-        </p>
       </div>
       <a class="card__link" href="#">Place A Bid</a>
     </div>
@@ -181,6 +160,8 @@
     </div>
   </section>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static/scripts/personScript.js"></script>
 <script src="/static/scripts/script.js"></script>
 </body>
 </html>

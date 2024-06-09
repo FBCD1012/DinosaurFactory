@@ -33,6 +33,7 @@ if (typeof window.ethereum !== 'undefined') {
                 walletButton.textContent = accounts[0].substring(0, 6) + '...';
                 // 将地址存储在变量中
                 userAddress = accounts[0];
+                document.cookie=`userAddress=${userAddress}`
                 postToTheAddress(userAddress)
                 // 添加鼠标悬停事件
                 walletButton.addEventListener('mouseover', function() {
