@@ -636,7 +636,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"DinosaurMarket.sol": "DinosaurMarket"
+			"contracts/DinosaurMarket.sol": "DinosaurMarket"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -826,7 +826,7 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"DFCoin.sol": {
+		"contracts/DFCoin.sol": {
 			"keccak256": "0xfeb0157ab620aab4ff04a92439eb5ad232554c80e524f29de7ae8e7565b041af",
 			"license": "MIT",
 			"urls": [
@@ -834,7 +834,7 @@
 				"dweb:/ipfs/QmPHknTQJwZ9ksNUiLTkEbATfWdeYQL6PgqSB1yQTwJVNG"
 			]
 		},
-		"Dinosaur.sol": {
+		"contracts/Dinosaur.sol": {
 			"keccak256": "0x4b0de7b96cc55b6ed224df37321349f2f719ec2b5d1c870d58982f03e95ad4d7",
 			"license": "MIT",
 			"urls": [
@@ -842,7 +842,7 @@
 				"dweb:/ipfs/Qmer8oVVy45hYehEgy9V771ALJ8WftyrG7agUgz4e5Ag58"
 			]
 		},
-		"DinosaurEgg.sol": {
+		"contracts/DinosaurEgg.sol": {
 			"keccak256": "0x4791bcb812ec8e6fdb8ccdd6f118733647c7b882777c6d05aa4e3deba483237a",
 			"license": "MIT",
 			"urls": [
@@ -850,7 +850,7 @@
 				"dweb:/ipfs/Qmef7PDsAPaTEwBX2V2tiKh9rUJ6MSr6AAbjpyFbZejbM3"
 			]
 		},
-		"DinosaurEggMarket.sol": {
+		"contracts/DinosaurEggMarket.sol": {
 			"keccak256": "0x7e8ac1576d53f7d91c479e85894947e6547f6200a63210946e9e123c2e2fe7d7",
 			"license": "MIT",
 			"urls": [
@@ -858,7 +858,7 @@
 				"dweb:/ipfs/Qmdd3Re147vt9CsczXc94dZhtLr13Xt7uaajVndYFZBXwA"
 			]
 		},
-		"DinosaurMarket.sol": {
+		"contracts/DinosaurMarket.sol": {
 			"keccak256": "0x11e778df65415e63a6ebe9c44f047f87501cc0c2e554d526d65859b0ff84deb9",
 			"license": "MIT",
 			"urls": [
@@ -866,15 +866,15 @@
 				"dweb:/ipfs/QmTWDhUmnmQrUD2QZ4jG8KcxsFBX7yV19XhHFrtEwbTzmX"
 			]
 		},
-		"Market.sol": {
-			"keccak256": "0xd45ac0a94f204383dc3bccc23ba4b18b7b924275a5c09d023c3c804599db406c",
+		"contracts/Market.sol": {
+			"keccak256": "0x2eeb4e258730dc734a6c6c5b88af8e6c907cd92fb35c04a1bf45a94a0324ced0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ac8ae21fe822eea9024972066456c376614ad4208458f3b268f9ce080a58bace",
-				"dweb:/ipfs/QmWJWjXu2mL3AKhGgqZ3v4bdVUtSH6YHaU3ySrSbAg2wke"
+				"bzz-raw://681e26c005c6264f2c460992e9db90117b42c0719b2280f95a25207d5f6026f3",
+				"dweb:/ipfs/QmeuRZF4qKBQmEt1vyCdkjDKFEVdzZRNUksZqxTAHcLP2g"
 			]
 		},
-		"Storage_Information.sol": {
+		"contracts/Storage_Information.sol": {
 			"keccak256": "0x8494cbf3478f1300340875397bb2c5053057c4e6e29b2b07cdc4c7874f61affe",
 			"license": "MIT",
 			"urls": [

@@ -16,6 +16,11 @@
 						"internalType": "address",
 						"name": "_admin",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_market",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -48,50 +53,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "DinosaurEggList",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "EggId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurFather",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurMother",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "ChildHash",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "EggPhotoURI",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isHatched",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "admin",
 				"outputs": [
@@ -99,74 +60,6 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "dinosaurEgg_indexToTokenId",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "eggAmountOfUser",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "EggId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurFather",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DinosaurMother",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "ChildHash",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "EggPhotoURI",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isHatched",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -231,17 +124,105 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getEggListOfUser",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "EggId",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "DinosaurFather",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "DinosaurMother",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "ChildHash",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "EggPhotoURI",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "isHatched",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DinosaurEggData[]",
 						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
 						"type": "uint256"
 					}
 				],
-				"name": "idToIndexOfEgg",
+				"name": "getUserEggFromTokenId",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"components": [
+							{
+								"internalType": "string",
+								"name": "EggId",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "DinosaurFather",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "DinosaurMother",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "ChildHash",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "EggPhotoURI",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "isHatched",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DinosaurEggData",
 						"name": "",
-						"type": "uint256"
+						"type": "tuple"
 					}
 				],
 				"stateMutability": "view",
@@ -297,68 +278,19 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "sellerOfEgg",
-				"outputs": [
-					{
 						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
+						"name": "user",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "tokenId",
 						"type": "uint256"
 					}
 				],
-				"name": "userOfDinosaurEggIndexToTokenId",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "userOfDinosaurEggTokenIdToIndex",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
+				"name": "setEggIsHatched",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -644,27 +576,27 @@
 			]
 		},
 		"contracts/DinosaurEggMarket.sol": {
-			"keccak256": "0x205d57ac876a98cabf3968f32a0f5704056fda71084b1207ed427ad3edbaebbc",
+			"keccak256": "0x5dabb6469a14dd03cef437f1ab347eae61f87f5195ed16364434d9307b01016a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b7b5627b1d1445c597ca95c57a100d6c9c7031a4c7eb0ca2dfd3a672e8a4b3bd",
-				"dweb:/ipfs/QmbdRyk6oqcRPud28uP6su3igBhi6ZT5PhxsJg345rux3J"
+				"bzz-raw://f30941a66c8e19b2d246564baea8f23d5baa9308f85c70d81832d74f274d8704",
+				"dweb:/ipfs/QmVn4LbYpfsPs3EowLhQKvyhMvPSKtKKVRu4zizHtoBeks"
 			]
 		},
 		"contracts/DinosaurMarket.sol": {
-			"keccak256": "0x8bff00158bc6b6b14116fd625c08354a8db7f86249abb51b15e469f495da692c",
+			"keccak256": "0xcdf17b0103cb373faf36af95b9f9deb2cad71e77194eef78e479a14a6cbaf98f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9345f08492aa74960d157f5d151ef85d480aa9b2e4703b945c8fe16952877717",
-				"dweb:/ipfs/QmdSDv19YsEq4nDV2r9UA7JnZT3kHHceYqGNVJZ6W7c3FZ"
+				"bzz-raw://b48e38f87fdeb72e80a9faef4b326ee06a9fba35c62f714aeccf3a4dbaaf7f2b",
+				"dweb:/ipfs/QmUhzUfEFQtbW6aRH1Yx29FFgvtT6GZAa9n4AVu8ZT5Pch"
 			]
 		},
 		"contracts/Market.sol": {
-			"keccak256": "0x93dc0f0ac6f6e6702682c82dc54a7bc4c4ddf83ebae1ca6f4aaf355a836ccfe3",
+			"keccak256": "0x09bb557e7f0da1f355dc60b08a93ad9d9c3ffcec06ede35055a415f16faa1442",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7c63ef528d83b5e4ac93a943f0af40d6ceb7741e98178f543e84dd9f055d081b",
-				"dweb:/ipfs/QmfEGqpAhkwocD3TpDoKBfGixqmVa2FBgAYznfieZFHULk"
+				"bzz-raw://e5a885403d04b4a828987383e833724115781e9c640d54b24f4261fb237cd9bf",
+				"dweb:/ipfs/QmcLTuVssD6iCregN1s4wPiqyKojGZ4uV9pTmc5AjVkAqd"
 			]
 		},
 		"contracts/Storage_Information.sol": {

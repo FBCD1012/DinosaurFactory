@@ -31,8 +31,20 @@ contract Market is IERC721Receiver {
         owner = msg.sender;
         DFC = DFCoin(_DFC);
         admin = _admin;
-        DEM = new DinosaurEggMarket(_DFC, _admin);
     }
+    
+    modifier onlyOwner() {
+        require(msg.sender == owner || msg.sender == admin, "You are not owner");
+        _;
+    }
+
+    function init(address _DM, address _DEM) external onlyOwner {
+        DM = DinosaurMarket(_DM);
+        DT = DM.DT();
+        DEM = DinosaurEggMarket(_DEM);
+        DE = DEM.DE();
+    }
+
 
     /*
         交配函数

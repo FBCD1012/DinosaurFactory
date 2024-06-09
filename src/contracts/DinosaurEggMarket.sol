@@ -31,8 +31,8 @@ contract DinosaurEggMarket is IERC721Receiver {
     mapping(address user => mapping(uint256 tokenId => DinosaurEggData)) public userTokenToEgg;
 
 
-    constructor(address _DFC, address _admin) {
-        owner = msg.sender; // 所有权为market
+    constructor(address _DFC, address _admin, address _market) {
+        owner = _market; // 所有权为market
         admin = _admin;
         DFC = DFCoin(_DFC);
         DE = new DinosaurEgg(address(this));
