@@ -539,7 +539,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/DFCoin.sol": "DFCoin"
+			"DFCoin.sol": "DFCoin"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -601,7 +601,7 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
-		"contracts/DFCoin.sol": {
+		"DFCoin.sol": {
 			"keccak256": "0xfeb0157ab620aab4ff04a92439eb5ad232554c80e524f29de7ae8e7565b041af",
 			"license": "MIT",
 			"urls": [

@@ -17,6 +17,8 @@ import java.util.List;
 public class PersonContentImpl implements PersonContent {
     @Resource
     RandomDinosaurEgg randomDinosaurEgg;
+    @Resource
+    Hatched hatched;
 
     @Override
     public String addTheDinosaurEgg(Person person) {
@@ -32,7 +34,6 @@ public class PersonContentImpl implements PersonContent {
 
     @Override
     public Dinosaur toHatchTheDinosaurEgg(Person person, Integer eggIndex) {
-        Hatched hatched=new HatchedImpl();
         System.out.println("You have successfully hatched a dinosaur");
         Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(eggIndex)
                 ,new DinosaurRandomUtils());

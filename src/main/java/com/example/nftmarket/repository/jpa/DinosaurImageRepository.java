@@ -1,9 +1,10 @@
 package com.example.nftmarket.repository.jpa;
 
-import com.example.nftmarket.entity.DinosaurEggImage;
+import com.example.nftmarket.entity.DinosaurImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface ImageRepository extends JpaRepository<DinosaurEggImage,Integer> {
+public interface DinosaurImageRepository extends JpaRepository<DinosaurImage,Integer> {
 }

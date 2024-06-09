@@ -17,8 +17,10 @@ public class RandomDinosaurEgg {
     private static final String factorySource="0x00000000000000000000000000000000000000000000000000000000000000000";
     public DinosaurEgg randomEgg(DinosaurEgg dinosaurEg){
         Random random=new Random();
-        System.out.println(imageRepository.count());
         int num=random.nextInt((int) imageRepository.count());
+        if (num==0){
+            num++;
+        }
         dinosaurEg.setEggId(Hash.sha3String(String.valueOf(System.identityHashCode(dinosaurEg))));
         dinosaurEg.setDinosaurFather(factorySource);
         dinosaurEg.setDinosaurMother(factorySource);

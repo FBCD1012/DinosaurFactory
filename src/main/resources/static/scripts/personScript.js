@@ -7,17 +7,5 @@ function getTheResult(){
     return document.cookie.match(/0x[a-fA-F0-9]+/g)
 }
 function postTheInfo(){
-        axios.get("/getDinosaurInfo",{
-            userAdd: result
-        },{
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(({data})=>{
-            if (data.success) {
-                alert("获取龙蛋成功 :)")
-            }else {
-                alert("获取龙蛋失败")
-            }
-        })
+    window.location.href='/getDinosaurInfo'
 }

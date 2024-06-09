@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.20+commit.a1b79de6"
+		"version": "0.8.26+commit.8a97fa7a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -23,6 +23,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "DE",
+				"outputs": [
+					{
+						"internalType": "contract DinosaurEgg",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "DEM",
 				"outputs": [
 					{
@@ -40,6 +53,19 @@
 				"outputs": [
 					{
 						"internalType": "contract DFCoin",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "DM",
+				"outputs": [
+					{
+						"internalType": "contract DinosaurMarket",
 						"name": "",
 						"type": "address"
 					}
@@ -77,13 +103,125 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "tokenIdA",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurSex",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurType",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isBreeding",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurColor",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurRarity",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurPhotoUri",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "DinosaurPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "SourceHash",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isSale",
+						"type": "bool"
+					}
+				],
+				"name": "hatch",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "hatchTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "startTime",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "dinosaurA",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "tokenIdB",
+						"name": "dinosaurB",
 						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "EggId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurFather",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DinosaurMother",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ChildHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "EggPhotoURI",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isHatched",
+						"type": "bool"
 					}
 				],
 				"name": "mate",
@@ -150,19 +288,15 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"constructor": {
-					"notice": "============= mapping ============"
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Market.sol": "Market"
+			"Market.sol": "Market"
 		},
-		"evmVersion": "shanghai",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -350,7 +484,7 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/DFCoin.sol": {
+		"DFCoin.sol": {
 			"keccak256": "0xfeb0157ab620aab4ff04a92439eb5ad232554c80e524f29de7ae8e7565b041af",
 			"license": "MIT",
 			"urls": [
@@ -358,7 +492,7 @@
 				"dweb:/ipfs/QmPHknTQJwZ9ksNUiLTkEbATfWdeYQL6PgqSB1yQTwJVNG"
 			]
 		},
-		"contracts/Dinosaur.sol": {
+		"Dinosaur.sol": {
 			"keccak256": "0x4b0de7b96cc55b6ed224df37321349f2f719ec2b5d1c870d58982f03e95ad4d7",
 			"license": "MIT",
 			"urls": [
@@ -366,7 +500,7 @@
 				"dweb:/ipfs/Qmer8oVVy45hYehEgy9V771ALJ8WftyrG7agUgz4e5Ag58"
 			]
 		},
-		"contracts/DinosaurEgg.sol": {
+		"DinosaurEgg.sol": {
 			"keccak256": "0x4791bcb812ec8e6fdb8ccdd6f118733647c7b882777c6d05aa4e3deba483237a",
 			"license": "MIT",
 			"urls": [
@@ -374,31 +508,31 @@
 				"dweb:/ipfs/Qmef7PDsAPaTEwBX2V2tiKh9rUJ6MSr6AAbjpyFbZejbM3"
 			]
 		},
-		"contracts/DinosaurEggMarket.sol": {
-			"keccak256": "0x7fd383ab62f3d009ea68f6645a6a23f8497ffe126bd0917ccd88f8427e9652eb",
+		"DinosaurEggMarket.sol": {
+			"keccak256": "0x7e8ac1576d53f7d91c479e85894947e6547f6200a63210946e9e123c2e2fe7d7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5c9220a6576b48570e6dcc24b0dd31f9445f1c25b041d61f9f7243d75b3ee9c3",
-				"dweb:/ipfs/QmRuZcWPm5m6i4jzUbctdL3bq4aZsCDP2hcxhw7tixz4Km"
+				"bzz-raw://55bede9da52a219242f3abe2828b1c03939b8a04ae05ccd6728c0e843b0affff",
+				"dweb:/ipfs/Qmdd3Re147vt9CsczXc94dZhtLr13Xt7uaajVndYFZBXwA"
 			]
 		},
-		"contracts/DinosaurMarket.sol": {
-			"keccak256": "0x09366fab83c8f3cebd2fd4e47328f0bb6e716346b552a356169fc96670ce183f",
+		"DinosaurMarket.sol": {
+			"keccak256": "0x11e778df65415e63a6ebe9c44f047f87501cc0c2e554d526d65859b0ff84deb9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e1ed572d19564b2f9685db60419264e90ebd48b7379a57937f9e822ab544fd9c",
-				"dweb:/ipfs/QmWZtdza78CQdHATngxMLgxxkfCucMTmsHHL3SDD3F2QDX"
+				"bzz-raw://a65c6332d9a7f2c9bcd57545f2dc8a0c81b91a74ed692d227ad613608706b4c7",
+				"dweb:/ipfs/QmTWDhUmnmQrUD2QZ4jG8KcxsFBX7yV19XhHFrtEwbTzmX"
 			]
 		},
-		"contracts/Market.sol": {
-			"keccak256": "0x93dc0f0ac6f6e6702682c82dc54a7bc4c4ddf83ebae1ca6f4aaf355a836ccfe3",
+		"Market.sol": {
+			"keccak256": "0xd45ac0a94f204383dc3bccc23ba4b18b7b924275a5c09d023c3c804599db406c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7c63ef528d83b5e4ac93a943f0af40d6ceb7741e98178f543e84dd9f055d081b",
-				"dweb:/ipfs/QmfEGqpAhkwocD3TpDoKBfGixqmVa2FBgAYznfieZFHULk"
+				"bzz-raw://ac8ae21fe822eea9024972066456c376614ad4208458f3b268f9ce080a58bace",
+				"dweb:/ipfs/QmWJWjXu2mL3AKhGgqZ3v4bdVUtSH6YHaU3ySrSbAg2wke"
 			]
 		},
-		"contracts/Storage_Information.sol": {
+		"Storage_Information.sol": {
 			"keccak256": "0x8494cbf3478f1300340875397bb2c5053057c4e6e29b2b07cdc4c7874f61affe",
 			"license": "MIT",
 			"urls": [
