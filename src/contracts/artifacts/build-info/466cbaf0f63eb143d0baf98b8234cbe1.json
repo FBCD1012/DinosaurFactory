@@ -1,0 +1,532 @@
+{
+	"id": "466cbaf0f63eb143d0baf98b8234cbe1",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.20",
+	"solcLongVersion": "0.8.20+commit.a1b79de6",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/Storage_Information.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\n\r\n// 恐龙结构体\r\nstruct DinosaurData {\r\n\r\n    // 哈希值\r\n    string DinosaurId;\r\n    string DinosaurSex;\r\n    string DinosaurType;\r\n    bool isBreeding;\r\n\r\n    // details\r\n    string DinosaurColor;\r\n    string DinosaurRarity;\r\n    string DinosaurPhotoUri;\r\n    uint256 DinosaurPrice;\r\n\r\n    // 恐龙卵生哈希\r\n    string SourceHash;\r\n\r\n    // 售卖状态\r\n    bool isSale;\r\n}\r\n\r\n\r\n// 恐龙蛋\r\nstruct DinosaurEggData {\r\n    string EggId;\r\n    string DinosaurFather;\r\n    string DinosaurMother;\r\n    string ChildHash;\r\n    string EggPhotoURI;\r\n    bool isHatched;\r\n}\r\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"sources": {
+			"contracts/Storage_Information.sol": {
+				"ast": {
+					"absolutePath": "contracts/Storage_Information.sol",
+					"exportedSymbols": {
+						"DinosaurData": [
+							22
+						],
+						"DinosaurEggData": [
+							35
+						]
+					},
+					"id": 36,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".20"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:24:0"
+						},
+						{
+							"canonicalName": "DinosaurData",
+							"id": 22,
+							"members": [
+								{
+									"constant": false,
+									"id": 3,
+									"mutability": "mutable",
+									"name": "DinosaurId",
+									"nameLocation": "137:10:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "130:17:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 2,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "130:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 5,
+									"mutability": "mutable",
+									"name": "DinosaurSex",
+									"nameLocation": "161:11:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "154:18:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 4,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "154:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 7,
+									"mutability": "mutable",
+									"name": "DinosaurType",
+									"nameLocation": "186:12:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "179:19:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 6,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "179:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 9,
+									"mutability": "mutable",
+									"name": "isBreeding",
+									"nameLocation": "210:10:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "205:15:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bool",
+										"typeString": "bool"
+									},
+									"typeName": {
+										"id": 8,
+										"name": "bool",
+										"nodeType": "ElementaryTypeName",
+										"src": "205:4:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bool",
+											"typeString": "bool"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 11,
+									"mutability": "mutable",
+									"name": "DinosaurColor",
+									"nameLocation": "252:13:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "245:20:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 10,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "245:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 13,
+									"mutability": "mutable",
+									"name": "DinosaurRarity",
+									"nameLocation": "279:14:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "272:21:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 12,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "272:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 15,
+									"mutability": "mutable",
+									"name": "DinosaurPhotoUri",
+									"nameLocation": "307:16:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "300:23:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 14,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "300:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 17,
+									"mutability": "mutable",
+									"name": "DinosaurPrice",
+									"nameLocation": "338:13:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "330:21:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 16,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "330:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 19,
+									"mutability": "mutable",
+									"name": "SourceHash",
+									"nameLocation": "394:10:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "387:17:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 18,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "387:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 21,
+									"mutability": "mutable",
+									"name": "isSale",
+									"nameLocation": "439:6:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "434:11:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bool",
+										"typeString": "bool"
+									},
+									"typeName": {
+										"id": 20,
+										"name": "bool",
+										"nodeType": "ElementaryTypeName",
+										"src": "434:4:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bool",
+											"typeString": "bool"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "DinosaurData",
+							"nameLocation": "90:12:0",
+							"nodeType": "StructDefinition",
+							"scope": 36,
+							"src": "83:366:0",
+							"visibility": "public"
+						},
+						{
+							"canonicalName": "DinosaurEggData",
+							"id": 35,
+							"members": [
+								{
+									"constant": false,
+									"id": 24,
+									"mutability": "mutable",
+									"name": "EggId",
+									"nameLocation": "506:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "499:12:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 23,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "499:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 26,
+									"mutability": "mutable",
+									"name": "DinosaurFather",
+									"nameLocation": "525:14:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "518:21:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 25,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "518:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 28,
+									"mutability": "mutable",
+									"name": "DinosaurMother",
+									"nameLocation": "553:14:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "546:21:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 27,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "546:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 30,
+									"mutability": "mutable",
+									"name": "ChildHash",
+									"nameLocation": "581:9:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "574:16:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 29,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "574:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 32,
+									"mutability": "mutable",
+									"name": "EggPhotoURI",
+									"nameLocation": "604:11:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "597:18:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 31,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "597:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 34,
+									"mutability": "mutable",
+									"name": "isHatched",
+									"nameLocation": "627:9:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 35,
+									"src": "622:14:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bool",
+										"typeString": "bool"
+									},
+									"typeName": {
+										"id": 33,
+										"name": "bool",
+										"nodeType": "ElementaryTypeName",
+										"src": "622:4:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bool",
+											"typeString": "bool"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "DinosaurEggData",
+							"nameLocation": "476:15:0",
+							"nodeType": "StructDefinition",
+							"scope": 36,
+							"src": "469:171:0",
+							"visibility": "public"
+						}
+					],
+					"src": "33:609:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

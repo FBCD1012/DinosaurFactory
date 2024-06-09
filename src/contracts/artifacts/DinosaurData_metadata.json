@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.20+commit.a1b79de6"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Storage_Infomation.sol": "DinosaurData"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Storage_Infomation.sol": {
+			"keccak256": "0x99c35422295cbe370ff0e44a338d6b86c8f70fbd9b9704e1bb03bb008769c918",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://262d9abf9fe1ee9d44039402006019d23c8551f1abedfc8fb5ebcdeb16b27e4a",
+				"dweb:/ipfs/QmaMrnEKm1ksdMsqfxtNH8M4x3waWgcfhT86WM79UYcBCg"
+			]
+		}
+	},
+	"version": 1
+}
