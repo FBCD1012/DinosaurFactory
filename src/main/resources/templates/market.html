@@ -13,15 +13,19 @@
 <header class="header">
   <a href="/" class="header__logo"></a>
   <div class="form">
-    <button class="form__button"></button>
-    <input
-            class="form__input"
-            type="search"
-            placeholder="Search items and collections"
-    />
+    <label>
+      <input
+              class="form__input"
+              type="search"
+              placeholder="Search items and collections"
+              id="info"
+      />
+    </label>
     <input
             class="submit__link submit__back"
+            style="border: none;cursor:pointer; "
             type="submit"
+            onclick="getTheDinosaurList()"
             value="确认"
     />
   </div>
@@ -220,6 +224,8 @@
   <h3 class="banner__title">Back to my world.</h3>
   <a href="/person" class="banner__link">Go</a>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static/scripts/MarketScript.js"></script>
 <script src="/static/scripts/script.js"></script>
 </body>
 </html>

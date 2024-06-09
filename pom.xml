@@ -66,6 +66,11 @@
             <artifactId>crypto</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>codegen</artifactId>
+            <version>5.0.0</version>
+        </dependency>
         <!--构建柱状图依赖-->
         <!-- https://mvnrepository.com/artifact/jfree/jcommon -->
         <dependency>

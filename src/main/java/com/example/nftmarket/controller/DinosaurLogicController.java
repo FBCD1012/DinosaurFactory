@@ -1,4 +1,5 @@
 package com.example.nftmarket.controller;
+
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
@@ -10,21 +11,9 @@ import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
 import jakarta.annotation.Resource;
-import jakarta.json.Json;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServlet;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 //做相关的恐龙逻辑操作（孵化动作以及恐龙相关的交配操作）
 @Controller
@@ -57,11 +46,12 @@ public class DinosaurLogicController {
     //用户进行相关的蛋信息操作，也就是初始系统传递给用户的两个蛋
     @RequestMapping(value = "/getDinosaurInfo",method = RequestMethod.GET)
     public String setTheEggInfo(Model model,
-                                @RequestParam(value = "userAdd",required = false)String userAddress){
+                                @RequestParam(value = "userAdd",required = false)String userAddress,
+                                @CookieValue(name = "userAddress",required = false)String userAddressCookie){
         // TODO 根据用户地址然后查询用户是否含有恐龙蛋,如果有的话那么直接返回具有的恐龙蛋信息，如果没有系统则进行操作一下
         Person person=new Person();
-        System.out.println("传递过来的地址信息"+userAddress);
-        person.setPersonHash(userAddress);
+        System.out.println("传递过来的地址信息"+userAddressCookie);
+        person.setPersonHash(userAddressCookie);
         personContent.addTheDinosaurEgg(person);
         Dinosaur dinosaur = personContent.toHatchTheDinosaurEgg(person, 0);
         System.out.println(dinosaur);
