@@ -43,6 +43,13 @@ public class TheTestController {
         //此处进行相关的Attribute逻辑判定操作
         return "person";
     }
+    //市场页面
+    @RequestMapping(value = "/button")
+    public String getTheButtonIndex(){
+        JfreeUtils.testPie();
+        JfreeUtils.testLine();
+        return "button";
+    }
 
     //获取前端传递的地址参数信息
     //传递参数之后调用相关合约的参数进行实现
