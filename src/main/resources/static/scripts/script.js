@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = 'none';
     });
 
+
     // 点击确定修改按钮时的逻辑
     modifyPriceBtn.addEventListener('click', function () {
         const newPrice = parseFloat(priceInput.value);
