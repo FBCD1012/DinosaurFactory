@@ -9,3 +9,9 @@ function getTheResult(){
 function postTheInfo(){
     window.location.href='/getDinosaurInfo'
 }
+var  dinosaurId=document.getElementById('dinosaurInfo').value
+//异步传递相关参数到网站中进行操作理解
+function upLoadTheMarket(){
+    document.cookie = `dinosaurId=${dinosaurId}`
+    window.location.href='/insertTheDinosaur'
+}

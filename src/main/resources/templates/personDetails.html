@@ -44,11 +44,11 @@
             </div>
             <div class="card__info">
                 <div>
-                    <p class="card__nick" th:text="${'EggId:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
+                    <p class="card__nick" id="dinosaurInfo"  th:text="${'EggId:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
-            <a class="card__link" href="#">Place A Bid</a>
+            <button class="card__link" onclick="upLoadTheMarket()">Place A Bid</button>
         </div>
     </div>
 </section>
@@ -63,13 +63,13 @@
             </div>
             <div class="card__info">
                 <div>
-                    <p class="card__nick" th:text="${'DinosaurId:'+dinosaurInfo.getDinosaurId().substring(0,16)}"></p>
+                    <p class="card__nick" id="DinosaurId" th:text="${'DinosaurId:'+dinosaurInfo.getDinosaurId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'DinosaurSex:'+dinosaurInfo.getDinosaurSex()}"></p>
                     <p class="card__author" th:text="${'DinosaurRarity:'+dinosaurInfo.getDinosaurRarity()}"> </p>
 
                 </div>
             </div>
-            <a class="card__link" href="/getDinosaurInfo" >Place A Bid</a>
+            <button class="card__link" onclick="upLoadTheMarket()" >Place A Bid</button>
         </div>
     </div>
 </section>
