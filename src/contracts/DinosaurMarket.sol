@@ -6,9 +6,7 @@ import "@openzeppelin/contracts/interfaces/IERC721Receiver.sol";
 import { DFCoin } from "./DFCoin.sol";
 import { DinosaurToken } from "./Dinosaur.sol";
 import "./Storage_Information.sol";
-import "./Market.sol";
 
-import "hardhat/console.sol";
 
 /// 恐龙交易市场
 contract DinosaurMarket is IERC721Receiver {
@@ -294,24 +292,27 @@ contract DinosaurMarket is IERC721Receiver {
     }
 
     // 返回市场上所有上架的 DinosaurNFT
-    function getAllDinosaurs() external view returns(DinosaurData[] memory) {
-        return DinosaurList;
+    function getAllDinosaurs() external  returns(string[] memory) {
+        string[] memory dinosaurIds = new string[](DinosaurList.length);
+        for (uint256 i; i < DinosaurList.length; i++) {
+            dinosaurIds[i] = DinosaurList[i].DinosaurId;
+        }
+        return dinosaurIds;
     }
 
     /// ------------ 个人信息数据 ---------------
 
-    // 查询用户代币数量
-    function getUserTokenAmount(address user) external view returns (uint256 amount) {
-        amount = DFC.balanceOf(user);
-    }
-
     // 获取用户所有的恐龙
-    function getUserDinosaurs(address user) public view returns(DinosaurData[] memory) {
-        return dinosaurAmountOfUser[user];
+    function getUserDinosaurs(address user) public view returns(string[] memory) {
+        string[] memory dinosaurIds = new string[](dinosaurAmountOfUser[user].length);
+        for (uint256 i; i < dinosaurAmountOfUser[user].length; i++) {
+            dinosaurIds[i] = dinosaurAmountOfUser[user][i].DinosaurId;
+        }
+        return dinosaurIds;
     }
 
     // 根据用户以及其TokenId查询恐龙
-    function getDinosaurFromTokenId(address user, uint256 tokenId) public view returns (DinosaurData memory) {
-        return userTokenToDinosaur[user][tokenId];
+    function getDinosaurFromTokenId(address user, uint256 tokenId) public view returns (string memory) {
+        return userTokenToDinosaur[user][tokenId].DinosaurId;
     }   
 }

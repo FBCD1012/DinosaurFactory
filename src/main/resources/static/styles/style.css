@@ -42,7 +42,7 @@ body {
 }
 
 .form__input {
-  width: 384px;
+  width: 360px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   border: none;
@@ -411,53 +411,53 @@ body {
 }
 .fbcd2{
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 26px;
   flex-basis: 32.5%;
   box-sizing: border-box;
   transition: .3s;
 }
-.fbcd {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  padding-bottom: 60px;
-  padding-top: 20px;
-  padding-left: 20px;
-  box-sizing: border-box;
-  transition: .3s;
-  display: flow;
-}
+/*.fbcd {*/
+/*  background: rgba(255, 255, 255, 0.1);*/
+/*  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);*/
+/*  border-radius: 10px;*/
+/*  padding-bottom: 60px;*/
+/*  padding-top: 20px;*/
+/*  padding-left: 20px;*/
+/*  box-sizing: border-box;*/
+/*  transition: .3s;*/
+/*  display: flow;*/
+/*}*/
 
-.fbcd h1, .fbcd form, .fbcd table, .fbcd td, .fbcd label, .fbcd select, .fbcd input, .fbcd a, .fbcd div {
-  margin-left: 0;
-  text-align: left;
-}
+/*.fbcd h1, .fbcd form, .fbcd table, .fbcd td, .fbcd label, .fbcd select, .fbcd input, .fbcd a, .fbcd div {*/
+/*  margin-left: 0;*/
+/*  text-align: left;*/
+/*}*/
 
-.fbcd input[type="text"] {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+/*.fbcd input[type="text"] {*/
+/*  padding: 8px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 5px;*/
+/*}*/
 
-.fbcd .card__link {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  position: relative;
-  top: -20px;
-  left: 40px; /* 将左移的值改为 40px */
-  margin-right: 80px; /* 添加右移的值为 80px */
-}
-.fbcd select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+/*.fbcd .card__link {*/
+/*  display: inline-block;*/
+/*  padding: 10px 20px;*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  text-decoration: none;*/
+/*  border-radius: 5px;*/
+/*  position: relative;*/
+/*  top: -20px;*/
+/*  left: 40px; !* 将左移的值改为 40px *!*/
+/*  margin-right: 80px; !* 添加右移的值为 80px *!*/
+/*}*/
+/*.fbcd select {*/
+/*  padding: 8px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 5px;*/
+/*}*/
 
 .card__lin {
   display: block;
@@ -933,4 +933,17 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+.input-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+.price-input {
+  width: 200px;
+}
+
+#modifyPriceBtn {
+  margin-left: 10px;
 }

@@ -5,9 +5,9 @@ import "@openzeppelin/contracts/interfaces/IERC721Receiver.sol";
 
 import { DFCoin } from "./DFCoin.sol";
 import { DinosaurEgg } from "./DinosaurEgg.sol";
-import { Market } from "./Market.sol";
 
 import "./Storage_Information.sol";
+
 
 /// 恐龙交易市场
 contract DinosaurEggMarket is IERC721Receiver {
@@ -28,7 +28,7 @@ contract DinosaurEggMarket is IERC721Receiver {
     // 记录用户的所有恐龙蛋的 TokenId
     mapping(address => DinosaurEggData[]) eggAmountOfUser; 
     // 记录用户的某个TokenId对应的恐龙蛋信息
-    mapping(address user => mapping(uint256 tokenId => DinosaurEggData)) public userTokenToEgg;
+    mapping(address user => mapping(uint256 tokenId => DinosaurEggData))  userTokenToEgg;
 
 
     constructor(address _DFC, address _admin, address _market) {
@@ -136,13 +136,17 @@ contract DinosaurEggMarket is IERC721Receiver {
     }
 
     // 返回用户的龙蛋列表
-    function getEggListOfUser(address user) public view returns (DinosaurEggData[] memory) {
-        return eggAmountOfUser[user];
+    function getEggListOfUser(address user) public view returns (string[] memory) {
+        string[] memory eggIds = new string[](eggAmountOfUser[user].length);
+        for (uint i; i < eggAmountOfUser[user].length; i++) {
+            eggIds[i] = eggAmountOfUser[user][i].EggId;
+        }
+        return eggIds;
     }
 
     // 返回用户的龙蛋
-    function getUserEggFromTokenId(address user, uint256 tokenId) public view returns(DinosaurEggData memory) {
-        return userTokenToEgg[user][tokenId];
+    function getUserEggFromTokenId(address user, uint256 tokenId) public view returns(string memory) {
+        return userTokenToEgg[user][tokenId].EggId;
     }
 
     function onERC721Received(
