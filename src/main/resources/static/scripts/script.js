@@ -88,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startCountdown(button, time) {
         const index = parseInt(button.dataset.index);
+        const eggID = document.querySelector(`.card__nick:nth-of-type(${index + 1})`).textContent.split(':')[1];
+        console.log(eggID);
+        document.cookie=`eggID=${eggID}`// 打印eggID到控制台
         let countdownTime = time;
         countdownIntervals[index] = setInterval(function () {
             countdownTime--;
@@ -194,3 +197,17 @@ function sendModifiedPriceToBackend(dinosaurId, newPrice) {
     // 假设发送成功
     alert('修改成功');
 }
+//Mating点击
+document.addEventListener('DOMContentLoaded', function() {
+    event.preventDefault(); // 阻止默认链接行为
+    const matingBtns = document.querySelectorAll('.nft__bid-btn--secondary');
+
+    matingBtns.forEach(function(btn) {
+        event.preventDefault(); // 阻止默认链接行为
+        btn.addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默认链接行为
+            const cardItem = event.target.closest('.card__item');
+            cardItem.classList.toggle('white-background');
+        });
+    });
+});

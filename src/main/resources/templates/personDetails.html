@@ -39,13 +39,13 @@
     <h2 class="title">你的恐龙蛋</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
         <div class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
-            <p th:text="${'EggIndex:'+iterStat.index}"></p>
+            <p  class="card__nick" th:text="${'EggIndex:'+iterStat.index}"></p>
             <div class="card__cover">
                 <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
             </div>
             <div class="card__info">
                 <div>
-                    <p class="card__nick" th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
+                    <p th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
