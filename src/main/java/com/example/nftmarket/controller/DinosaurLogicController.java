@@ -39,7 +39,7 @@ public class DinosaurLogicController {
     }
     //用户进行相关的蛋信息操作，也就是初始系统传递给用户的两个蛋
     @SneakyThrows
-    @RequestMapping(value = "/getDinosaurInfo",method = RequestMethod.GET)
+    @RequestMapping(value = "/getFreeEggs",method = RequestMethod.GET)
     public String setTheEggInfo(Model model,
                                 @CookieValue(name = "userAddress",required = false)String userAddressCookie,
                                 HttpServletResponse httpServletResponse){
@@ -55,9 +55,10 @@ public class DinosaurLogicController {
         return "personDetails";
     }
 
+    //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
     @RequestMapping("/hatch")
-    public String hatchTheDinosaur(Person person, DinosaurEgg dinosaurEgg, DinosaurRandomUtils dinosaurRandomUtils){
-        Dinosaur dinosaur = hatched.toHatch(person, dinosaurEgg, dinosaurRandomUtils);
+    public String hatchTheDinosaur(@RequestParam("eggId")String eggId){
+        //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
         return "null";
     }

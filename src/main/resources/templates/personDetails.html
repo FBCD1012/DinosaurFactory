@@ -39,6 +39,7 @@
     <h2 class="title">Your Dinosaur   Eggs</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
         <div class="card__item" th:each="dinosaurEgg:${eggInfo}">
+            <p th:text="${'EggIndex:'+dinosaurEggStat.index}"></p>
             <div class="card__cover">
                 <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
             </div>
