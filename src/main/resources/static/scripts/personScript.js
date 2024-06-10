@@ -15,3 +15,7 @@ function upLoadTheMarket(){
     document.cookie = `dinosaurId=${dinosaurId}`
     window.location.href='/insertTheDinosaur'
 }
+//孵化恐龙ajax请求
+function HatchTheDinosaur(){
+    axios.get('/hatch')
+}

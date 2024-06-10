@@ -14,6 +14,7 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 //做相关的恐龙逻辑操作（孵化动作以及恐龙相关的交配操作）
 @Controller
@@ -55,15 +56,18 @@ public class DinosaurLogicController {
         return "personDetails";
     }
 
+    
     //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
     @RequestMapping(value = "/hatch",method = RequestMethod.GET)
-    public String hatchTheDinosaur(@RequestParam("eggId")Integer eggId,Model model){
+    public ModelAndView hatchTheDinosaur(@CookieValue("eggId")String eggId){
+        System.out.println(eggId);
+        ModelAndView modelAndView=new ModelAndView();
         //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
-        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(eggId), new DinosaurRandomUtils());
-        model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
-        model.addAttribute("dinosaurInfo", dinosaur);
-        return "personDetails";
+        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(Integer.parseInt(eggId)), new DinosaurRandomUtils());
+        modelAndView.getModel().put("eggInfo", person.getDinosaurEggsRepository());
+        modelAndView.getModel().put("dinosaurInfo", dinosaur);
+        return modelAndView;
     }
 
 
