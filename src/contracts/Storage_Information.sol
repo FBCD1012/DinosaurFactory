@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-
 // 恐龙结构体
 struct DinosaurData {
 
@@ -24,7 +23,6 @@ struct DinosaurData {
     bool isSale;
 }
 
-
 // 恐龙蛋
 struct DinosaurEggData {
     string EggId;
@@ -34,3 +32,7 @@ struct DinosaurEggData {
     string EggPhotoURI;
     bool isHatched;
 }
+
+
+
+

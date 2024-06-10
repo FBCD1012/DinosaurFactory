@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.26+commit.8a97fa7a"
+		"version": "0.8.22+commit.4fc1097e"
 	},
 	"language": "Solidity",
 	"output": {
@@ -312,9 +312,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Market.sol": "Market"
+			"contracts/Market.sol": "Market"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "shanghai",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -502,7 +502,7 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"DFCoin.sol": {
+		"contracts/DFCoin.sol": {
 			"keccak256": "0xfeb0157ab620aab4ff04a92439eb5ad232554c80e524f29de7ae8e7565b041af",
 			"license": "MIT",
 			"urls": [
@@ -510,7 +510,7 @@
 				"dweb:/ipfs/QmPHknTQJwZ9ksNUiLTkEbATfWdeYQL6PgqSB1yQTwJVNG"
 			]
 		},
-		"Dinosaur.sol": {
+		"contracts/Dinosaur.sol": {
 			"keccak256": "0x4b0de7b96cc55b6ed224df37321349f2f719ec2b5d1c870d58982f03e95ad4d7",
 			"license": "MIT",
 			"urls": [
@@ -518,7 +518,7 @@
 				"dweb:/ipfs/Qmer8oVVy45hYehEgy9V771ALJ8WftyrG7agUgz4e5Ag58"
 			]
 		},
-		"DinosaurEgg.sol": {
+		"contracts/DinosaurEgg.sol": {
 			"keccak256": "0x4791bcb812ec8e6fdb8ccdd6f118733647c7b882777c6d05aa4e3deba483237a",
 			"license": "MIT",
 			"urls": [
@@ -526,36 +526,36 @@
 				"dweb:/ipfs/Qmef7PDsAPaTEwBX2V2tiKh9rUJ6MSr6AAbjpyFbZejbM3"
 			]
 		},
-		"DinosaurEggMarket.sol": {
-			"keccak256": "0x5dabb6469a14dd03cef437f1ab347eae61f87f5195ed16364434d9307b01016a",
+		"contracts/DinosaurEggMarket.sol": {
+			"keccak256": "0x6b65940edfc82b979445d02f77f6ab12e8c4aab796c8b4e3fadde9aae4c5a8aa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f30941a66c8e19b2d246564baea8f23d5baa9308f85c70d81832d74f274d8704",
-				"dweb:/ipfs/QmVn4LbYpfsPs3EowLhQKvyhMvPSKtKKVRu4zizHtoBeks"
+				"bzz-raw://703cef030cfc701d2dd6f1162b66e473c333484b46aa541fd8c705330526c068",
+				"dweb:/ipfs/QmU4n6rYtLtxYaPzn142z4nFaFQGGD7QWi9Xd1n31MgjZ4"
 			]
 		},
-		"DinosaurMarket.sol": {
-			"keccak256": "0xcdf17b0103cb373faf36af95b9f9deb2cad71e77194eef78e479a14a6cbaf98f",
+		"contracts/DinosaurMarket.sol": {
+			"keccak256": "0x31e94163352ea585070db4c00f31c50c420d7837b31b5e2b19b46ce1ef0e7e95",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b48e38f87fdeb72e80a9faef4b326ee06a9fba35c62f714aeccf3a4dbaaf7f2b",
-				"dweb:/ipfs/QmUhzUfEFQtbW6aRH1Yx29FFgvtT6GZAa9n4AVu8ZT5Pch"
+				"bzz-raw://cb3fec2da79daf80f873d3b673fd51ef01d30406f45897c375023e9a94cb13e3",
+				"dweb:/ipfs/QmRvaKdrMYdGUWYr9uygh4DBoKqfFgdNTSpFCQWCuA768J"
 			]
 		},
-		"Market.sol": {
-			"keccak256": "0x09bb557e7f0da1f355dc60b08a93ad9d9c3ffcec06ede35055a415f16faa1442",
+		"contracts/Market.sol": {
+			"keccak256": "0xa13dd9b8ff092ea3c0de4ce9ebacfd40c4d9fd435a8dcd36c01b56c750a46da6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e5a885403d04b4a828987383e833724115781e9c640d54b24f4261fb237cd9bf",
-				"dweb:/ipfs/QmcLTuVssD6iCregN1s4wPiqyKojGZ4uV9pTmc5AjVkAqd"
+				"bzz-raw://f850c769468a97b3a675b7d7b866c58e7f4a53c22363c6731eb65478715b2961",
+				"dweb:/ipfs/Qmdufw47mynjU6ee9yC6ZPYbTUFG4UfGJRrqoque6oqth9"
 			]
 		},
-		"Storage_Information.sol": {
-			"keccak256": "0x8494cbf3478f1300340875397bb2c5053057c4e6e29b2b07cdc4c7874f61affe",
+		"contracts/Storage_Information.sol": {
+			"keccak256": "0xef984d8686caf1374a744c2e7afc2af0e7ad96fe54e7f9a22ed311462fe40f66",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5a23950870513fd1b6f480e7dbc45d564327fb121165f7357263e0f6bc951f6c",
-				"dweb:/ipfs/QmaVnnne1zVpBkb8tKnRvBBzCo5uRmynjBiQBGe9ZSyZpy"
+				"bzz-raw://55a45a6640b52d9bd42645270f21408b43b2f98f77bf489439cb2dc4415f659f",
+				"dweb:/ipfs/Qmf3oWyEJPzz6Ed1dwfdNrJWknZ2FhUR3ERnThbLzwbtS2"
 			]
 		},
 		"hardhat/console.sol": {
