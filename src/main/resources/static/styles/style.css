@@ -934,3 +934,16 @@ button {
 button:hover {
   background-color: #45a049;
 }
+.input-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+.price-input {
+  width: 200px;
+}
+
+#modifyPriceBtn {
+  margin-left: 10px;
+}

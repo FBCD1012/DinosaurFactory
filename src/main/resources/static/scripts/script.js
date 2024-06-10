@@ -151,6 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const cancelBtn = document.getElementById('cancelBtn');
     const modal = document.getElementById('modal');
     const closeBtn = document.getElementById('close');
+    const priceInput = document.querySelector('.price-input');
+    const modifyPriceBtn = document.getElementById('modifyPriceBtn');
 
     // 模拟 DinosaurId
     let dinosaurId = 123;
@@ -163,8 +165,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // 根据按钮状态设置确认文本
         if (bidBtn.textContent === 'Upload') {
             document.getElementById('confirmText').textContent = '你确定要上架该恐龙吗？';
+            confirmBtn.textContent = 'Upload now'; // 添加这行代码
+            modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
         } else {
             document.getElementById('confirmText').textContent = '你确定要下架该恐龙吗？';
+            confirmBtn.textContent = 'Remove from market'; // 添加这行代码
+            modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
         }
     });
 
@@ -177,19 +183,41 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = 'none';
     });
 
-    // 当点击确认按钮时修改按钮状态，并发送相关信息给后端
     confirmBtn.addEventListener('click', function () {
         // 这里写发送信息给后端的逻辑
         if (bidBtn.textContent === 'Upload') {
             bidBtn.textContent = 'On sale';
             bidBtn.classList.remove('nft__bid-btn--primary');
             bidBtn.classList.add('nft__bid-btn--sold');
+            document.getElementById('confirmText').textContent = '你确定要上架该恐龙吗？';
         } else {
             bidBtn.textContent = 'Upload';
             bidBtn.classList.remove('nft__bid-btn--sold');
             bidBtn.classList.add('nft__bid-btn--primary');
+            document.getElementById('confirmText').textContent = '你确定要下架该恐龙吗？';
         }
         sendDinosaurIdToBackend(dinosaurId);
         modal.style.display = 'none';
     });
+
+    // 点击确定修改按钮时的逻辑
+    modifyPriceBtn.addEventListener('click', function () {
+        const newPrice = parseFloat(priceInput.value);
+
+        // 验证价格是否合理
+        if (isNaN(newPrice) || newPrice <= 0) {
+            alert('该价格不合理。');
+        } else {
+            // 向后端发送数据
+            sendModifiedPriceToBackend(dinosaurId, newPrice);
+        }
+    });
+
 });
+
+// 模拟向后端发送 DinosaurId 和修改后的价格的函数
+function sendModifiedPriceToBackend(dinosaurId, newPrice) {
+    // 这里模拟向后端发送数据的操作
+    // 假设发送成功
+    alert('修改成功');
+}
