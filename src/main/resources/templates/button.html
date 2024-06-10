@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="/static/images/恐龙.ico">
     <title>DinosaurHomePage</title>
-    <link rel="stylesheet" href="/static/styles/normalize.min.css" />
-    <link rel="stylesheet" href="/static/styles/style.css" />
+    <link rel="stylesheet" href="/static/styles/normalize.min.css"/>
+    <link rel="stylesheet" href="/static/styles/style.css"/>
 
 </head>
 <body>
@@ -35,11 +35,11 @@
     <h1>Your personal Info</h1>
 </section>
 <section>
-    <h2 class="title">Your Dinosaur   Eggs</h2>
+    <h2 class="title">Your Dinosaur Eggs</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image01.png" alt="" />
+                <img class="card__img" src="/static/images/image01.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -51,7 +51,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image02.png" alt="" />
+                <img class="card__img" src="/static/images/image02.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -63,7 +63,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image03.png" alt="" />
+                <img class="card__img" src="/static/images/image03.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -85,7 +85,7 @@
     <div class="card" style="display: flex;flex-wrap: wrap">
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image01.png" alt="" />
+                <img class="card__img" src="/static/images/image01.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -97,7 +97,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image02.png" alt="" />
+                <img class="card__img" src="/static/images/image02.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -109,7 +109,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image03.png" alt="" />
+                <img class="card__img" src="/static/images/image03.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -121,10 +121,9 @@
                 </p>
             </div>
             <div class="nft__bid-container">
-                <a class="nft__bid-btn nft__bid-btn--primary" href="#" data-text="Uplode">Uplode</a>
+                <a class="nft__bid-btn nft__bid-btn--primary" href="#" data-text="Upload">Upload</a>
                 <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
             </div>
-
         </div>
 
         <!-- 弹出框 -->
@@ -132,8 +131,35 @@
             <div class="modal-content">
                 <span class="close" id="close">&times;</span>
                 <div class="modal-body">
-                    <!-- 这里放相关信息 -->
-                    <p>相关信息</p>
+                    <p id="confirmText"></p>
+                    <section>
+                        <h2 class="title">Your Dinosaur</h2>
+                        <div class="card" style="display: flex;flex-wrap: wrap">
+                            <div style="width:400px;height: 347.06px "></div>
+                            <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
+                                <div class="card__cover"
+                                     style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
+                                    <img class="card__img"
+                                         th:src="@{'/static/images/dinosaurImage/'+${dinosaurInfo.getDinosaurPhotoUri()}+'.jpeg'}"
+                                         alt=""/>
+                                </div>
+                                <div class="card__info">
+                                    <div>
+                                        <p class="card__nick"
+                                           th:text="${'DinosaurId:'+dinosaurInfo.getDinosaurId().substring(0,16)}"></p>
+                                        <p class="card__author"
+                                           th:text="${'DinosaurSex:'+dinosaurInfo.getDinosaurSex()}"></p>
+                                        <p class="card__author"
+                                           th:text="${'DinosaurRarity:'+dinosaurInfo.getDinosaurRarity()}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:400px;height: 347.06px "></div>
+                        </div>
+                    </section>
+                    <div>
+                        <input type="text" class="price-input" style="" placeholder="Enter price"/>
+                    </div>
                     <button id="confirmBtn">Confirm</button>
                     <button id="cancelBtn">Cancel</button>
                 </div>
@@ -141,7 +167,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image04.png" alt="" />
+                <img class="card__img" src="/static/images/image04.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -156,7 +182,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image05.png" alt="" />
+                <img class="card__img" src="/static/images/image05.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>
@@ -171,7 +197,7 @@
         </div>
         <div class="card__item">
             <div class="card__cover">
-                <img class="card__img" src="/static/images/image06.png" alt="" />
+                <img class="card__img" src="/static/images/image06.png" alt=""/>
             </div>
             <div class="card__info">
                 <div>

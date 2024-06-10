@@ -144,7 +144,7 @@ function sendDinosaurIdToBackend(id) {
         });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
     const bidBtn = document.querySelector('.nft__bid-btn--primary');
     const confirmBtn = document.getElementById('confirmBtn');
@@ -156,41 +156,40 @@ document.addEventListener('DOMContentLoaded', function() {
     let dinosaurId = 123;
 
     // 当点击竞价按钮时显示弹出框
-    bidBtn.addEventListener('click', function() {
+    bidBtn.addEventListener('click', function () {
         event.preventDefault(); // 阻止默认链接行为
         modal.style.display = 'block';
+
+        // 根据按钮状态设置确认文本
+        if (bidBtn.textContent === 'Upload') {
+            document.getElementById('confirmText').textContent = '你确定要上架该恐龙吗？';
+        } else {
+            document.getElementById('confirmText').textContent = '你确定要下架该恐龙吗？';
+        }
     });
 
     // 当点击取消按钮或者关闭按钮时隐藏弹出框
-    cancelBtn.addEventListener('click', function() {
+    cancelBtn.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 
     // 当点击确认按钮时修改按钮状态，并发送相关信息给后端
-    confirmBtn.addEventListener('click', function() {
+    confirmBtn.addEventListener('click', function () {
         // 这里写发送信息给后端的逻辑
-        if (bidBtn.classList.contains('nft__bid-btn--primary')) {
+        if (bidBtn.textContent === 'Upload') {
             bidBtn.textContent = 'On sale';
             bidBtn.classList.remove('nft__bid-btn--primary');
             bidBtn.classList.add('nft__bid-btn--sold');
         } else {
-            bidBtn.textContent = 'Uplode';
+            bidBtn.textContent = 'Upload';
             bidBtn.classList.remove('nft__bid-btn--sold');
             bidBtn.classList.add('nft__bid-btn--primary');
         }
         sendDinosaurIdToBackend(dinosaurId);
         modal.style.display = 'none';
-    });
-
-    // 当点击在售状态的按钮时显示下架确认弹出框
-    bidBtn.addEventListener('click', function() {
-        if (bidBtn.classList.contains('nft__bid-btn--sold')) {
-            modal.style.display = 'block';
-
-        }
     });
 });

@@ -117,6 +117,7 @@ body {
 .header__link {
   color: #fff;
   text-decoration: none;
+  border-color: white;
 }
 .submit__link{
   color: #fff;
@@ -131,6 +132,7 @@ body {
 .submit__back {
   background: linear-gradient(214.02deg, #b75cff 6.04%, #671ae4 92.95%);
   border-radius: 10px;
+  border-color: white;
   padding: 10px 20px;
 }
 .container {
@@ -893,7 +895,7 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color:#671ae4;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
