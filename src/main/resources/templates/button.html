@@ -120,7 +120,24 @@
                     Current Bid <span class="card__price">0.005ETH</span>
                 </p>
             </div>
-            <a class="card__link" href="#">Place A Bid</a>
+            <div class="nft__bid-container">
+                <a class="nft__bid-btn nft__bid-btn--primary" href="#" data-text="Uplode">Uplode</a>
+                <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
+            </div>
+
+        </div>
+
+        <!-- 弹出框 -->
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span class="close" id="close">&times;</span>
+                <div class="modal-body">
+                    <!-- 这里放相关信息 -->
+                    <p>相关信息</p>
+                    <button id="confirmBtn">Confirm</button>
+                    <button id="cancelBtn">Cancel</button>
+                </div>
+            </div>
         </div>
         <div class="card__item">
             <div class="card__cover">

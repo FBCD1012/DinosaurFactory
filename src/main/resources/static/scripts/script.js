@@ -1,18 +1,18 @@
-src="https://unpkg.com/axios/dist/axios.min.js"
+src = "https://unpkg.com/axios/dist/axios.min.js"
 // collapsible
 let coll = document.getElementsByClassName("collapsible");
 let i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    let content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
 }
 
 // 获取按钮元素
@@ -24,27 +24,27 @@ if (typeof window.ethereum !== 'undefined') {
     console.log('MetaMask is installed!');
 
     // 当按钮被点击时，连接到MetaMask
-    walletButton.addEventListener('click', function() {
+    walletButton.addEventListener('click', function () {
         // 请求用户授权连接到MetaMask
-        ethereum.request({ method: 'eth_requestAccounts' })
-            .then(function(accounts) {
+        ethereum.request({method: 'eth_requestAccounts'})
+            .then(function (accounts) {
                 // 连接成功，更新按钮显示为钱包地址的前几位
-                 // 只显示前6位
+                // 只显示前6位
                 walletButton.textContent = accounts[0].substring(0, 6) + '...';
                 // 将地址存储在变量中
                 userAddress = accounts[0];
-                document.cookie=`userAddress=${userAddress}`
+                document.cookie = `userAddress=${userAddress}`
                 postToTheAddress(userAddress)
                 // 添加鼠标悬停事件
-                walletButton.addEventListener('mouseover', function() {
+                walletButton.addEventListener('mouseover', function () {
                     walletButton.textContent = accounts[0];
                 });
                 // 添加鼠标移出事件
-                walletButton.addEventListener('mouseout', function() {
+                walletButton.addEventListener('mouseout', function () {
                     walletButton.textContent = accounts[0].substring(0, 6) + '...';
                 });
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 // 连接失败，打印错误信息
                 console.error(error);
             });
@@ -53,21 +53,23 @@ if (typeof window.ethereum !== 'undefined') {
     // MetaMask未安装，显示错误消息或者提示用户安装MetaMask
     console.log('Please install the MetaMask extension!');
 }
-function postToTheAddress(userAddress){
-    axios.post("/address",{
+
+function postToTheAddress(userAddress) {
+    axios.post("/address", {
         userAdd: userAddress
-    },{
-        headers : {
+    }, {
+        headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-    }).then(({data})=>{
+    }).then(({data}) => {
         if (data.success) {
             alert("User address obtained successfully :)")
-        }else {
+        } else {
             alert("Failed to obtain user address :(")
         }
     })
 }
+
 //蛋的孵化
 var countdownIntervals = [null, null, null];
 var countdownTimes = [3 * 60 * 60, 3 * 60 * 60, 3 * 60 * 60]; // 每个按钮的倒计时时间（秒）
@@ -91,7 +93,7 @@ function toggleCountdown(index, event) {
 }
 
 function startCountdown(index) {
-    countdownIntervals[index] = setInterval(function() {
+    countdownIntervals[index] = setInterval(function () {
         countdownTimes[index]--;
         if (countdownTimes[index] <= 0) {
             clearInterval(countdownIntervals[index]);
@@ -110,10 +112,85 @@ function updateButtonText(index, time) {
     var hours = Math.floor(time / 3600);
     var minutes = Math.floor((time % 3600) / 60);
     var seconds = time % 60;
-    hatchButtons[index].textContent = "Countdown" +  "：" + hours + "h " + minutes + "m " + seconds + "s";
+    hatchButtons[index].textContent = "Countdown" + "：" + hours + "h " + minutes + "m " + seconds + "s";
 }
 
 // 模拟发送消息的函数
 function sendMessage(index) {
     alert("孵化" + (index + 1) + "完成！");
 }
+
+// 向后端发送 DinosaurId 的函数
+function sendDinosaurIdToBackend(id) {
+    // 使用 fetch 发送数据给后端
+    fetch('/sell/' + id, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('后端返回的数据:', data);
+            //这里添加后面的逻辑
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取相关元素
+    const bidBtn = document.querySelector('.nft__bid-btn--primary');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('close');
+
+    // 模拟 DinosaurId
+    let dinosaurId = 123;
+
+    // 当点击竞价按钮时显示弹出框
+    bidBtn.addEventListener('click', function() {
+        event.preventDefault(); // 阻止默认链接行为
+        modal.style.display = 'block';
+    });
+
+    // 当点击取消按钮或者关闭按钮时隐藏弹出框
+    cancelBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // 当点击确认按钮时修改按钮状态，并发送相关信息给后端
+    confirmBtn.addEventListener('click', function() {
+        // 这里写发送信息给后端的逻辑
+        if (bidBtn.classList.contains('nft__bid-btn--primary')) {
+            bidBtn.textContent = 'On sale';
+            bidBtn.classList.remove('nft__bid-btn--primary');
+            bidBtn.classList.add('nft__bid-btn--sold');
+        } else {
+            bidBtn.textContent = 'Uplode';
+            bidBtn.classList.remove('nft__bid-btn--sold');
+            bidBtn.classList.add('nft__bid-btn--primary');
+        }
+        sendDinosaurIdToBackend(dinosaurId);
+        modal.style.display = 'none';
+    });
+
+    // 当点击在售状态的按钮时显示下架确认弹出框
+    bidBtn.addEventListener('click', function() {
+        if (bidBtn.classList.contains('nft__bid-btn--sold')) {
+            modal.style.display = 'block';
+
+        }
+    });
+});
