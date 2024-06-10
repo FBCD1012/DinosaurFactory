@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -18,7 +17,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Accessors(chain = true)
 @Builder
 @AllArgsConstructor
-@Document(indexName = "dinosaur")
+//@Document(indexName = "dinosaur")
 @org.springframework.data.mongodb.core.mapping.Document("dinosaurInfo")
 public class Dinosaur {
     //哈希值

@@ -62,7 +62,7 @@ public class DinosaurMarketController {
                 market.getDinosaurs().add(dinosaur);
             }
         }
-        dinosaurRepository.saveAll(market.getDinosaurs());
-        return "list successful";
+//        dinosaurRepository.saveAll(market.getDinosaurs());
+        return "redirect:getDinosaurInfo";
     }
 }

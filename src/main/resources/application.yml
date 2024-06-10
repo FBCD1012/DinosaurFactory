@@ -20,7 +20,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: newDb
+      database: nft_market_info
 logging:
   level:
     # 输出es的查询参数(调试用)

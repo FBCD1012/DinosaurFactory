@@ -38,10 +38,8 @@ public class DinosaurLogicController {
     //用户进行相关的蛋信息操作，也就是初始系统传递给用户的两个蛋
     @RequestMapping(value = "/getDinosaurInfo",method = RequestMethod.GET)
     public String setTheEggInfo(Model model,
-                                @RequestParam(value = "userAdd",required = false)String userAddress,
                                 @CookieValue(name = "userAddress",required = false)String userAddressCookie){
         // TODO 根据用户地址然后查询用户是否含有恐龙蛋,如果有的话那么直接返回具有的恐龙蛋信息，如果没有系统则进行操作一下
-        person=new Person();
         System.out.println("传递过来的地址信息"+userAddressCookie);
         person.setPersonHash(userAddressCookie);
         personContent.addTheDinosaurEgg(person);
