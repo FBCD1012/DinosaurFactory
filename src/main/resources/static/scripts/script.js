@@ -164,12 +164,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 根据按钮状态设置确认文本
         if (bidBtn.textContent === 'Upload') {
-            document.getElementById('confirmText').textContent = '你确定要上架该恐龙吗？';
-            confirmBtn.textContent = 'Upload now'; // 添加这行代码
+            document.getElementById('confirmText').textContent = 'Are you sure you want to upload this dinosaurNFT?';
+            confirmBtn.textContent = 'Upload now';
             modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
         } else {
-            document.getElementById('confirmText').textContent = '你确定要下架该恐龙吗？';
-            confirmBtn.textContent = 'Remove from market'; // 添加这行代码
+            document.getElementById('confirmText').textContent = 'Are you sure you want to remove this dinosaurNFT?';
+            confirmBtn.textContent = 'Remove from market';
             modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
         }
     });
@@ -189,12 +189,12 @@ document.addEventListener('DOMContentLoaded', function () {
             bidBtn.textContent = 'On sale';
             bidBtn.classList.remove('nft__bid-btn--primary');
             bidBtn.classList.add('nft__bid-btn--sold');
-            document.getElementById('confirmText').textContent = '你确定要上架该恐龙吗？';
+            document.getElementById('confirmText').textContent = 'Are you sure you want to upload this dinosaurNFT?';
         } else {
             bidBtn.textContent = 'Upload';
             bidBtn.classList.remove('nft__bid-btn--sold');
             bidBtn.classList.add('nft__bid-btn--primary');
-            document.getElementById('confirmText').textContent = '你确定要下架该恐龙吗？';
+            document.getElementById('confirmText').textContent = 'Are you sure you want to remove this dinosaurNFT?';
         }
         sendDinosaurIdToBackend(dinosaurId);
         modal.style.display = 'none';
