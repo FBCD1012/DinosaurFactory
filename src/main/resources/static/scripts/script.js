@@ -70,80 +70,52 @@ function postToTheAddress(userAddress) {
     })
 }
 
-//蛋的孵化
-var countdownIntervals = [null, null, null];
-var countdownTimes = [3 * 60 * 60, 3 * 60 * 60, 3 * 60 * 60]; // 每个按钮的倒计时时间（秒）
-var hatchButtons = [
-    document.getElementById("hatchButton1"),
-    document.getElementById("hatchButton2"),
-    document.getElementById("hatchButton3")
-];
+document.addEventListener("DOMContentLoaded", function () {
+    const countdownIntervals = [];
 
-function toggleCountdown(index, event) {
-    event.preventDefault(); // 阻止默认链接行为
-    if (countdownIntervals[index]) {
-        // 如果倒计时正在运行，停止它
-        clearInterval(countdownIntervals[index]);
-        countdownIntervals[index] = null;
-        hatchButtons[index].textContent = "Hatch"; // 重置按钮文本
-    } else {
-        // 如果倒计时没有运行，启动它
-        startCountdown(index);
-    }
-}
+    const hatchButtons = document.querySelectorAll('.hatch-button');
 
-function startCountdown(index) {
-    countdownIntervals[index] = setInterval(function () {
-        countdownTimes[index]--;
-        if (countdownTimes[index] <= 0) {
-            clearInterval(countdownIntervals[index]);
-            countdownIntervals[index] = null;
-            sendMessage(index);
-        } else {
-            updateButtonText(index, countdownTimes[index]);
-        }
-    }, 1000);
-
-    // 启动倒计时后立即更新按钮文本
-    updateButtonText(index, countdownTimes[index]);
-}
-
-function updateButtonText(index, time) {
-    var hours = Math.floor(time / 3600);
-    var minutes = Math.floor((time % 3600) / 60);
-    var seconds = time % 60;
-    hatchButtons[index].textContent = "Countdown" + "：" + hours + "h " + minutes + "m " + seconds + "s";
-}
-
-// 模拟发送消息的函数
-function sendMessage(index) {
-    alert("孵化" + (index + 1) + "完成！");
-}
-
-// 向后端发送 DinosaurId 的函数
-function sendDinosaurIdToBackend(id) {
-    // 使用 fetch 发送数据给后端
-    fetch('/sell/' + id, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+    hatchButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const index = parseInt(button.dataset.index);
+            if (!countdownIntervals[index]) {
+                startCountdown(button, 3 * 60 * 60); // 开始倒计时
+                button.disabled = true; // 禁用按钮
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log('后端返回的数据:', data);
-            //这里添加后面的逻辑
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
         });
-}
+    });
 
+    function startCountdown(button, time) {
+        const index = parseInt(button.dataset.index);
+        let countdownTime = time;
+        countdownIntervals[index] = setInterval(function () {
+            countdownTime--;
+            if (countdownTime <= 0) {
+                clearInterval(countdownIntervals[index]);
+                countdownIntervals[index] = null;
+                sendMessage(index);
+                button.disabled = false; // 完成孵化后启用按钮
+            } else {
+                updateButtonText(button, countdownTime);
+            }
+        }, 1000);
+
+        // 倒计时开始后立即更新按钮文本
+        updateButtonText(button, countdownTime);
+    }
+
+    function updateButtonText(button, time) {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        button.textContent = `Countdown: ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    function sendMessage(index) {
+        alert(`Hatch ${index + 1} completed!`);
+    }
+});
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
     const bidBtn = document.querySelector('.nft__bid-btn--primary');

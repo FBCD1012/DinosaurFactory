@@ -36,23 +36,22 @@
     <h1>Your personal Info</h1>
 </section>
 <section>
-    <h2 class="title">Your Dinosaur   Eggs</h2>
+    <h2 class="title">你的恐龙蛋</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
-        <div class="card__item" th:each="dinosaurEgg:${eggInfo}">
+        <div class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
             <div class="card__cover">
                 <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
             </div>
             <div class="card__info">
                 <div>
-                    <p class="card__nick" id="dinosaurInfo"  th:text="${'EggId:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
+                    <p class="card__nick" th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
-            <button class="card__link" onclick="upLoadTheMarket()">Place A Bid</button>
+            <a class="egg__link hatch-button" href="#" th:data-index="${iterStat.index}">Hatch</a>
         </div>
     </div>
 </section>
-
 
 <section>
     <h2 class="title">Your Dinosaur</h2>
