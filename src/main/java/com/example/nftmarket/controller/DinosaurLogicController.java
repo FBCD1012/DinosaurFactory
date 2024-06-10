@@ -56,14 +56,21 @@ public class DinosaurLogicController {
     }
 
     //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
-    @RequestMapping("/hatch")
-    public String hatchTheDinosaur(@RequestParam("eggId")String eggId){
+    @RequestMapping(value = "/hatch",method = RequestMethod.GET)
+    public String hatchTheDinosaur(@RequestParam("eggId")Integer eggId,Model model){
         //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
-        return "null";
+        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(eggId), new DinosaurRandomUtils());
+        model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
+        model.addAttribute("dinosaurInfo", dinosaur);
+        return "personDetails";
     }
+
+
+    //实现恐龙之间的孵化逻辑操作 恐龙之间的孵化逻辑操作？？？
+    //传递参数 恐龙性别 恐龙的对应的哈希值操作
     @RequestMapping("/breeding")
-    public String breedingTheDinosaur(Person person,Dinosaur father,Dinosaur mother){
+    public String breedingTheDinosaur(Dinosaur father,Dinosaur mother){
         DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, father, mother);
         //TODO 孵化逻辑与合约进行交互操作
         //孵化恐龙操作
