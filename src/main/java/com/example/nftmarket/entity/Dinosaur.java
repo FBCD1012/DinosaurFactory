@@ -19,6 +19,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Builder
 @AllArgsConstructor
 @Document(indexName = "dinosaur")
+@org.springframework.data.mongodb.core.mapping.Document("dinosaurInfo")
 public class Dinosaur {
     //哈希值
     @Id

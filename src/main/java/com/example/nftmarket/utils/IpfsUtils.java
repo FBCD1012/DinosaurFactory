@@ -10,8 +10,8 @@ import java.io.IOException;
 public class IpfsUtils {
     static IPFS ipfs=new IPFS("/ip4/127.0.0.1/tcp/8080");
 
-    static String pathName="D:\\konglongNFT\\DinosaurFactory\\src\\main\\resources\\static\\images\\";
-    static String DinosaurPathName="D:\\konglongNFT\\DinosaurFactory\\src\\main\\resources\\static\\images\\dinosaurImage\\";
+    static String pathName="D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static\\images\\dinosaurImage\\";
+    static String DinosaurPathName="D:\\SpringCloudAlibaba\\NFT-Market\\src\\main\\resources\\static\\images\\";
 
     public static String downloadDinosaur(String hash) throws IOException {
         Multihash filePointer = Multihash.fromBase58(hash);

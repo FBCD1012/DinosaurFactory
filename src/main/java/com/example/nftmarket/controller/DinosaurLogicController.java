@@ -4,8 +4,6 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.elasticsearch.DinosaurRepository;
-import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.service.Breeding;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
@@ -24,14 +22,8 @@ public class DinosaurLogicController {
     Breeding breeding;
     @Resource
     PersonContent personContent;
-    private final DinosaurRepository dinosaurRepository;
-    private final PersonRepository personRepository;
-
-    public DinosaurLogicController(DinosaurRepository dinosaurRepository,
-                                   PersonRepository personRepository) {
-        this.dinosaurRepository = dinosaurRepository;
-        this.personRepository = personRepository;
-    }
+    @Resource
+    Person person;
     //此处暂时不进行相关的操作
     @ResponseBody
     @RequestMapping(value = "/getTheDinosaueEgg",method = RequestMethod.POST)
@@ -49,7 +41,7 @@ public class DinosaurLogicController {
                                 @RequestParam(value = "userAdd",required = false)String userAddress,
                                 @CookieValue(name = "userAddress",required = false)String userAddressCookie){
         // TODO 根据用户地址然后查询用户是否含有恐龙蛋,如果有的话那么直接返回具有的恐龙蛋信息，如果没有系统则进行操作一下
-        Person person=new Person();
+        person=new Person();
         System.out.println("传递过来的地址信息"+userAddressCookie);
         person.setPersonHash(userAddressCookie);
         personContent.addTheDinosaurEgg(person);

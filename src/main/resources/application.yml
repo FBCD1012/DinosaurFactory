@@ -16,6 +16,11 @@ spring:
     username: root
     password: FBCD@dq1012
     url: jdbc:mysql://cd-cynosdbmysql-grp-rjsk3qca.sql.tencentcdb.com:24800/marketinfo
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: newDb
 logging:
   level:
     # 输出es的查询参数(调试用)
