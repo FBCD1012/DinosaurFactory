@@ -3,7 +3,6 @@ package com.example.nftmarket.service.impl;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
@@ -21,11 +20,6 @@ public class PersonContentImpl implements PersonContent {
     RandomDinosaurEgg randomDinosaurEgg;
     @Resource
     Hatched hatched;
-    private final PersonRepository personRepository;
-
-    public PersonContentImpl(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     @Override
     public String addTheDinosaurEgg(Person person) {

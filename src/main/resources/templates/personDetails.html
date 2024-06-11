@@ -64,7 +64,8 @@
     <div>
         <h2 class="title" th:text="${DinosaurTitle}"></h2>
         <div class="card" style="display: flex;flex-wrap: wrap">
-            <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
+            <div class="card__item" th:each="dinosaur,iterStat:${dinosaurInfo}">
+                <p class="card__nick" th:text="${iterStat.index}"></p>
                 <div class="card__cover">
                     <img class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}" alt="" />
                 </div>
@@ -76,7 +77,7 @@
                     </div>
                 </div>
                 <div class="nft__bid-container">
-                    <a class="nft__bid-btn nft__bid-btn--primary"  href="#" data-text="Upload">Upload</a>
+                    <a class="nft__bid-btn nft__bid-btn--primary" href="javascript:void(0)" onclick="getTheUploadInfo(this.dataset.index)" th:data-index="${iterStat.index}"  data-text="Upload" >Upload</a>
                     <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
             </div>
 
@@ -90,7 +91,7 @@
                             <h2 class="title">Your Dinosaur</h2>
                             <div class="card" style="display: flex;flex-wrap: wrap">
                                 <div style="width:400px;height: 347.06px "></div>
-                                <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
+                                <div class="card__item">
                                     <div class="card__cover"
                                          style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
                                         <img class="card__img"
@@ -110,7 +111,6 @@
                                 </div>
                                 <div style="width:400px;height: 347.06px "></div>
                             </div>
-
                         </section>
                         <div class="input-container">
                             <div class="price-input-container">
@@ -124,6 +124,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <div>

@@ -1,7 +1,5 @@
 package com.example.nftmarket.utils.contractUtils;
 
-import com.example.nftmarket.utils.contract.DFCoin;
-import com.example.nftmarket.utils.contract.Market;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteFunctionCall;
@@ -35,11 +33,11 @@ public class ContractTest {
             TransactionManager transactionManager = new RawTransactionManager(
                     web3, credentials,3);
             BigInteger gasPrice = web3.ethGasPrice().send().getGasPrice();
-            Market contract = Market.load(contractAddress,web3,
-                    transactionManager,new StaticGasProvider(gasPrice, Contract.GAS_LIMIT));
-//            //调用合约方法
-            RemoteFunctionCall<String> setWord = contract.DE();
-            System.out.println("合约返回值输出："+setWord.send());
+//            Market contract = Market.load(contractAddress,web3,
+//                    transactionManager,new StaticGasProvider(gasPrice, Contract.GAS_LIMIT));
+////            //调用合约方法
+//            RemoteFunctionCall<String> setWord = contract.DE();
+//            System.out.println("合约返回值输出："+setWord.send());
 
 
 //            RemoteFunctionCall<BigInteger> bigIntegerRemoteFunctionCall = contract.balanceOf("0x657cF811dBB5Ebdd83ba0Aa616A5a097f3C5387E");

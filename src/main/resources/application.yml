@@ -5,7 +5,7 @@ spring:
   mvc:
     static-path-pattern: /static/**
   elasticsearch:
-    uris: http://localhost:9200/
+    uris: localhost:9200
   thymeleaf:
     prefix: classpath:/templates/
     encoding: UTF-8 #编码

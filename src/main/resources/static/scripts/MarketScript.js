@@ -1,12 +1,12 @@
 
 
-var elementById = document.getElementById("info");
+var elementById = document.getElementById("searchInfo");
+
 
 function getTheDinosaurList(){
-    //构建一个搜索的参数值进行操作
-    let searchInfo=elementById.value
+
     axios.post("/searchTheDinosaur",{
-        search: searchInfo
+        search: elementById.value
     },{
         headers : {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -14,7 +14,8 @@ function getTheDinosaurList(){
     }).then(({data})=>{
         if (data.success) {
             alert("search successful :)")
-            window.location.href="/market"
+            var value=elementById.value
+            window.location.href=`/getTheDinosaur/${value}`
         }else {
             alert("search failed :(")
         }

@@ -17,8 +17,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Accessors(chain = true)
 @Builder
 @AllArgsConstructor
-//@Document(indexName = "dinosaur")
-@org.springframework.data.mongodb.core.mapping.Document("dinosaurInfo")
+@Document(indexName = "nft_market")
 public class Dinosaur {
     //哈希值
     @Id

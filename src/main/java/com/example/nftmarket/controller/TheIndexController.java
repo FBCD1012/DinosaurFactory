@@ -3,7 +3,6 @@ package com.example.nftmarket.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,11 +20,6 @@ public class TheIndexController {
     Person person;
     @Resource
     HttpServletRequest request;
-    private final PersonRepository personRepository;
-
-    public TheIndexController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     @RequestMapping(value = "/")
     public String getIndex() throws InterruptedException {

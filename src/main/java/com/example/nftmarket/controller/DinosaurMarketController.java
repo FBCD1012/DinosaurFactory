@@ -5,16 +5,13 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.Market;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.jpa.DinosaurImageRepository;
-import com.example.nftmarket.repository.mongodb.DinosaurRepository;
-import com.example.nftmarket.repository.mongodb.PersonRepository;
+import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,16 +22,10 @@ public class DinosaurMarketController {
     PersonContent personContent;
     @Resource
     Market market;
-    @Resource
-    DinosaurRepository dinosaurRepository;
-    private final PersonRepository personRepository;
-    private final DinosaurImageRepository dinosaurImageRepository;
 
-    public DinosaurMarketController(PersonRepository personRepository,
-                                    DinosaurImageRepository dinosaurImageRepository) {
-        this.personRepository = personRepository;
-        this.dinosaurImageRepository = dinosaurImageRepository;
-    }
+    @Resource
+    DinosaurMarketRepository dinosaurMarketRepository;
+
 
     //做es的搜索逻辑操作
     @ResponseBody
@@ -46,8 +37,10 @@ public class DinosaurMarketController {
         return jsonObject;
     }
     //根据传入的参数来进行模糊查询操作，实现ElasticSearch集成操作
-    @RequestMapping(value = "/getTheDinosaur",method = RequestMethod.GET)
-    public String getTheDinosaur(Model model){
+    @RequestMapping(value = "/getTheDinosaur/{searchValue}",method = RequestMethod.GET)
+    public String getTheDinosaur(@PathVariable("searchValue")String dinosaurFiledValue,Model model){
+        Dinosaur dinosaur = dinosaurMarketRepository.findById(dinosaurFiledValue).get();
+        model.addAttribute("dinosaur", dinosaur);
         return "market";
     }
     //前端传递恐龙参数信息，然后将恐龙参数信息上架到对应的市场中进行操作

@@ -4,18 +4,14 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.service.Breeding;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
-import com.example.nftmarket.utils.DinosaurRandomUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
@@ -30,11 +26,6 @@ public class DinosaurLogicController {
     PersonContent personContent;
     @Resource
     Person person;
-    private final PersonRepository personRepository;
-
-    public DinosaurLogicController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     //此处暂时不进行相关的操作
     @ResponseBody
@@ -75,6 +66,17 @@ public class DinosaurLogicController {
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
         model.addAttribute("DinosaurTitle","Your Dinosaur");
+        return "personDetails";
+    }
+
+
+    @RequestMapping(value = "/getTheUploadInfo",method = RequestMethod.GET)
+    public String getTheUploadInfo(@CookieValue("dinosaurIndex")String dinosaurIndex, Model model){
+        System.out.println(dinosaurIndex);
+        int dinosaurIndex0=Integer.parseInt(dinosaurIndex);
+        Dinosaur dinosaur = personContent.getDinosaurInfo(person).get(dinosaurIndex0);
+        System.out.println(dinosaur);
+        model.addAttribute("dinosaurUploadInfo", dinosaur);
         return "personDetails";
     }
 
