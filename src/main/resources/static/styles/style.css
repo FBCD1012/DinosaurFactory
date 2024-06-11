@@ -824,7 +824,8 @@ body {
 .nft__bid-container {
   position: relative;
   display: block;
-  margin-top: 26px;
+  height: 60px;
+  margin-top: 10px;
 }
 
 
