@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
-    const bidBtn = document.querySelector('.nft__bid-btn--primary');
+    const bidBtns = document.querySelectorAll('.nft__bid-btn--primary');
     const confirmBtn = document.getElementById('confirmBtn');
     const cancelBtn = document.getElementById('cancelBtn');
     const modal = document.getElementById('modal');
@@ -129,37 +129,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const priceInput = document.querySelector('.price-input');
     const modifyPriceBtn = document.getElementById('modifyPriceBtn');
 
-    // 模拟 DinosaurId
-    let dinosaurId = 123;
-
     // 当点击竞价按钮时显示弹出框
-    bidBtn.addEventListener('click', function () {
-        event.preventDefault(); // 阻止默认链接行为
-        modal.style.display = 'block';
+    bidBtns.forEach(function(bidBtn) {
+        bidBtn.addEventListener('click', function (event) {
+            event.preventDefault(); // 阻止默认链接行为
+            const card = this.closest('.card__item'); // 找到最近的卡片
+            const dinosaurId = card.querySelector('.card__nick').textContent.split(':')[1]; // 获取 DinosaurId
 
-        // 根据按钮状态设置确认文本
-        if (bidBtn.textContent === 'Upload') {
-            document.getElementById('confirmText').textContent = 'Are you sure you want to upload this dinosaurNFT?';
-            confirmBtn.textContent = 'Upload now';
-            modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
-        } else {
-            document.getElementById('confirmText').textContent = 'Are you sure you want to remove this dinosaurNFT?';
-            confirmBtn.textContent = 'Remove from market';
-            modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
-        }
+            modal.style.display = 'block';
+
+            // 根据按钮状态设置确认文本
+            if (bidBtn.textContent === 'Upload') {
+                document.getElementById('confirmText').textContent = 'Are you sure you want to upload this dinosaurNFT?';
+                confirmBtn.textContent = 'Upload now';
+                modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
+            } else {
+                document.getElementById('confirmText').textContent = 'Are you sure you want to remove this dinosaurNFT?';
+                confirmBtn.textContent = 'Remove from market';
+                modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
+            }
+        });
     });
 
     // 当点击取消按钮或者关闭按钮时隐藏弹出框
-    cancelBtn.addEventListener('click', function () {
+    function closeModal() {
         modal.style.display = 'none';
-    });
+    }
 
-    closeBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
+    cancelBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
 
     confirmBtn.addEventListener('click', function () {
         // 这里写发送信息给后端的逻辑
+        const bidBtn = modal.querySelector('.nft__bid-btn--primary');
+        const dinosaurId = modal.querySelector('.card__nick').textContent.split(':')[1]; // 获取 DinosaurId
+
         if (bidBtn.textContent === 'Upload') {
             bidBtn.textContent = 'On sale';
             bidBtn.classList.remove('nft__bid-btn--primary');
@@ -172,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('confirmText').textContent = 'Are you sure you want to remove this dinosaurNFT?';
         }
         sendDinosaurIdToBackend(dinosaurId);
-        modal.style.display = 'none';
+        closeModal();
     });
 
 
@@ -185,11 +189,13 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('该价格不合理。');
         } else {
             // 向后端发送数据
+            const dinosaurId = modal.querySelector('.card__nick').textContent.split(':')[1]; // 获取 DinosaurId
             sendModifiedPriceToBackend(dinosaurId, newPrice);
         }
     });
 
 });
+
 
 // 模拟向后端发送 DinosaurId 和修改后的价格的函数
 function sendModifiedPriceToBackend(dinosaurId, newPrice) {
