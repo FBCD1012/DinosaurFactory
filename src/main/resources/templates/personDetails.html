@@ -76,7 +76,52 @@
 
                     </div>
                 </div>
-                <button class="card__link" onclick="upLoadTheMarket()" >Place A Bid</button>
+                <div class="nft__bid-container">
+                    <a class="nft__bid-btn nft__bid-btn--primary"  href="#" data-text="Upload">Upload</a>
+                    <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
+                </div>
+            </div>
+            <!-- 弹出框 -->
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="close" id="close">&times;</span>
+                    <div class="modal-body">
+                        <p id="confirmText"></p>
+                        <section>
+                            <h2 class="title">Your Dinosaur</h2>
+                            <div class="card" style="display: flex;flex-wrap: wrap">
+                                <div style="width:400px;height: 347.06px "></div>
+                                <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
+                                    <div class="card__cover"
+                                         style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
+                                        <img class="card__img"
+                                             th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"
+                                             alt="" />
+                                    </div>
+                                    <div class="card__info">
+                                        <div>
+                                            <p class="card__nick"
+                                               th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
+                                            <p class="card__author"
+                                               th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
+                                            <p class="card__author"
+                                               th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:400px;height: 347.06px "></div>
+                            </div>
+                        </section>
+                        <div class="input-container">
+                            <div class="price-input-container">
+                                <input type="text" class="price-input" style="" placeholder="Enter price" />
+                            </div>
+                            <button id="modifyPriceBtn">Modify price</button> <!-- 确定修改按钮 -->
+                        </div>
+                        <button id="confirmBtn">Confirm</button>
+                        <button id="cancelBtn">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
