@@ -2,28 +2,28 @@
 <html lang="en">
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/static/images/恐龙.ico">
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="/static/images/恐龙.ico" rel="icon">
     <title>DinosaurHomePage</title>
-    <link rel="stylesheet" href="/static/styles/normalize.min.css" />
-    <link rel="stylesheet" href="/static/styles/style.css" />
+    <link href="/static/styles/normalize.min.css" rel="stylesheet"/>
+    <link href="/static/styles/style.css" rel="stylesheet"/>
 
 </head>
 <body>
 <header class="header">
-    <a href="/" class="header__logo"></a>
+    <a class="header__logo" href="/"></a>
     <nav class="header__nav">
         <ul class="header__list">
             <li class="header__item">
-                <a href="#" class="header__link" th:href="@{/}">Home</a>
+                <a class="header__link" href="#" th:href="@{/}">Home</a>
             </li>
             <li class="header__item">
-                <a href="#" class="header__link" th:href="@{/market}">Market</a>
+                <a class="header__link" href="#" th:href="@{/market}">Market</a>
             </li>
             <li class="header__item">
-                <a href="#" id="walletButton" class="header__link header__link_gradient">Connect Wallet</a>
+                <a class="header__link header__link_gradient" href="#" id="walletButton">Connect Wallet</a>
             </li>
         </ul>
     </nav>
@@ -38,10 +38,10 @@
 <section>
     <h2 class="title">Your Dinosaur Egg</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
-        <div  class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
-            <p id="cardInfo"  class="card__nick" th:text="${iterStat.index}"></p>
+        <div class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
+            <p class="card__nick" id="cardInfo" th:text="${iterStat.index}"></p>
             <div class="card__cover">
-                <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
+                <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}"/>
             </div>
             <div class="card__info">
                 <div>
@@ -49,7 +49,8 @@
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
-            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>
+            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)"
+               th:data-index="${iterStat.index}">Hatch</a>
         </div>
     </div>
 </section>
@@ -59,67 +60,61 @@
         <h3 class="banner__title">
             Click to get your dinosaur
         </h3>
-        <a  class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
+        <a class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
     </div>
     <div>
         <h2 class="title" th:text="${DinosaurTitle}"></h2>
         <div class="card" style="display: flex;flex-wrap: wrap">
             <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
                 <div class="card__cover">
-                    <img class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}" alt="" />
+                    <img alt="" class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"/>
                 </div>
                 <div class="card__info">
                     <div>
-                        <p class="card__nick" id="DinosaurId" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
+                        <p class="card__nick" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                         <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
-                        <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"> </p>
+                        <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
                     </div>
                 </div>
                 <div class="nft__bid-container">
-                    <a class="nft__bid-btn nft__bid-btn--primary"  href="#" data-text="Upload">Upload</a>
-                    <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
-            </div>
+                    <a class="nft__bid-btn nft__bid-btn--primary" data-text="上传" href="javascript:void(0)">上传</a>
+                    <a class="nft__bid-btn nft__bid-btn--secondary" href="javascript:void(0)">配对</a>
+                </div>
 
-            <!-- 弹出框 -->
-            <div class="modal" id="modal">
-                <div class="modal-content">
-                    <span class="close" id="close">&times;</span>
-                    <div class="modal-body">
-                        <p id="confirmText"></p>
-                        <section>
-                            <h2 class="title">Your Dinosaur</h2>
-                            <div class="card" style="display: flex;flex-wrap: wrap">
-                                <div style="width:400px;height: 347.06px "></div>
-                                <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
-                                    <div class="card__cover"
-                                         style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
-                                        <img class="card__img"
-                                             th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"
-                                             alt="" />
-                                    </div>
-                                    <div class="card__info">
-                                        <div>
-                                            <p class="card__nick"
-                                               th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
-                                            <p class="card__author"
-                                               th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
-                                            <p class="card__author"
-                                               th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
+                <!-- 弹出框 -->
+                <div class="modal" id="modal">
+                    <div class="modal-content">
+                        <span class="close" id="close">&times;</span>
+                        <div class="modal-body">
+                            <p id="confirmText"></p>
+                            <section>
+                                <h2 class="title">Your dinosaur</h2>
+                                <div class="card" style="display: flex;flex-wrap: wrap">
+                                    <div style="width:400px;height: 347.06px "></div>
+                                    <div class="card__item">
+                                        <div class="card__cover" style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
+                                            <img alt="" class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"/>
+                                        </div>
+                                        <div class="card__info">
+                                            <div>
+                                                <p class="card__nick" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
+                                                <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
+                                                <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div style="width:400px;height: 347.06px "></div>
                                 </div>
-                                <div style="width:400px;height: 347.06px "></div>
+                            </section>
+                            <div class="input-container">
+                                <div class="price-input-container">
+                                    <input class="price-input" placeholder="输入价格" type="text"/>
+                                </div>
+                                <button id="modifyPriceBtn">change Price</button> <!-- 确定修改按钮 -->
                             </div>
-
-                        </section>
-                        <div class="input-container">
-                            <div class="price-input-container">
-                                <input type="text" class="price-input" style="" placeholder="Enter price" />
-                            </div>
-                            <button id="modifyPriceBtn">Modify price</button> <!-- 确定修改按钮 -->
+                            <button id="confirmBtn">confirm</button>
+                            <button id="cancelBtn">close</button>
                         </div>
-                        <button id="confirmBtn">Confirm</button>
-                        <button id="cancelBtn">Close</button>
                     </div>
                 </div>
             </div>
