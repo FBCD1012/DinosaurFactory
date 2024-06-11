@@ -16,6 +16,18 @@ function upLoadTheMarket(){
     window.location.href='/insertTheDinosaur'
 }
 //孵化恐龙ajax请求
-function HatchTheDinosaur(){
-    axios.get('/hatch')
+function HatchTheDinosaur(elementText){
+    axios.post('/hatch',{
+        dinosaurEggInfo:elementText
+    },{
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then(({data}) => {
+        if (data.success) {
+            alert("Hatch the egg:)")
+        } else {
+            alert("Failed to hatch the egg :(")
+        }
+    })
 }

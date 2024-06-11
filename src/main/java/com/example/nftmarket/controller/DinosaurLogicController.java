@@ -58,16 +58,22 @@ public class DinosaurLogicController {
 
     
     //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
-    @RequestMapping(value = "/hatch",method = RequestMethod.GET)
-    public ModelAndView hatchTheDinosaur(@CookieValue("eggId")String eggId){
+    @ResponseBody
+    @RequestMapping(value = "/hatch",method = RequestMethod.POST)
+    public JSONObject hatchTheDinosaur(@RequestParam("dinosaurEggInfo")String eggId){
         System.out.println(eggId);
         ModelAndView modelAndView=new ModelAndView();
         //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
-        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(Integer.parseInt(eggId)), new DinosaurRandomUtils());
+        int i = Integer.parseInt(eggId);
+        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(i), new DinosaurRandomUtils());
+        System.out.println(person);
+        System.out.println(dinosaur);
         modelAndView.getModel().put("eggInfo", person.getDinosaurEggsRepository());
         modelAndView.getModel().put("dinosaurInfo", dinosaur);
-        return modelAndView;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("success",true);
+        return jsonObject;
     }
 
 

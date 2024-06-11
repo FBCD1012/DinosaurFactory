@@ -88,9 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startCountdown(button, time) {
         const index = parseInt(button.dataset.index);
-        const eggID = document.querySelector(`.card__nick:nth-of-type(${index + 1})`).textContent.split(':')[1];
-        console.log(eggID);
-        document.cookie=`eggID=${eggID}`// 打印eggID到控制台
+        // const eggID = document.querySelector(`.card__nick:nth-of-type(${index + 1})`).textContent.split(':')[1];
+        // console.log(eggID);
+        // document.cookie=`eggID=${eggID}`// 打印eggID到控制台
         let countdownTime = time;
         countdownIntervals[index] = setInterval(function () {
             countdownTime--;

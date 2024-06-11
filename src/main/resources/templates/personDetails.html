@@ -38,8 +38,8 @@
 <section>
     <h2 class="title">你的恐龙蛋</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
-        <div class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
-            <p  class="card__nick" th:text="${'EggIndex:'+iterStat.index}"></p>
+        <div  class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
+            <p id="cardInfo"  class="card__nick" th:text="${iterStat.index}"></p>
             <div class="card__cover">
                 <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
             </div>
@@ -49,7 +49,7 @@
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
-            <a class="egg__link hatch-button" href="#" th:data-index="${iterStat.index}">Hatch</a>
+            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>
         </div>
     </div>
 </section>

@@ -51,6 +51,7 @@ public class HatchedImpl implements Hatched {
                     .setSaleSate("空闲")
                     .setDinosaurOwner(Hash.sha3String(person.toString()));
             dinosaurEgg.setChildHash(dinosaur.getDinosaurId());
+            dinosaurEgg.setHatched(false);
             return dinosaur;
         }
         return null;
