@@ -73,11 +73,12 @@
                         <p class="card__nick" id="DinosaurId" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                         <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
                         <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"> </p>
-
                     </div>
                 </div>
                 <div class="nft__bid-container">
                     <a class="nft__bid-btn nft__bid-btn--primary"  href="#" data-text="Upload">Upload</a>
+                </div>
+                <div class="nft__bid-container">
                     <a class="nft__bid-btn nft__bid-btn--secondary" href="#">Mating</a>
                 </div>
             </div>

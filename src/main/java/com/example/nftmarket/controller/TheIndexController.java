@@ -51,7 +51,6 @@ public class TheIndexController {
             System.out.println(request.getSession().getAttribute("userAdd"));
         }
         person.setPersonHash((String) userAdd);
-        System.out.println(person.getDinosaurEggsRepository());
         model.addAttribute("egg", person.getDinosaurEggsRepository());
         //此处进行相关的Attribute逻辑判定操作
         return "person";

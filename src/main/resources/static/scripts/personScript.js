@@ -7,7 +7,7 @@ function getTheResult(){
     return document.cookie.match(/0x[a-fA-F0-9]+/g)
 }
 function postTheInfo(){
-    window.location.href='/getFreeEggs'
+    window.location.href='/getTheDinosaurInfo'
 }
 var  dinosaurId=document.getElementById('dinosaurInfo').value
 //异步传递相关参数到网站中进行操作理解
