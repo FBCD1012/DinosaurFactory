@@ -46,7 +46,7 @@
             <div class="card__info">
                 <div>
                     <p th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
-                    <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
+                    <p  class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
             <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>
@@ -91,7 +91,7 @@
                             <h2 class="title">Your Dinosaur</h2>
                             <div class="card" style="display: flex;flex-wrap: wrap">
                                 <div style="width:400px;height: 347.06px "></div>
-                                <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
+                                <div class="card__item">
                                     <div class="card__cover"
                                          style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
                                         <img class="card__img"

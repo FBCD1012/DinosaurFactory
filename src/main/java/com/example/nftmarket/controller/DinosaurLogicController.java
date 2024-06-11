@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 //做相关的恐龙逻辑操作（孵化动作以及恐龙相关的交配操作）
 @Controller
@@ -26,6 +27,9 @@ public class DinosaurLogicController {
     PersonContent personContent;
     @Resource
     Person person;
+    
+    private static Dinosaur maledinosaur;
+    private static Dinosaur femaledinosaur;
 
     //此处暂时不进行相关的操作
     @ResponseBody
@@ -82,9 +86,29 @@ public class DinosaurLogicController {
 
     //实现恐龙之间的孵化逻辑操作 恐龙之间的孵化逻辑操作？？？
     //传递参数 恐龙性别 恐龙的对应的哈希值操作
-    @RequestMapping("/breeding")
-    public String breedingTheDinosaur(Dinosaur father,Dinosaur mother){
-        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, father, mother);
+    @RequestMapping(value = "/breeding",method = RequestMethod.POST)
+    public String breedingTheDinosaur(@RequestParam("fatherStringHash") String fartherString,
+                                      @RequestParam("motherStringHash") String motherString){
+        List<Dinosaur> maleDinosaurRepository = person.getMaleDinosaurRepository();
+        List<Dinosaur> feMaleDinosaurRepository = person.getFeMaleDinosaurRepository();
+        for (Dinosaur maleDinosaurs:maleDinosaurRepository) {
+            String trim = maleDinosaurs.getDinosaurId().substring(0, 16).trim();
+            if (trim.equals(fartherString)){
+                //将父恐龙抛出来
+                maledinosaur=maleDinosaurs;
+            }
+        }
+        for (Dinosaur femaleDinosaurs:feMaleDinosaurRepository) {
+            String femaleString=femaleDinosaurs.getDinosaurId().substring(0, 16).trim();
+            if (femaleString.equals(motherString)){
+                //将母恐龙抛出
+                femaledinosaur=femaleDinosaurs;
+            }
+        }
+        
+        breeding.creatDinosaurEgg(person,maledinosaur,femaledinosaur);
+        
+        
         //TODO 孵化逻辑与合约进行交互操作
         //孵化恐龙操作
         return "null";
