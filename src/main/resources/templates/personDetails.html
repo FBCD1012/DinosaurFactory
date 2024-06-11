@@ -46,7 +46,7 @@
             <div class="card__info">
                 <div>
                     <p th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
-                    <p  class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
+                    <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
             <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>
@@ -73,45 +73,27 @@
                         <p class="card__nick" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                         <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
                         <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
+                        <!-- Add button here -->
+                        <button class="print-info-btn">Print Info</button>
+                        <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)" data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
                     </div>
                 </div>
-                <div class="nft__bid-container">
-                    <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)" data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
-                    <a class="nft__bid-btn nft__bid-btn--secondary" href="javascript:void(0)">Mating</a>
-                </div>
             </div>
+
 
             <!-- 弹出框 -->
             <div class="modal" id="modal">
                 <div class="modal-content">
                     <span class="close" id="close">&times;</span>
                     <div class="modal-body">
-                        <p id="confirmText"></p>
                         <section>
                             <h2 class="title">Your Dinosaur</h2>
-                            <div class="card" style="display: flex;flex-wrap: wrap">
-                                <div style="width:400px;height: 347.06px "></div>
-                                <div class="card__item">
-                                    <div class="card__cover"
-                                         style="width: 250px; height: 250px; border: 1px solid #ccc; overflow: hidden; display: inline-block;">
-                                        <img class="card__img"
-                                             th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"
-                                             alt="" />
-                                    </div>
-                                    <div class="card__info">
-                                        <div>
-                                            <p class="card__nick"
-                                               th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
-                                            <p class="card__author"
-                                               th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
-                                            <p class="card__author"
-                                               th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
-                                        </div>
-                                    </div>
+                            <div class="card">
+                                <div class="card__item" id="dinosaurInfo">
+                                    <!-- 在这里放置恐龙信息 -->
+                                    <div id="confirmText"></div> <!-- 添加这行 -->
                                 </div>
-                                <div style="width:400px;height: 347.06px "></div>
                             </div>
-
                         </section>
                         <div class="input-container">
                             <div class="price-input-container">
@@ -125,7 +107,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <div>

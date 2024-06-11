@@ -222,3 +222,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const printInfoButtons = document.querySelectorAll('.print-info-btn');
+
+    printInfoButtons.forEach(function(button) {
+        button.addEventListener('click', function () {
+            const cardItem = button.closest('.card__item');
+            const dinosaurId = cardItem.querySelector('.card__nick').textContent.split(':')[1].trim();
+            const dinosaurSex = cardItem.querySelector('.card__author:nth-child(2)').textContent.split(':')[1].trim();
+            const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.split(':')[1].trim();
+            const dinosaurURI = cardItem.querySelector('.card__img').src;
+
+            // Display information in the modal
+            document.getElementById('confirmText').innerHTML = `
+                <p>Dinosaur Id: ${dinosaurId}</p>
+                <p>Dinosaur Sex: ${dinosaurSex}</p>
+                <p>Dinosaur Rarity: ${dinosaurRarity}</p>
+                <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
+            `;
+
+            // Show the modal
+            const modal = document.getElementById('modal');
+            modal.style.display = 'block';
+        });
+    });
+
+    // Close the modal when the close button is clicked
+    document.getElementById('close').addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+    });
+
+    // Optionally, you might want to close the modal when the user clicks outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+});
