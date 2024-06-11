@@ -3,6 +3,7 @@ package com.example.nftmarket.service.impl;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
@@ -10,6 +11,7 @@ import com.example.nftmarket.utils.RandomDinosaurEgg;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +21,11 @@ public class PersonContentImpl implements PersonContent {
     RandomDinosaurEgg randomDinosaurEgg;
     @Resource
     Hatched hatched;
+    private final PersonRepository personRepository;
+
+    public PersonContentImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @Override
     public String addTheDinosaurEgg(Person person) {
@@ -57,6 +64,16 @@ public class PersonContentImpl implements PersonContent {
     public int getDinosaurCounts(Person person) {
         return person.getMaleDinosaurRepository().size()+
                 person.getFeMaleDinosaurRepository().size();
+    }
+
+    @Override
+    public List<Dinosaur> getDinosaurInfo(Person person) {
+        List<Dinosaur> feMaleDinosaurRepository = person.getFeMaleDinosaurRepository();
+        List<Dinosaur> meMaleDinosaurRepository=person.getMaleDinosaurRepository();
+        List<Dinosaur> allDinosaurRepository=new ArrayList<>();
+        allDinosaurRepository.addAll(feMaleDinosaurRepository);
+        allDinosaurRepository.addAll(meMaleDinosaurRepository);
+        return allDinosaurRepository;
     }
 
 }

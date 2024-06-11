@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.service.Breeding;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
@@ -16,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 //做相关的恐龙逻辑操作（孵化动作以及恐龙相关的交配操作）
 @Controller
 public class DinosaurLogicController {
@@ -27,6 +30,12 @@ public class DinosaurLogicController {
     PersonContent personContent;
     @Resource
     Person person;
+    private final PersonRepository personRepository;
+
+    public DinosaurLogicController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
     //此处暂时不进行相关的操作
     @ResponseBody
     @RequestMapping(value = "/getTheDinosaueEgg",method = RequestMethod.POST)
@@ -46,11 +55,12 @@ public class DinosaurLogicController {
                                 HttpServletResponse httpServletResponse){
         // TODO 根据用户地址然后查询用户是否含有恐龙蛋,如果有的话那么直接返回具有的恐龙蛋信息，如果没有系统则进行操作一下
         System.out.println("传递过来的地址信息"+userAddressCookie);
-        person.setPersonHash(userAddressCookie);
+//        person.setPersonHash(userAddressCookie);
         if (person.getDinosaurEggsRepository().size() <2) {
             personContent.addTheDinosaurEgg(person);
         }else {
             httpServletResponse.getWriter().write("<script>alert('Users can only have two Dinosaur eggs')</script>");
+            return "person";
         }
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         return "personDetails";
@@ -60,22 +70,28 @@ public class DinosaurLogicController {
     //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
     @ResponseBody
     @RequestMapping(value = "/hatch",method = RequestMethod.POST)
-    public JSONObject hatchTheDinosaur(@RequestParam("dinosaurEggInfo")String eggId){
-        System.out.println(eggId);
-        ModelAndView modelAndView=new ModelAndView();
+    public JSONObject hatchTheDinosaur(@RequestParam("dinosaurEggInfo")String eggId,HttpServletResponse httpServletResponse) throws IOException {
         //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
         int i = Integer.parseInt(eggId);
-        Dinosaur dinosaur = hatched.toHatch(person, person.getDinosaurEggsRepository().get(i), new DinosaurRandomUtils());
-        System.out.println(person);
-        System.out.println(dinosaur);
-        modelAndView.getModel().put("eggInfo", person.getDinosaurEggsRepository());
-        modelAndView.getModel().put("dinosaurInfo", dinosaur);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("success",true);
+        DinosaurEgg dinosaurEgg = person.getDinosaurEggsRepository().get(i);
+        if (!dinosaurEgg.isHatched()){
+            jsonObject.put("success",false);
+        }else{
+            personContent.toHatchTheDinosaurEgg(person, i);
+            jsonObject.put("success",true);
+        }
         return jsonObject;
     }
 
+    @RequestMapping(value="/getTheDinosaurInfo",method = RequestMethod.GET)
+    public String getTheDinosaur(Model model){
+        model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
+        model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
+        model.addAttribute("DinosaurTitle","Your Dinosaur");
+        return "personDetails";
+    }
 
     //实现恐龙之间的孵化逻辑操作 恐龙之间的孵化逻辑操作？？？
     //传递参数 恐龙性别 恐龙的对应的哈希值操作

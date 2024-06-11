@@ -36,25 +36,25 @@
   <h1>Your personal Info</h1>
 </section>
 <section>
-  <h2 class="title">Your Dinosaur   Eggs</h2>
   <div class="banner" id="eggBanner">
     <h3 class="banner__title">
       Get free dinosaur eggs</h3>
     <button  class="banner__button" onclick="postTheInfo()">Get Started</button>
   </div>
-
+  <h2 class="title">Your Dinosaur Egg</h2>
   <div id="card" class="card" style="display: flex;flex-wrap: wrap">
-    <div class="card__item" >
+    <div  class="card__item" th:each="dinosaurEgg, iterStat : ${egg}">
+      <p id="cardInfo"  class="card__nick" th:text="${iterStat.index}"></p>
       <div class="card__cover">
-        <img class="card__img"  alt="" />
+        <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
       </div>
       <div class="card__info">
         <div>
-          <p class="card__nick" ></p>
-          <p class="card__author"></p>
+          <p th:text="${'eggID:'+dinosaurEgg.getEggId().substring(0,16)}"></p>
+          <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
         </div>
       </div>
-      <a class="card__link" href="#">Place A Bid</a>
+      <!--      <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>-->
     </div>
   </div>
 </section>
@@ -150,16 +150,6 @@
   </div>
 </section>
 <div>
-</div>
-<div class="container">
-  <section>
-    <div class="main">
-      <div class="main__text">
-      </div>
-    </div>
-    <div class="company">
-    </div>
-  </section>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/static/scripts/personScript.js"></script>

@@ -2,6 +2,8 @@ package com.example.nftmarket.controller;
 
 
 import com.alibaba.fastjson2.JSONObject;
+import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.repository.mongodb.PersonRepository;
 import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,9 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class TheTestController {
+public class TheIndexController {
+    @Resource
+    Person person;
     @Resource
     HttpServletRequest request;
+    private final PersonRepository personRepository;
+
+    public TheIndexController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
     @RequestMapping(value = "/")
     public String getIndex() throws InterruptedException {
         return "index";
@@ -30,8 +40,8 @@ public class TheTestController {
     }
     //个人信息页面
     @SneakyThrows
-    @RequestMapping(value="/person")
-    public String getThePersonInfo() {
+    @RequestMapping(value="/person",method = RequestMethod.GET)
+    public String getThePersonInfo(Model model) {
         Object userAdd = request.getSession().getAttribute("userAdd");
         if (userAdd==null){
             return "blankIndex";
@@ -40,6 +50,9 @@ public class TheTestController {
             System.out.println("用户登陆成功");
             System.out.println(request.getSession().getAttribute("userAdd"));
         }
+        person.setPersonHash((String) userAdd);
+        System.out.println(person.getDinosaurEggsRepository());
+        model.addAttribute("egg", person.getDinosaurEggsRepository());
         //此处进行相关的Attribute逻辑判定操作
         return "person";
     }

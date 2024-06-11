@@ -31,3 +31,7 @@ function HatchTheDinosaur(elementText){
         }
     })
 }
+
+function getTheDinosaurInfo(){
+    window.location.href="/getTheDinosaurInfo"
+}

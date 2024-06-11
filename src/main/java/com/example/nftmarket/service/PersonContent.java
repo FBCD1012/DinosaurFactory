@@ -18,4 +18,6 @@ public interface PersonContent {
 
     //获取龙的数量
     int getDinosaurCounts(Person person);
+
+    List<Dinosaur> getDinosaurInfo(Person person);
 }
