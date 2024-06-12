@@ -4,12 +4,10 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
-import com.example.nftmarket.repository.jpa.ImageRepository;
 import com.example.nftmarket.service.Breeding;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +43,7 @@ public class DinosaurLogicController {
     //用户调用孵化逻辑，然后生成对应的恐龙蛋信息
     @ResponseBody
     @RequestMapping(value = "/hatch",method = RequestMethod.POST)
-    public JSONObject hatchTheDinosaur(@RequestParam("dinosaurEggInfo")String eggId,HttpServletResponse httpServletResponse) throws IOException {
+    public JSONObject hatchTheDinosaur(@RequestParam("dinosaurEggInfo")String eggId) {
         //根据龙蛋信息来对对应的龙蛋进行孵化操作
         //TODO 将恐龙参数传递给合约进行交互操作
         int i = Integer.parseInt(eggId);

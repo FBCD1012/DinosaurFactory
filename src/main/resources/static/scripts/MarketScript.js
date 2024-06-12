@@ -21,3 +21,10 @@ function getTheDinosaurList(){
         }
     })
 }
+
+
+//此处构建恐龙的购买JS调用操作
+function purchaseTheDinosaur(){
+
+
+}

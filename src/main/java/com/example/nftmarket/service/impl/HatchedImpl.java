@@ -49,7 +49,7 @@ public class HatchedImpl implements Hatched {
                     .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
                     .setSourceHash(dinosaurEgg.getEggId())
                     .setSaleSate("空闲")
-                    .setDinosaurOwner(Hash.sha3String(person.toString()));
+                    .setDinosaurOwner(Hash.sha3String(String.valueOf(person.hashCode())));
             dinosaurEgg.setChildHash(dinosaur.getDinosaurId());
             dinosaurEgg.setHatched(false);
             return dinosaur;
