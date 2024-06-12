@@ -51,6 +51,7 @@
                 <div>
                     <p th:text="${'dinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'price:'+dinosaur.getDinosaurPrice()}"></p>
+                    <p class="card__author" th:text="${'price:'+dinosaur.getDinosaurRarity()}"></p>
                 </div>
             </div>
 <!--            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>-->
@@ -99,7 +100,7 @@
 </div>
 <div class="banner">
     <h3 class="banner__title">Back to my world.</h3>
-    <a href="/person" class="banner__link">Go</a>
+    <a href="/getTheDinosaurInfo" class="banner__link">Go</a>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/static/scripts/MarketScript.js"></script>

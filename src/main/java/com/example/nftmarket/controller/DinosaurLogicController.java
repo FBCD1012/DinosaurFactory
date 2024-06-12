@@ -73,7 +73,7 @@ public class DinosaurLogicController {
         return "personDetails";
     }
 
-
+    //此处待定进行操作
     @RequestMapping(value = "/getTheUploadInfo",method = RequestMethod.GET)
     public String getTheUploadInfo(@CookieValue("dinosaurIndex")String dinosaurIndex, Model model){
         System.out.println(dinosaurIndex);
@@ -109,12 +109,11 @@ public class DinosaurLogicController {
                 femaledinosaur=femaleDinosaurs;
             }
         }
-        
-        breeding.creatDinosaurEgg(person,maledinosaur,femaledinosaur);
-        
-        
+        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, maledinosaur, femaledinosaur);
+        System.out.println(dinosaurEgg);
+
         //TODO 孵化逻辑与合约进行交互操作
         //孵化恐龙操作
-        return "null";
+        return "redirect:getTheDinosaurInfo";
     }
 }

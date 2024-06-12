@@ -39,8 +39,27 @@ function getTheDinosaurInfo(){
     window.location.href="/getTheDinosaurInfo"
 }
 
-
 function getTheUploadInfo(dinosaurIndex){
     document.cookie=`dinosaurIndex=${dinosaurIndex}`
     axios.get("/getTheUploadInfo")
+}
+function upLoadDinosaur(dinosaurId){
+    //调用上架接口实现恐龙信息的上架操作
+    axios.post('/insertTheDinosaur',{
+        dinosaurHalfId:dinosaurId
+    },{
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then(({data}) => {
+        if (data.success) {
+            alert("upload success :)")
+        } else {
+            alert("Failed to upload the dinosaur :(")
+        }
+    })
+}
+//孵化相关的恐龙参数操作
+function breeding(){
+    
 }

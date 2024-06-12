@@ -222,17 +222,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+var dinosaurId='';
 document.addEventListener('DOMContentLoaded', function () {
     const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
 
     printInfoButtons.forEach(function(button) {
         button.addEventListener('click', function () {
             const cardItem = button.closest('.card__item');
-            const dinosaurId = cardItem.querySelector('.card__nick').textContent.split(':')[1].trim();
+            dinosaurId = cardItem.querySelector('.card__nick').textContent.split(':')[1].trim();
             const dinosaurSex = cardItem.querySelector('.card__author:nth-child(2)').textContent.split(':')[1].trim();
             const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.split(':')[1].trim();
             const dinosaurURI = cardItem.querySelector('.card__img').src;
-
             // 在页面里放置信息
             document.getElementById('confirmText').innerHTML = ` 
                 <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
@@ -262,3 +262,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 });
+function  uploadTheDinosaur(){
+    upLoadDinosaur(dinosaurId)
+}
