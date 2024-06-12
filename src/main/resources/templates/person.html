@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="">
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
@@ -33,7 +33,7 @@
   </div>
 </header>
 <section>
-  <h1>Your personal Info</h1>
+  <h2 class="title">Your Personal Info</h2>
 </section>
 <section>
   <div class="banner" id="eggBanner">
@@ -63,89 +63,18 @@
 <section>
   <h2 class="title">Your Dinosaur</h2>
   <div class="card" style="display: flex;flex-wrap: wrap">
-    <div class="card__item">
+    <div class="card__item" th:each="dinosaur:${personalDinosaur}">
       <div class="card__cover">
-        <img class="card__img" src="/static/images/image01.png" alt="" />
+        <img alt="" class="card__img"
+             th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"/>
       </div>
       <div class="card__info">
         <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
+          <p class="card__nick" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
+          <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
+          <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
         </div>
       </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image02.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image03.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-        <p class="card__bid">
-          Current Bid <span class="card__price">0.005ETH</span>
-        </p>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image04.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-        <p class="card__bid">
-          Current Bid <span class="card__price">0.005ETH</span>
-        </p>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image05.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-        <p class="card__bid">
-          Current Bid <span class="card__price">0.005ETH</span>
-        </p>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
-    </div>
-    <div class="card__item">
-      <div class="card__cover">
-        <img class="card__img" src="/static/images/image06.png" alt="" />
-      </div>
-      <div class="card__info">
-        <div>
-          <p class="card__nick">@Johny</p>
-          <p class="card__author">Yellow Painting</p>
-        </div>
-        <p class="card__bid">
-          Current Bid <span class="card__price">0.005ETH</span>
-        </p>
-      </div>
-      <a class="card__link" href="#">Place A Bid</a>
     </div>
   </div>
 </section>

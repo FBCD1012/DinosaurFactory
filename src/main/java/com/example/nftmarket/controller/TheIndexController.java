@@ -3,6 +3,7 @@ package com.example.nftmarket.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +21,8 @@ public class TheIndexController {
     Person person;
     @Resource
     HttpServletRequest request;
+    @Resource
+    PersonContent personContent;
 
     @RequestMapping(value = "/")
     public String getIndex() throws InterruptedException {
@@ -46,6 +49,7 @@ public class TheIndexController {
         }
         person.setPersonHash((String) userAdd);
         model.addAttribute("egg", person.getDinosaurEggsRepository());
+        model.addAttribute("personalDinosaur", personContent.getDinosaurInfo(person));
         //此处进行相关的Attribute逻辑判定操作
         return "person";
     }

@@ -146,11 +146,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 根据按钮状态设置确认文本
             if (bidBtn.textContent === 'Upload') {
-                document.getElementById('confirmText').textContent = `Are you sure you want to upload this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
+                document.getElementById('confirmtext').textContent = `Are you sure you want to upload this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
                 confirmBtn.textContent = 'Upload now';
                 modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
             } else {
-                document.getElementById('confirmText').textContent = `Are you sure you want to remove this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
+                document.getElementById('confirmtext').textContent = `Are you sure you want to remove this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
                 confirmBtn.textContent = 'Remove from market';
                 modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
             }

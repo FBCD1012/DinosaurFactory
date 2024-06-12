@@ -88,9 +88,13 @@ public class DinosaurLogicController {
     //传递参数 恐龙性别 恐龙的对应的哈希值操作
     @RequestMapping(value = "/breeding",method = RequestMethod.POST)
     public String breedingTheDinosaur(@RequestParam("fatherStringHash") String fartherString,
-                                      @RequestParam("motherStringHash") String motherString){
+                                      @RequestParam("motherStringHash") String motherString,
+                                      HttpServletResponse httpServletResponse) throws IOException {
         List<Dinosaur> maleDinosaurRepository = person.getMaleDinosaurRepository();
         List<Dinosaur> feMaleDinosaurRepository = person.getFeMaleDinosaurRepository();
+        if (fartherString.equals("") || motherString.equals("")){
+            httpServletResponse.getWriter().write("<script>alert('input is null')</script>");
+        }
         for (Dinosaur maleDinosaurs:maleDinosaurRepository) {
             String trim = maleDinosaurs.getDinosaurId().substring(0, 16).trim();
             if (trim.equals(fartherString)){
