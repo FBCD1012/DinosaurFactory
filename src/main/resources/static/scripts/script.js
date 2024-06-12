@@ -121,7 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
-    const confirmBtn = document.getElementById('confirmBtn');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const removeBtn = document.getElementById('removeBtn');
     const cancelBtn = document.getElementById('cancelBtn');
     const modal = document.getElementById('modal');
     const closeBtn = document.getElementById('close');
@@ -145,12 +146,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 根据按钮状态设置确认文本
             if (bidBtn.textContent === 'Upload') {
-                document.getElementById('confirm_Text').textContent = `Are you sure you want to upload this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
-                confirmBtn.textContent = 'Upload now';
+                document.getElementById('confirm_Text').textContent = `Are you sure you want to upload this dinosaurNFT?`;
+                uploadBtn.style.display='block';
+                removeBtn.style.display='none';
                 modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
             } else {
-                document.getElementById('confirm_Text').textContent = `Are you sure you want to remove this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
-                confirmBtn.textContent = 'Remove from market';
+                document.getElementById('confirm_Text').textContent = `Are you sure you want to remove from the market this dinosaurNFT?`;
+                uploadBtn.style.display='none';
+                removeBtn.style.display='block';
                 modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
             }
         });
@@ -166,7 +169,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 点击确认按钮时的逻辑
-    confirmBtn.addEventListener('click', function () {
+    uploadBtn.addEventListener('click', function () {
+        // 这里写发送信息给后端的逻辑
+
+        // 模拟发送成功后的操作
+        bidBtns.forEach(function(bidBtn) {
+            if (bidBtn.textContent === 'Upload') {
+                bidBtn.textContent = 'On sale';
+                bidBtn.classList.remove('nft__bid-btn--primary');
+                bidBtn.classList.add('nft__bid-btn--sold');
+            } else {
+                bidBtn.textContent = 'Upload';
+                bidBtn.classList.remove('nft__bid-btn--sold');
+                bidBtn.classList.add('nft__bid-btn--primary');
+            }
+        });
+        modal.style.display = 'none';
+    });
+    // 点击确认按钮时的逻辑
+    removeBtn.addEventListener('click', function () {
         // 这里写发送信息给后端的逻辑
 
         // 模拟发送成功后的操作
