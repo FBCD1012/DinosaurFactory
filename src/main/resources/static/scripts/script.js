@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 点击确定修改按钮时的逻辑
     modifyPriceBtn.addEventListener('click', function () {
         const newPrice = parseFloat(priceInput.value);
-
+        axios.get('/getTheRecommendedPrice')
         // 验证价格是否合理
         if (isNaN(newPrice) || newPrice <= 0) {
             alert('该价格不合理。');

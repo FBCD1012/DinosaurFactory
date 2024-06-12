@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.web3j.crypto.Hash;
 
 import java.io.IOException;
 import java.util.List;
@@ -67,6 +68,17 @@ public class DinosaurLogicController {
         if (person.getDinosaurEggsRepository().size() <2) {
             personContent.addTheDinosaurEgg(person);
         }
+        Dinosaur dinosaur=Dinosaur
+                .builder()
+                .build()
+                .setDinosaurId(Hash.sha3String("fbcd"))
+                .setIsBreeding(true)
+                .setDinosaurPhotoUri(null)
+                .setDinosaurSex("MALE")
+                .setSourceHash(null)
+                .setSaleSate("空闲")
+                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
+        person.getMaleDinosaurRepository().add(dinosaur);
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
         model.addAttribute("DinosaurTitle","Your Dinosaur");
