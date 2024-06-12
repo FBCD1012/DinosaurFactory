@@ -1,16 +1,12 @@
 package com.example.nftmarket.controller;
 
 
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
-import com.example.nftmarket.entity.Market;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
 import jakarta.annotation.Resource;
-import jakarta.json.Json;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

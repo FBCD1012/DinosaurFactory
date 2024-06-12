@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (firstDinosaurSex !== secondDinosaurSex) {
                     axios.post("/breeding",{
                         DinosaurStringHash:selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim(),
-                        SecondDinosaurStringHash:selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim()
+                        DinosaurStringTwo:selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim()
                     },{
                         headers : {
                             'Content-Type': 'application/x-www-form-urlencoded'

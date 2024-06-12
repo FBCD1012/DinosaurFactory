@@ -1,10 +1,10 @@
 package com.example.nftmarket.controller;
 
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.repository.jpa.ImageRepository;
 import com.example.nftmarket.service.Breeding;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
@@ -29,9 +29,6 @@ public class DinosaurLogicController {
     PersonContent personContent;
     @Resource
     Person person;
-    
-    private static Dinosaur maledinosaur;
-    private static Dinosaur femaledinosaur;
 
     //此处暂时不进行相关的操作
     @ResponseBody
@@ -113,24 +110,39 @@ public class DinosaurLogicController {
     //传递参数 恐龙性别 恐龙的对应的哈希值操作
     @ResponseBody
     @RequestMapping(value = "/breeding",method = RequestMethod.POST)
-    public JSONObject breedingTheDinosaur(@CookieValue("userAddress")String userAddress,
-                                          @RequestParam("DinosaurStringHash") String fartherString,
-                                          @RequestParam("SecondDinosaurStringHash") String motherString) throws IOException {
+    public JSONObject breedingTheDinosaur(@RequestParam("DinosaurStringHash") String DinosaurStringOne,
+                                          @RequestParam("DinosaurStringTwo") String DinosaurStringTwo) throws IOException {
         JSONObject jsonObject = new JSONObject();
-        System.out.println(fartherString);
-        System.out.println(motherString);
         //获取总的恐龙类进行操作，然后实现其中的
-       Dinosaur fatherdinosaur=Dinosaur.builder().build();
-       Dinosaur motherdinosaur=Dinosaur.builder().build();
+       Dinosaur fatherDinosaur=Dinosaur.builder().build();
+       Dinosaur motherDinosaur=Dinosaur.builder().build();
        List<Dinosaur> dinosaurInfo = personContent.getDinosaurInfo(person);
-       for (Dinosaur dinosaur:dinosaurInfo) {
-           if (dinosaur.getDinosaurId().substring(0,16).trim().equals(fartherString)){
-               if (dinosaur.getDinosaurSex().equals("MALE")){
-
+       //第一次迭代操作进行相关的恐龙寻找操作
+       for (Dinosaur dinosaur : dinosaurInfo) {
+           String dinosaurId=dinosaur.getDinosaurId().substring(0,16);
+            if (dinosaurId.equals(DinosaurStringOne.substring(11, 27))){
+                if (dinosaur.getDinosaurSex().equals("MALE")){
+                    fatherDinosaur=dinosaur;
+                }else {
+                    motherDinosaur=dinosaur;
+                    break;
+                }
+            }
+        }
+       for (int i = dinosaurInfo.size()-1; i>0;i--) {
+           //倒序搜索相关的操作，然后根据其中的ID来对不同的恐龙进行处理操作
+           if (dinosaurInfo.get(i).getDinosaurId().substring(0,16).trim()
+                   .equals(DinosaurStringTwo.substring(11,27))){
+               if(dinosaurInfo.get(i).getDinosaurSex().equals("MALE")){
+                   fatherDinosaur=dinosaurInfo.get(i);
+               }else{
+                   motherDinosaur=dinosaurInfo.get(i);
                }
            }
        }
-//        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, maledinosaur, femaledinosaur);
+       //此处如何实现迭代进行操作理解？
+        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, motherDinosaur, fatherDinosaur);
+        System.out.println(dinosaurEgg);
 //        System.out.println(dinosaurEgg);
         jsonObject.put("success",true);
         //TODO 孵化逻辑与合约进行交互操作
