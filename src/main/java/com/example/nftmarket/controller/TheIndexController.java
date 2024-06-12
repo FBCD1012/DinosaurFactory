@@ -33,7 +33,7 @@ public class TheIndexController {
     @Resource
     DinosaurMarketRepository dinosaurMarketRepository;
     @RequestMapping(value = "/")
-    public String getIndex() throws InterruptedException {
+    public String getIndex() {
         return "index";
     }
     //市场页面

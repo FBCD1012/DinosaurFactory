@@ -7,6 +7,7 @@ import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.jpa.DinosaurImageRepository;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.utils.DinosaurRandomUtils;
+import com.example.nftmarket.utils.HashUtils;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.Hash;
@@ -49,7 +50,7 @@ public class HatchedImpl implements Hatched {
                     .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
                     .setSourceHash(dinosaurEgg.getEggId())
                     .setSaleSate("空闲")
-                    .setDinosaurOwner(Hash.sha3String(String.valueOf(person.hashCode())));
+                    .setDinosaurOwner(HashUtils.getHashIndex(person));
             dinosaurEgg.setChildHash(dinosaur.getDinosaurId());
             dinosaurEgg.setHatched(false);
             return dinosaur;

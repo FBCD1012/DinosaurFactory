@@ -1,12 +1,12 @@
 package com.example.nftmarket.controller;
 
 
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
+import com.example.nftmarket.utils.HashUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
@@ -100,8 +100,7 @@ public class DinosaurMarketController {
     @ResponseBody
     @RequestMapping(value = "/purchaseTheDinosaur",method = RequestMethod.POST)
     public JSONObject purchaseTheDinosaur(@RequestParam(value = "userAdd")String purchaser,
-                                          @RequestParam(value = "dIds")String dinosaurId,
-                                          HttpServletResponse response){
+                                          @RequestParam(value = "dIds")String dinosaurId){
         JSONObject jsonObject = new JSONObject();
         Iterable<Dinosaur> all = dinosaurMarketRepository.findAll();
         List<Dinosaur> dinosaurList=new ArrayList<>();
@@ -114,12 +113,12 @@ public class DinosaurMarketController {
             if (substring.equals(dinosaurId)){
                 dinosaur.setSaleSate("空闲");
                 String dinosaurOwner = dinosaur.getDinosaurOwner();
-                String string = Hash.sha3String(String.valueOf(person.hashCode()));
+                String string = HashUtils.getHashIndex(person);
                 if (dinosaurOwner.equals(string)){
                     jsonObject.put("success", false);
                     return jsonObject;
                 }else {
-                    dinosaur.setDinosaurOwner(purchaser);
+                    dinosaur.setDinosaurOwner(person.getPersonHash());
                 }
                 if(dinosaur.getDinosaurSex().equals("MALE")){
                     person.getMaleDinosaurRepository().add(dinosaur);
