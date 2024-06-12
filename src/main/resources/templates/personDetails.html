@@ -2,13 +2,13 @@
 <html lang="en">
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="/static/images/恐龙.ico">
     <title>DinosaurHomePage</title>
-    <link rel="stylesheet" href="/static/styles/normalize.min.css" />
-    <link rel="stylesheet" href="/static/styles/style.css" />
+    <link rel="stylesheet" href="/static/styles/normalize.min.css"/>
+    <link rel="stylesheet" href="/static/styles/style.css"/>
 
 </head>
 <body>
@@ -38,10 +38,10 @@
 <section>
     <h2 class="title">Your Dinosaur Egg</h2>
     <div class="card" style="display: flex;flex-wrap: wrap">
-        <div  class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
-            <p id="cardInfo"  class="card__nick" th:text="${iterStat.index}"></p>
+        <div class="card__item" th:each="dinosaurEgg, iterStat : ${eggInfo}">
+            <p id="cardInfo" class="card__nick" th:text="${iterStat.index}"></p>
             <div class="card__cover">
-                <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}" />
+                <img class="card__img" th:src="@{'/static/images/'+${dinosaurEgg.getEggPhotoURI()}+'.jpeg'}"/>
             </div>
             <div class="card__info">
                 <div>
@@ -49,7 +49,8 @@
                     <p class="card__author" th:text="${'isHatched:'+dinosaurEgg.isHatched()}"></p>
                 </div>
             </div>
-            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>
+            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)"
+               th:data-index="${iterStat.index}">Hatch</a>
         </div>
     </div>
 </section>
@@ -59,24 +60,27 @@
         <h3 class="banner__title">
             Click to get your dinosaur
         </h3>
-        <a  class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
+        <a class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
     </div>
     <div>
         <h2 class="title" th:text="${DinosaurTitle}"></h2>
         <div class="card" style="display: flex;flex-wrap: wrap">
             <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
                 <div class="card__cover">
-                    <img alt="" class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"/>
+                    <img alt="" class="card__img"
+                         th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}"/>
                 </div>
                 <div class="card__info">
                     <div>
                         <p class="card__nick" th:text="${'DinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                         <p class="card__author" th:text="${'DinosaurSex:'+dinosaur.getDinosaurSex()}"></p>
                         <p class="card__author" th:text="${'DinosaurRarity:'+dinosaur.getDinosaurRarity()}"></p>
-                        <!-- Add button here -->
-                        <button class="print-info-btn">Print Info</button>
-                        <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)" data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
                     </div>
+                </div>
+                <div class="nft__bid-container">
+                    <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)"
+                       data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
+                    <a class="nft__bid-btn nft__bid-btn--secondary" href="javascript:void(0)">Mating</a>
                 </div>
             </div>
 
@@ -88,8 +92,8 @@
                     <div class="modal-body">
                         <section>
                             <h2 class="title">Your Dinosaur</h2>
-                            <div class="card">
-                                <div class="card__item" id="dinosaurInfo">
+                            <div class="card" >
+                                <div class="card__item" id="dinosaurInfo" >
                                     <!-- 在这里放置恐龙信息 -->
                                     <div id="confirmText"></div> <!-- 添加这行 -->
                                 </div>
@@ -97,7 +101,7 @@
                         </section>
                         <div class="input-container">
                             <div class="price-input-container">
-                                <input type="text" class="price-input" style="" placeholder="Enter price" />
+                                <input type="text" class="price-input" style="" placeholder="Enter price"/>
                             </div>
                             <button id="modifyPriceBtn">Modify price</button> <!-- 确定修改按钮 -->
                         </div>
@@ -109,8 +113,7 @@
         </div>
     </div>
 </section>
-<div>
-</div>
+
 <div class="container">
     <section>
         <div class="main">

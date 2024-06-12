@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 document.addEventListener('DOMContentLoaded', function () {
-    const printInfoButtons = document.querySelectorAll('.print-info-btn');
+    const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
 
     printInfoButtons.forEach(function(button) {
         button.addEventListener('click', function () {
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.split(':')[1].trim();
             const dinosaurURI = cardItem.querySelector('.card__img').src;
 
-            // Display information in the modal
+            // 在页面里放置信息
             document.getElementById('confirmText').innerHTML = `
                 <p>Dinosaur Id: ${dinosaurId}</p>
                 <p>Dinosaur Sex: ${dinosaurSex}</p>
@@ -241,19 +241,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
             `;
 
-            // Show the modal
+            // 展示
             const modal = document.getElementById('modal');
             modal.style.display = 'block';
         });
     });
 
-    // Close the modal when the close button is clicked
+    // 点击按钮时关闭modal
     document.getElementById('close').addEventListener('click', function() {
         const modal = document.getElementById('modal');
         modal.style.display = 'none';
     });
 
-    // Optionally, you might want to close the modal when the user clicks outside of it
+    // 或者，你可能希望在用户点击模态框外部时关闭该模态框
     window.onclick = function(event) {
         const modal = document.getElementById('modal');
         if (event.target === modal) {
