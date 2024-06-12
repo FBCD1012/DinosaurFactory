@@ -208,20 +208,48 @@ function sendModifiedPriceToBackend(dinosaurId, newPrice) {
 }
 function sendDinosaurIdToBackend(dinosaurId) {
 }
-//Mating点击
-document.addEventListener('DOMContentLoaded', function() {
-    event.preventDefault(); // 阻止默认链接行为
-    const matingBtns = document.querySelectorAll('.nft__bid-btn--secondary');
+//Mating点击事件
+document.addEventListener("DOMContentLoaded", function() {
+    var selectedCard = null;
 
-    matingBtns.forEach(function(btn) {
-        event.preventDefault(); // 阻止默认链接行为
-        btn.addEventListener('click', function(event) {
-            event.preventDefault(); // 阻止默认链接行为
-            const cardItem = event.target.closest('.card__item');
+    // 添加点击事件监听器到所有"Mating"按钮
+    var matingBtns = document.querySelectorAll(".nft__bid-btn--secondary");
+    matingBtns.forEach(function(matingBtn) {
+        matingBtn.addEventListener("click", function(event) {
+            var cardItem = event.target.closest('.card__item');
+            var dinosaurSex = cardItem.querySelector('.card__author').textContent.split(':')[1].trim();
+
+            // 如果之前没有选定的卡面，将当前卡面设为选定的卡面
+            if (!selectedCard) {
+                selectedCard = {
+                    cardItem: cardItem,
+                    dinosaurSex: dinosaurSex
+                };
+            } else {
+                // 比较当前卡面的DinosaurSex与之前选定卡面的DinosaurSex
+                if (dinosaurSex !== selectedCard.dinosaurSex) {
+                    alert("交配成功");
+                    console.log("父母id: " + selectedCard.cardItem.querySelector('.card__nick').textContent.trim()+";"+ cardItem.querySelector('.card__nick').textContent.trim());
+                } else {
+                    alert("同性不可交配");
+                }
+                // 重置选定的卡面
+                selectedCard = null;
+            }
+        });
+
+        // 添加第二段代码
+        matingBtn.addEventListener("click", function() {
+            var cardItem = matingBtn.closest('.card__item');
             cardItem.classList.toggle('white-background');
+
+            // 切换按钮样式
+            matingBtn.classList.toggle("mating-mode");
         });
     });
 });
+
+
 var dinosaurId='';
 document.addEventListener('DOMContentLoaded', function () {
     const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');

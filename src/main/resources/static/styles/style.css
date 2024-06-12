@@ -882,6 +882,17 @@ body {
 .nft__bid-btn:hover:after {
   opacity: 1;
 }
+.mating-mode {
+  background:pink;
+  color: #666666;
+  border: 2px solid #666666;
+}
+
+.mating-mode:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
 
 /* 弹出框样式 */
 .modal {

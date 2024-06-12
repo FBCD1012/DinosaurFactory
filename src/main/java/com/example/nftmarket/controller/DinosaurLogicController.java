@@ -78,7 +78,18 @@ public class DinosaurLogicController {
                 .setSourceHash(null)
                 .setSaleSate("空闲")
                 .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
+        Dinosaur dinosaur1=Dinosaur
+                .builder()
+                .build()
+                .setDinosaurId(Hash.sha3String("slz"))
+                .setIsBreeding(true)
+                .setDinosaurPhotoUri(null)
+                .setDinosaurSex("FEMALE")
+                .setSourceHash(null)
+                .setSaleSate("空闲")
+                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
         person.getMaleDinosaurRepository().add(dinosaur);
+        person.getMaleDinosaurRepository().add(dinosaur1);
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
         model.addAttribute("DinosaurTitle","Your Dinosaur");

@@ -51,7 +51,7 @@
                 <div>
                     <p th:text="${'dinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
                     <p class="card__author" th:text="${'price:'+dinosaur.getDinosaurPrice()}"></p>
-                    <p class="card__author" th:text="${'price:'+dinosaur.getDinosaurRarity()}"></p>
+                    <p class="card__author" th:text="${'rarity:'+dinosaur.getDinosaurRarity()}"></p>
                 </div>
             </div>
 <!--            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>-->
