@@ -210,7 +210,7 @@ function sendDinosaurIdToBackend(dinosaurId) {
 }
 //Mating点击事件
 document.addEventListener("DOMContentLoaded", function() {
-    var selectedCard = null;
+    var selectedCards = []; // 改为数组，用于存储选定的卡面
 
     // 添加点击事件监听器到所有"Mating"按钮
     var matingBtns = document.querySelectorAll(".nft__bid-btn--secondary");
@@ -219,32 +219,35 @@ document.addEventListener("DOMContentLoaded", function() {
             var cardItem = event.target.closest('.card__item');
             var dinosaurSex = cardItem.querySelector('.card__author').textContent.split(':')[1].trim();
 
-            // 如果之前没有选定的卡面，将当前卡面设为选定的卡面
-            if (!selectedCard) {
-                selectedCard = {
+            // 如果选定的卡面少于2个，将当前卡面加入选定的卡面数组
+            if (selectedCards.length < 2) {
+                selectedCards.push({
                     cardItem: cardItem,
                     dinosaurSex: dinosaurSex
-                };
-            } else {
-                // 比较当前卡面的DinosaurSex与之前选定卡面的DinosaurSex
-                if (dinosaurSex !== selectedCard.dinosaurSex) {
+                });
+                cardItem.classList.toggle('white-background');
+                matingBtn.classList.toggle("mating-mode");
+            }
+
+            // 如果选定的卡面等于2个，进行配对判断
+            if (selectedCards.length === 2) {
+                var firstDinosaurSex = selectedCards[0].dinosaurSex;
+                var secondDinosaurSex = selectedCards[1].dinosaurSex;
+
+                if (firstDinosaurSex !== secondDinosaurSex) {
                     alert("交配成功");
-                    console.log("父母id: " + selectedCard.cardItem.querySelector('.card__nick').textContent.trim()+";"+ cardItem.querySelector('.card__nick').textContent.trim());
+                    console.log("父母id: " + selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim() + ";" + selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim());
                 } else {
                     alert("同性不可交配");
                 }
-                // 重置选定的卡面
-                selectedCard = null;
+
+                // 重置选定的卡面数组
+                selectedCards.forEach(function(selectedCard) {
+                    selectedCard.cardItem.classList.remove('white-background');
+                    selectedCard.cardItem.querySelector('.nft__bid-btn--secondary').classList.remove("mating-mode");
+                });
+                selectedCards = [];
             }
-        });
-
-        // 添加第二段代码
-        matingBtn.addEventListener("click", function() {
-            var cardItem = matingBtn.closest('.card__item');
-            cardItem.classList.toggle('white-background');
-
-            // 切换按钮样式
-            matingBtn.classList.toggle("mating-mode");
         });
     });
 });
