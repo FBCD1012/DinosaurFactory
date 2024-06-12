@@ -119,6 +119,92 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//Mating点击事件
+document.addEventListener("DOMContentLoaded", function() {
+    var selectedCards = []; // 改为数组，用于存储选定的卡面
+
+    // 添加点击事件监听器到所有"Mating"按钮
+    var matingBtns = document.querySelectorAll(".nft__bid-btn--secondary");
+    matingBtns.forEach(function(matingBtn) {
+        matingBtn.addEventListener("click", function(event) {
+            var cardItem = event.target.closest('.card__item');
+            var dinosaurSex = cardItem.querySelector('.card__author').textContent.split(':')[1].trim();
+
+            // 如果选定的卡面少于2个，将当前卡面加入选定的卡面数组
+            if (selectedCards.length < 2) {
+                selectedCards.push({
+                    cardItem: cardItem,
+                    dinosaurSex: dinosaurSex
+                });
+                cardItem.classList.toggle('white-background');
+                matingBtn.classList.toggle("mating-mode");
+            }
+
+            // 如果选定的卡面等于2个，进行配对判断
+            if (selectedCards.length === 2) {
+                var firstDinosaurSex = selectedCards[0].dinosaurSex;
+                var secondDinosaurSex = selectedCards[1].dinosaurSex;
+
+                if (firstDinosaurSex !== secondDinosaurSex) {
+                    alert("交配成功");
+                    console.log("父母id: " + selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim() + ";" + selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim());
+                } else {
+                    alert("同性不可交配");
+                }
+
+                // 重置选定的卡面数组
+                selectedCards.forEach(function(selectedCard) {
+                    selectedCard.cardItem.classList.remove('white-background');
+                    selectedCard.cardItem.querySelector('.nft__bid-btn--secondary').classList.remove("mating-mode");
+                });
+                selectedCards = [];
+            }
+        });
+    });
+});
+
+
+//将获取信息插入弹窗里面
+let dinosaurId = '';
+document.addEventListener('DOMContentLoaded', function () {
+    const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
+
+    printInfoButtons.forEach(function(button) {
+        button.addEventListener('click', function () {
+            const cardItem = button.closest('.card__item');
+            dinosaurId = cardItem.querySelector('.card__nick').textContent.split(':')[1].trim();
+            const dinosaurSex = cardItem.querySelector('.card__author:nth-child(2)').textContent.split(':')[1].trim();
+            const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.split(':')[1].trim();
+            const dinosaurURI = cardItem.querySelector('.card__img').src;
+            // 在页面里放置信息
+            document.getElementById('confirmText').innerHTML = ` 
+                <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
+                <p>Dinosaur Id: ${dinosaurId}</p>
+                <p>Dinosaur Sex: ${dinosaurSex}</p>
+                <p>Dinosaur Rarity: ${dinosaurRarity}</p>
+               
+            `;
+
+            // 展示
+            const modal = document.getElementById('modal');
+            modal.style.display = 'block';
+        });
+    });
+
+    // 点击按钮时关闭modal
+    document.getElementById('close').addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+    });
+
+    // 或者，你可能希望在用户点击模态框外部时关闭该模态框
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+});
 // upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
@@ -188,103 +274,29 @@ document.addEventListener('DOMContentLoaded', function () {
     // 点击确定修改按钮时的逻辑
     modifyPriceBtn.addEventListener('click', function () {
         const newPrice = parseFloat(priceInput.value);
-        axios.get('/getTheRecommendedPrice')
+        var commendValue=0.0
+        console.log(dinosaurId)
+        axios.post('/getTheRecommendedPrice',{
+            dId:dinosaurId
+        }).then(function (response) {
+            commendValue=response.data
+        })
         // 验证价格是否合理
-        if (isNaN(newPrice) || newPrice <= 0) {
-            alert('该价格不合理。');
+        if (isNaN(newPrice) || newPrice > commendValue) {
+            alert(`该价格不合理。推荐价格为:${commendValue}`);
         } else {
             // 这里应该获取当前恐龙的 ID，然后发送到后端
             alert(`修改价格为 ${newPrice} 成功`);
+            //然后将我们的参数设置到后端进行操作
         }
     });
 });
 
-//Mating点击事件
-document.addEventListener("DOMContentLoaded", function() {
-    var selectedCards = []; // 改为数组，用于存储选定的卡面
-
-    // 添加点击事件监听器到所有"Mating"按钮
-    var matingBtns = document.querySelectorAll(".nft__bid-btn--secondary");
-    matingBtns.forEach(function(matingBtn) {
-        matingBtn.addEventListener("click", function(event) {
-            var cardItem = event.target.closest('.card__item');
-            var dinosaurSex = cardItem.querySelector('.card__author').textContent.split(':')[1].trim();
-
-            // 如果选定的卡面少于2个，将当前卡面加入选定的卡面数组
-            if (selectedCards.length < 2) {
-                selectedCards.push({
-                    cardItem: cardItem,
-                    dinosaurSex: dinosaurSex
-                });
-                cardItem.classList.toggle('white-background');
-                matingBtn.classList.toggle("mating-mode");
-            }
-
-            // 如果选定的卡面等于2个，进行配对判断
-            if (selectedCards.length === 2) {
-                var firstDinosaurSex = selectedCards[0].dinosaurSex;
-                var secondDinosaurSex = selectedCards[1].dinosaurSex;
-
-                if (firstDinosaurSex !== secondDinosaurSex) {
-                    alert("交配成功");
-                    console.log("父母id: " + selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim() + ";" + selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim());
-                } else {
-                    alert("同性不可交配");
-                }
-
-                // 重置选定的卡面数组
-                selectedCards.forEach(function(selectedCard) {
-                    selectedCard.cardItem.classList.remove('white-background');
-                    selectedCard.cardItem.querySelector('.nft__bid-btn--secondary').classList.remove("mating-mode");
-                });
-                selectedCards = [];
-            }
-        });
-    });
-});
 
 
-//将获取信息插入弹窗里面
-var dinosaurId='';
-document.addEventListener('DOMContentLoaded', function () {
-    const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
 
-    printInfoButtons.forEach(function(button) {
-        button.addEventListener('click', function () {
-            const cardItem = button.closest('.card__item');
-            dinosaurId = cardItem.querySelector('.card__nick').textContent.split(':')[1].trim();
-            const dinosaurSex = cardItem.querySelector('.card__author:nth-child(2)').textContent.split(':')[1].trim();
-            const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.split(':')[1].trim();
-            const dinosaurURI = cardItem.querySelector('.card__img').src;
-            // 在页面里放置信息
-            document.getElementById('confirmText').innerHTML = ` 
-                <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
-                <p>Dinosaur Id: ${dinosaurId}</p>
-                <p>Dinosaur Sex: ${dinosaurSex}</p>
-                <p>Dinosaur Rarity: ${dinosaurRarity}</p>
-               
-            `;
 
-            // 展示
-            const modal = document.getElementById('modal');
-            modal.style.display = 'block';
-        });
-    });
 
-    // 点击按钮时关闭modal
-    document.getElementById('close').addEventListener('click', function() {
-        const modal = document.getElementById('modal');
-        modal.style.display = 'none';
-    });
-
-    // 或者，你可能希望在用户点击模态框外部时关闭该模态框
-    window.onclick = function(event) {
-        const modal = document.getElementById('modal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    };
-});
 function  uploadTheDinosaur(){
     upLoadDinosaur(dinosaurId)
 }

@@ -22,25 +22,25 @@ public class elasticSearchTests {
     DinosaurMarketRepository dinosaurMarketResposiory;
     @Test
     void getTheDinosaurInfo(){
-       DinosaurRandomUtils dinosaurRandomUtils=new DinosaurRandomUtils();
-        Dinosaur dinosaur= Dinosaur
-                .builder()
-                .build()
-                .setDinosaurId(Hash.sha3String("fbcd"))
-                .setDinosaurColor(dinosaurRandomUtils.getTheRandomColor())
-                .setDinosaurClothing(dinosaurRandomUtils.getTheRandomClothing())
-                .setDinosaurType(dinosaurRandomUtils.getTheRandomType())
-                .setDinosaurRarity(dinosaurRandomUtils.getTheRarity())
-                .setDinosaurPrice(dinosaurRandomUtils.getThePrice())
-                .setIsBreeding(true)
-                .setDinosaurPhotoUri("QmbjUCWSmTszqoegRgSs4aHBmGtTrqgNQyUSXzGXwsp5Q3")
-                .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
-                .setDinosaurOwner(null);
-//        System.out.println(dinosaurMarketResposiory.save(dinosaur));
-        Optional<Dinosaur> fbcd = dinosaurMarketResposiory.findById(Hash.sha3String("fbcd"));
-        Dinosaur dinosaur1 = fbcd.get();
-        System.out.println(dinosaur1.getDinosaurPhotoUri());
-//        dinosaurMarketResposiory.deleteAll();
+//       DinosaurRandomUtils dinosaurRandomUtils=new DinosaurRandomUtils();
+//        Dinosaur dinosaur= Dinosaur
+//                .builder()
+//                .build()
+//                .setDinosaurId(Hash.sha3String("fbcd"))
+//                .setDinosaurColor(dinosaurRandomUtils.getTheRandomColor())
+//                .setDinosaurClothing(dinosaurRandomUtils.getTheRandomClothing())
+//                .setDinosaurType(dinosaurRandomUtils.getTheRandomType())
+//                .setDinosaurRarity(dinosaurRandomUtils.getTheRarity())
+//                .setDinosaurPrice(dinosaurRandomUtils.getThePrice())
+//                .setIsBreeding(true)
+//                .setDinosaurPhotoUri("QmbjUCWSmTszqoegRgSs4aHBmGtTrqgNQyUSXzGXwsp5Q3")
+//                .setDinosaurSex(dinosaurRandomUtils.getTheRandomDinosaurSex())
+//                .setDinosaurOwner(null);
+////        System.out.println(dinosaurMarketResposiory.save(dinosaur));
+//        Optional<Dinosaur> fbcd = dinosaurMarketResposiory.findById(Hash.sha3String("fbcd"));
+//        Dinosaur dinosaur1 = fbcd.get();
+//        System.out.println(dinosaur1.getDinosaurPhotoUri());
+        dinosaurMarketResposiory.deleteAll();
     }
 
 

@@ -68,6 +68,7 @@ public class DinosaurLogicController {
         if (person.getDinosaurEggsRepository().size() <2) {
             personContent.addTheDinosaurEgg(person);
         }
+        //此处操作进行修改
         Dinosaur dinosaur=Dinosaur
                 .builder()
                 .build()

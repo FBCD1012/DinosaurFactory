@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="">
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -45,13 +44,13 @@
         <div  class="card__item" th:each="dinosaurInfo,dinosaurInfoStat:${dinosaur}">
             <p id="cardInfo"  class="card__nick" th:text="${dinosaurInfoStat.index}"></p>
             <div class="card__cover">
-                <img class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaur.getDinosaurPhotoUri()}+'.jpeg'}" />
+                <img class="card__img" th:src="@{'/static/images/dinosaurImage/'+${dinosaurInfo.getDinosaurPhotoUri()}+'.jpeg'}" />
             </div>
             <div class="card__info">
                 <div>
-                    <p th:text="${'dinosaurId:'+dinosaur.getDinosaurId().substring(0,16)}"></p>
-                    <p class="card__author" th:text="${'price:'+dinosaur.getDinosaurPrice()}"></p>
-                    <p class="card__author" th:text="${'rarity:'+dinosaur.getDinosaurRarity()}"></p>
+                    <p th:text="${'dinosaurId:'+dinosaurInfo.getDinosaurId().substring(0,16)}"></p>
+                    <p class="card__author" th:text="${'price:'+dinosaurInfo.getDinosaurPrice()}"></p>
+                    <p class="card__author" th:text="${'rarity:'+dinosaurInfo.getDinosaurRarity()}"></p>
                 </div>
             </div>
 <!--            <a class="egg__link hatch-button" href="javascript:void(0)" onclick="HatchTheDinosaur(this.dataset.index)" th:data-index="${iterStat.index}">Hatch</a>-->

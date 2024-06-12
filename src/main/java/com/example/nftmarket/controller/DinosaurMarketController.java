@@ -1,15 +1,14 @@
 package com.example.nftmarket.controller;
 
 
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
-import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Market;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,8 @@ public class DinosaurMarketController {
     PersonContent personContent;
     @Resource
     Market market;
-
+    @Resource
+    HttpServletRequest httpServletRequest;
     @Resource
     DinosaurMarketRepository dinosaurMarketRepository;
 
@@ -49,9 +49,8 @@ public class DinosaurMarketController {
     @ResponseBody
     @RequestMapping(value = "/insertTheDinosaur",method = RequestMethod.POST)
     public JSONObject insertTheDinosaur(@RequestParam(value = "dinosaurHalfId")String dinosaurId){
-        System.out.println(dinosaurId);
-        List<Dinosaur> theDinosaurEgg = personContent.getDinosaurInfo(person);
-        for (Dinosaur dinosaur:theDinosaurEgg) {
+        List<Dinosaur> theDinosaur = personContent.getDinosaurInfo(person);
+        for (Dinosaur dinosaur:theDinosaur) {
             if (dinosaur.getDinosaurId().substring(0,16).equals(dinosaurId)){
                 //存储到es中，然后将此数据放入合约中进行存储
                 dinosaurMarketRepository.save(dinosaur);
@@ -61,5 +60,19 @@ public class DinosaurMarketController {
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("success", true);
         return jsonObject;
+    }
+    //获取后端的操作来实现推荐价格的操作
+    @ResponseBody
+    @RequestMapping(value = "/getTheRecommendedPrice",method = RequestMethod.POST)
+    public Double getTheRecommendedPrice(@RequestParam(value = "dId")String dId){
+        List<Dinosaur> theDinosaur = personContent.getDinosaurInfo(person);
+        Double dinosaurPrice=0.0;
+        for (Dinosaur dinosaur:theDinosaur) {
+            if (dinosaur.getDinosaurId().substring(0,16).equals(dId)){
+                dinosaurPrice = dinosaur.getDinosaurPrice();
+                System.out.println(dinosaurPrice);
+            }
+        }
+        return dinosaurPrice;
     }
 }

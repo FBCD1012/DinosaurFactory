@@ -2,7 +2,9 @@ package com.example.nftmarket.controller;
 
 
 import com.alibaba.fastjson2.JSONObject;
+import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.Person;
+import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
@@ -15,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 @Controller
 public class TheIndexController {
     @Resource
@@ -24,15 +30,24 @@ public class TheIndexController {
     @Resource
     PersonContent personContent;
 
+    @Resource
+    DinosaurMarketRepository dinosaurMarketRepository;
     @RequestMapping(value = "/")
     public String getIndex() throws InterruptedException {
         return "index";
     }
     //市场页面
-    @RequestMapping(value = "/market")
-    public String getTheMarketIndex(){
-//        JfreeUtils.testPie();
+    @RequestMapping(value = "/market",method = RequestMethod.GET)
+    public String getTheMarketIndex(Model model){
+        //        JfreeUtils.testPie();
 //        JfreeUtils.testLine();
+        Iterable<Dinosaur> all = dinosaurMarketRepository.findAll();
+        List<Dinosaur> dinosaurList=new ArrayList<>();
+
+        for (Dinosaur item : all) {
+            dinosaurList.add(item);
+        }
+        model.addAttribute("dinosaur", dinosaurList);
         return "market";
     }
     //个人信息页面
