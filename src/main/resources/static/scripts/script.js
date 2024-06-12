@@ -81,12 +81,14 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             const index = parseInt(button.dataset.index);
-            if (!countdownIntervals[index]) {
+            const isHatchd = document.querySelectorAll('.card__author')[index].textContent.includes('true');
+            if (!countdownIntervals[index] && isHatchd) {
                 startCountdown(button, 3 * 60 * 60); // 开始倒计时
                 button.disabled = true; // 禁用按钮
             }
         });
     });
+
     //开始倒计时
     function startCountdown(button, time) {
         const index = parseInt(button.dataset.index);
@@ -106,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // 倒计时开始后立即更新按钮文本
         updateButtonText(button, countdownTime);
     }
-//更新倒计时文本
+
+    //更新倒计时文本
     function updateButtonText(button, time) {
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time % 3600) / 60);
@@ -118,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(`Hatch ${index + 1} completed!`);
     }
 });
+
+
 // upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
