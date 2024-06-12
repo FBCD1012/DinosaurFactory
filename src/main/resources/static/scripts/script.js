@@ -70,9 +70,10 @@ function postToTheAddress(userAddress) {
     })
 }
 
+
+//孵化倒计时
 document.addEventListener("DOMContentLoaded", function () {
     const countdownIntervals = [];
-
     const hatchButtons = document.querySelectorAll('.hatch-button');
 
     hatchButtons.forEach(button => {
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-
+    //开始倒计时
     function startCountdown(button, time) {
         const index = parseInt(button.dataset.index);
         let countdownTime = time;
@@ -104,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 倒计时开始后立即更新按钮文本
         updateButtonText(button, countdownTime);
     }
-
+//更新倒计时文本
     function updateButtonText(button, time) {
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time % 3600) / 60);
@@ -118,8 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-// 弹窗
+// upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
     const confirmBtn = document.getElementById('confirmBtn');
@@ -197,17 +197,8 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(`修改价格为 ${newPrice} 成功`);
         }
     });
-
 });
 
-// 模拟向后端发送 DinosaurId 和修改后的价格的函数
-function sendModifiedPriceToBackend(dinosaurId, newPrice) {
-    // 这里模拟向后端发送数据的操作
-    // 假设发送成功
-    alert('修改成功');
-}
-function sendDinosaurIdToBackend(dinosaurId) {
-}
 //Mating点击事件
 document.addEventListener("DOMContentLoaded", function() {
     var selectedCards = []; // 改为数组，用于存储选定的卡面
@@ -253,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+//将获取信息插入弹窗里面
 var dinosaurId='';
 document.addEventListener('DOMContentLoaded', function () {
     const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
