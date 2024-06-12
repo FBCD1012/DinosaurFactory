@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="/static/styles/style.css"/>
     <style type="text/css">
         h3{
-            font: 96px "微软雅黑"; /*设置字体和字体大小*/
+            font: 96px "华文彩云"; /*设置字体和字体大小*/
             margin:50px auto; /*设置元素外边距*/
             font-weight: 500; /*设置字体粗细*/
             text-align: center; /*设置文字居中*/
+            color: white;
             -webkit-animation:bounce 4s infinite;/*设置动画*/
         }
         @-webkit-keyframes bounce{/*创建动画*/
@@ -50,7 +51,7 @@
 </header>
 <section>
     <div><h3>Your World</h3>
-        <p style="font-size: xx-large;text-align: center;  ">Your Dinosaur Egg</p>
+        <p style="font-family: 华文琥珀;font-size: xx-large;text-align: center;  ">Your Dinosaur Egg</p>
     </div>
 </section>
 <section>
@@ -80,7 +81,7 @@
         <a class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
     </div>
     <div>
-        <p style="font-size: xx-large;text-align: center;  ">Your Dinosaur</p>
+        <p style="font-family: 华文琥珀;font-size: xx-large;text-align: center;  ">Your Dinosaur</p>
         <div class="card" style="display: flex;flex-wrap: wrap">
             <div class="card__item" th:each="dinosaur:${dinosaurInfo}">
                 <div class="card__cover">
@@ -95,8 +96,7 @@
                     </div>
                 </div>
                 <div class="nft__bid-container">
-                    <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)"
-                       data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
+                    <a class="nft__bid-btn nft__bid-btn--primary" data-text="Upload" href="javascript:void(0)" data-dinosaur-id="dinosaur.getDinosaurId()">Upload</a>
                     <a class="nft__bid-btn nft__bid-btn--secondary" href="javascript:void(0)" onclick="">Mating</a>
                 </div>
             </div>

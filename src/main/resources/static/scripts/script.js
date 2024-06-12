@@ -1,4 +1,5 @@
 src = "https://unpkg.com/axios/dist/axios.min.js"
+
 // collapsible
 let coll = document.getElementsByClassName("collapsible");
 let i;
@@ -246,7 +247,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //将获取信息插入弹窗里面
-var dinosaurId='';
 document.addEventListener('DOMContentLoaded', function () {
     const printInfoButtons = document.querySelectorAll('.nft__bid-btn--primary');
 
@@ -289,3 +289,68 @@ document.addEventListener('DOMContentLoaded', function () {
 function  uploadTheDinosaur(){
     upLoadDinosaur(dinosaurId)
 }
+
+//购买弹窗
+document.addEventListener('DOMContentLoaded', function () {
+    const buyButtons = document.querySelectorAll('.market__link');
+    buyButtons.forEach(function(button) {
+        button.addEventListener('click', function () {
+            const cardItem = button.closest('.card__item');
+            // 从.card__item元素中获取恐龙信息
+            const dinosaurId = cardItem.querySelector('.card__nick').textContent.replace('dinosaurId:', '').trim();
+            const dinosaurPricy = cardItem.querySelector('.card__author:nth-child(2)').textContent.replace('price:', '').trim();
+            const dinosaurRarity = cardItem.querySelector('.card__author:nth-child(3)').textContent.replace('rarity:', '').trim();
+            const dinosaurURI = cardItem.querySelector('.card__img').src;
+            // 在购买弹窗里放置信息
+            document.getElementById('market_confirmText').innerHTML = `
+                <img src="${dinosaurURI}" alt="Dinosaur Image" style="width: 100%; max-width: 250px; height: auto;">
+                <p>Dinosaur Id: ${dinosaurId}</p>
+                <p>Dinosaur Pricy: ${dinosaurPricy}</p>
+                <p>Dinosaur Rarity: ${dinosaurRarity}</p>
+            `;
+            // 展示购买弹窗
+            const marketModal = document.getElementById('market_modal');
+            marketModal.style.display = 'block';
+        });
+    });
+
+    // 点击关闭购买弹窗
+    document.getElementById('market_close').addEventListener('click', function() {
+        const marketModal = document.getElementById('market_modal');
+        marketModal.style.display = 'none';
+    });
+
+    // 或者，你可能希望在用户点击购买弹窗外部时关闭该弹窗
+    window.onclick = function(event) {
+        const marketModal = document.getElementById('market_modal');
+        if (event.target === marketModal) {
+            marketModal.style.display = 'none';
+        }
+    };
+
+
+    // 确认交易按钮点击事件
+    document.getElementById('market_confirmBtn').addEventListener('click', function() {
+        // 用户地址
+        const result = document.cookie.match(/0x[a-fA-F0-9]+/g)
+        console.log('UserAddress:', result[0]);
+
+        // 获取当前卡面的恐龙ID
+        const dinosaurId = document.getElementById('market_confirmText').querySelector('p:nth-child(2)').textContent.replace('Dinosaur Id:', '').trim();
+        console.log('Dinosaur ID:', dinosaurId);
+
+
+        // 在这里你可以添加实际的交易逻辑，比如调用智能合约进行交易等等
+
+        // 关闭购买弹窗
+        const marketModal = document.getElementById('market_modal');
+        marketModal.style.display = 'none';
+    });
+
+    // 取消交易按钮点击事件
+    document.getElementById('market_closeBtn').addEventListener('click', function() {
+        // 关闭购买弹窗
+        const marketModal = document.getElementById('market_modal');
+        marketModal.style.display = 'none';
+    });
+});

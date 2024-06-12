@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/static/styles/style.css" />
   <style type="text/css">
     h3{
-      font: 96px "微软雅黑"; /*设置字体和字体大小*/
+      font: 96px "华文彩云"; /*设置字体和字体大小*/
       margin:50px auto; /*设置元素外边距*/
       font-weight: 500; /*设置字体粗细*/
       text-align: center; /*设置文字居中*/
@@ -53,7 +53,7 @@
 </section>
 <section>
   <!--构建此处的相关操作实现点击按钮操作-->
-  <p style="font-size: xx-large;text-align: center;  ">Your Dinosaur Egg</p>
+  <p style="font-family: 华文琥珀;font-size: xx-large;text-align: center;  ">Your Dinosaur Egg</p>
   <div id="card" class="card" style="display: flex;flex-wrap: wrap">
     <div  class="card__item" th:each="dinosaurEgg, iterStat : ${egg}">
       <p id="cardInfo"  class="card__nick" th:text="${iterStat.index}"></p>
@@ -72,7 +72,7 @@
 
 
 <section>
-  <p style="font-size: xx-large;text-align: center;  ">Your Dinosaur</p>
+  <p style="font-family: 华文琥珀;font-size: xx-large;text-align: center;  ">Your Dinosaur</p>
   <div class="card" style="display: flex;flex-wrap: wrap">
     <div class="card__item" th:each="dinosaur:${personalDinosaur}">
       <div class="card__cover">
