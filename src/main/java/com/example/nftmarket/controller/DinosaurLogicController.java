@@ -1,5 +1,6 @@
 package com.example.nftmarket.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
@@ -110,34 +111,30 @@ public class DinosaurLogicController {
 
     //实现恐龙之间的孵化逻辑操作 恐龙之间的孵化逻辑操作？？？
     //传递参数 恐龙性别 恐龙的对应的哈希值操作
+    @ResponseBody
     @RequestMapping(value = "/breeding",method = RequestMethod.POST)
-    public String breedingTheDinosaur(@RequestParam("fatherStringHash") String fartherString,
-                                      @RequestParam("motherStringHash") String motherString,
-                                      HttpServletResponse httpServletResponse) throws IOException {
-        List<Dinosaur> maleDinosaurRepository = person.getMaleDinosaurRepository();
-        List<Dinosaur> feMaleDinosaurRepository = person.getFeMaleDinosaurRepository();
-        if (fartherString.equals("") || motherString.equals("")){
-            httpServletResponse.getWriter().write("<script>alert('input is null')</script>");
-        }
-        for (Dinosaur maleDinosaurs:maleDinosaurRepository) {
-            String trim = maleDinosaurs.getDinosaurId().substring(0, 16).trim();
-            if (trim.equals(fartherString)){
-                //将父恐龙抛出来
-                maledinosaur=maleDinosaurs;
-            }
-        }
-        for (Dinosaur femaleDinosaurs:feMaleDinosaurRepository) {
-            String femaleString=femaleDinosaurs.getDinosaurId().substring(0, 16).trim();
-            if (femaleString.equals(motherString)){
-                //将母恐龙抛出
-                femaledinosaur=femaleDinosaurs;
-            }
-        }
-        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, maledinosaur, femaledinosaur);
-        System.out.println(dinosaurEgg);
+    public JSONObject breedingTheDinosaur(@CookieValue("userAddress")String userAddress,
+                                          @RequestParam("DinosaurStringHash") String fartherString,
+                                          @RequestParam("SecondDinosaurStringHash") String motherString) throws IOException {
+        JSONObject jsonObject = new JSONObject();
+        System.out.println(fartherString);
+        System.out.println(motherString);
+        //获取总的恐龙类进行操作，然后实现其中的
+       Dinosaur fatherdinosaur=Dinosaur.builder().build();
+       Dinosaur motherdinosaur=Dinosaur.builder().build();
+       List<Dinosaur> dinosaurInfo = personContent.getDinosaurInfo(person);
+       for (Dinosaur dinosaur:dinosaurInfo) {
+           if (dinosaur.getDinosaurId().substring(0,16).trim().equals(fartherString)){
+               if (dinosaur.getDinosaurSex().equals("MALE")){
 
+               }
+           }
+       }
+//        DinosaurEgg dinosaurEgg = breeding.creatDinosaurEgg(person, maledinosaur, femaledinosaur);
+//        System.out.println(dinosaurEgg);
+        jsonObject.put("success",true);
         //TODO 孵化逻辑与合约进行交互操作
         //孵化恐龙操作
-        return "redirect:getTheDinosaurInfo";
+        return jsonObject;
     }
 }

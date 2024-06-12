@@ -118,8 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(`Hatch ${index + 1} completed!`);
     }
 });
-
-
 // upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
@@ -185,19 +183,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         modal.style.display = 'none';
     });
-
     // 点击确定修改按钮时的逻辑
     modifyPriceBtn.addEventListener('click', function () {
         const newPrice = parseFloat(priceInput.value);
-        console.log(dinosaurId)
-        axios.get('/getTheRecommendedPrice')
-        // 验证价格是否合理
-        if (isNaN(newPrice) || newPrice <= 0) {
-            alert('该价格不合理。');
-        } else {
-            // 这里应该获取当前恐龙的 ID，然后发送到后端
-            alert(`修改价格为 ${newPrice} 成功`);
-        }
+        axios.post('/getTheRecommendedPrice',{
+            dId:dinosaurId
+        },{
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (response){
+            if (isNaN(newPrice) || newPrice>response.data) {
+                alert(`该价格不合理。推荐价格为:${response.data}`);
+            }else {
+                axios.post('/changeTheDPrice',{
+                    dinosaurIds:dinosaurId,
+                    changePrice:newPrice
+                },{
+                    headers : {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(({data}) => {
+                    if (data.success) {
+                        alert("upload success :)")
+                    } else {
+                        alert("Failed to upload the dinosaur :(")
+                    }
+                })
+            }
+        })
     });
 });
 
@@ -228,8 +242,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 var secondDinosaurSex = selectedCards[1].dinosaurSex;
 
                 if (firstDinosaurSex !== secondDinosaurSex) {
-                    alert("交配成功");
-                    console.log("父母id: " + selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim() + ";" + selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim());
+                    axios.post("/breeding",{
+                        DinosaurStringHash:selectedCards[0].cardItem.querySelector('.card__nick').textContent.trim(),
+                        SecondDinosaurStringHash:selectedCards[1].cardItem.querySelector('.card__nick').textContent.trim()
+                    },{
+                        headers : {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }).then(({data}) => {
+                        if (data.success) {
+                            alert("breeding success :)")
+                        } else {
+                            alert("Failed to breeding the Egg :(")
+                        }
+                    })
                 } else {
                     alert("同性不可交配");
                 }
