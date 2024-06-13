@@ -5,13 +5,13 @@ import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.service.Breeding;
+import com.example.nftmarket.service.ContractConnection;
 import com.example.nftmarket.service.Hatched;
 import com.example.nftmarket.service.PersonContent;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.web3j.crypto.Hash;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,6 +19,9 @@ import java.util.List;
 //做相关的恐龙逻辑操作（孵化动作以及恐龙相关的交配操作）
 @Controller
 public class DinosaurLogicController {
+    //注入合约进行相关的操作
+    @Resource
+    ContractConnection contractConnection;
     @Resource
     Hatched hatched;
     @Resource
@@ -64,29 +67,6 @@ public class DinosaurLogicController {
         if (person.getDinosaurEggsRepository().size() <2) {
             personContent.addTheDinosaurEgg(person);
         }
-//        //此处操作进行修改
-//        Dinosaur dinosaur=Dinosaur
-//                .builder()
-//                .build()
-//                .setDinosaurId(Hash.sha3String("fbcd"))
-//                .setIsBreeding(true)
-//                .setDinosaurPhotoUri(null)
-//                .setDinosaurSex("MALE")
-//                .setSourceHash(null)
-//                .setSaleSate("空闲")
-//                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
-//        Dinosaur dinosaur1=Dinosaur
-//                .builder()
-//                .build()
-//                .setDinosaurId(Hash.sha3String("slz"))
-//                .setIsBreeding(true)
-//                .setDinosaurPhotoUri(null)
-//                .setDinosaurSex("FEMALE")
-//                .setSourceHash(null)
-//                .setSaleSate("空闲")
-//                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
-//        person.getMaleDinosaurRepository().add(dinosaur);
-//        person.getMaleDinosaurRepository().add(dinosaur1);
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
         model.addAttribute("DinosaurTitle","Your Dinosaur");

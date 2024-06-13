@@ -1,3 +1,5 @@
+package com.example.nftmarket.utils.contractUtils.contractsClass;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;

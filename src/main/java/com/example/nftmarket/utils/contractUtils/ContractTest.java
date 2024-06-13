@@ -34,7 +34,7 @@ public class ContractTest {
             Web3j web3 = Web3j.build(new HttpService(netWorkUrl));
             Credentials credentials = Credentials.create(walletKey);
             TransactionManager transactionManager = new RawTransactionManager(
-                    web3, credentials,3);
+                    web3, credentials,31337);
             BigInteger gasPrice = web3.ethGasPrice().send().getGasPrice();
             DinosaurMarket contract = DinosaurMarket.load(contractAddress,web3,
                     transactionManager,new StaticGasProvider(gasPrice, Contract.GAS_LIMIT));
@@ -44,6 +44,7 @@ public class ContractTest {
             RemoteFunctionCall<String> setWord = contract.admin();
             System.out.println("合约返回值输出："+setWord.send());
             System.out.println(transactionReceiptRemoteFunctionCall.send());
+            System.out.println("交易哈希："+contract.getAllDinosaurs().send());
 
 
 //            RemoteFunctionCall<BigInteger> bigIntegerRemoteFunctionCall = contract.balanceOf("0x657cF811dBB5Ebdd83ba0Aa616A5a097f3C5387E");

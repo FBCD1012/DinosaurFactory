@@ -5,6 +5,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
+import com.example.nftmarket.service.ContractConnection;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.HashUtils;
 import jakarta.annotation.Resource;
@@ -19,6 +20,9 @@ import java.util.Optional;
 
 @Controller
 public class DinosaurMarketController {
+
+    @Resource
+    ContractConnection contractConnection;
     @Resource
     Person person;
     @Resource
@@ -55,6 +59,8 @@ public class DinosaurMarketController {
                 dinosaur.setSaleSate("售卖中");
                 //存储到es中，然后将此数据放入合约中进行存储
                 dinosaurMarketRepository.save(dinosaur);
+                //此处的TO地址指的是什么？
+//                contractConnection.connectTheDinosaurMarket().addDinosaur()
             }
         }
         //TODO 将恐龙添加到市场上，然后通过合约进行恐龙信息的注入操作
