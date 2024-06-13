@@ -64,29 +64,29 @@ public class DinosaurLogicController {
         if (person.getDinosaurEggsRepository().size() <2) {
             personContent.addTheDinosaurEgg(person);
         }
-        //此处操作进行修改
-        Dinosaur dinosaur=Dinosaur
-                .builder()
-                .build()
-                .setDinosaurId(Hash.sha3String("fbcd"))
-                .setIsBreeding(true)
-                .setDinosaurPhotoUri(null)
-                .setDinosaurSex("MALE")
-                .setSourceHash(null)
-                .setSaleSate("空闲")
-                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
-        Dinosaur dinosaur1=Dinosaur
-                .builder()
-                .build()
-                .setDinosaurId(Hash.sha3String("slz"))
-                .setIsBreeding(true)
-                .setDinosaurPhotoUri(null)
-                .setDinosaurSex("FEMALE")
-                .setSourceHash(null)
-                .setSaleSate("空闲")
-                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
-        person.getMaleDinosaurRepository().add(dinosaur);
-        person.getMaleDinosaurRepository().add(dinosaur1);
+//        //此处操作进行修改
+//        Dinosaur dinosaur=Dinosaur
+//                .builder()
+//                .build()
+//                .setDinosaurId(Hash.sha3String("fbcd"))
+//                .setIsBreeding(true)
+//                .setDinosaurPhotoUri(null)
+//                .setDinosaurSex("MALE")
+//                .setSourceHash(null)
+//                .setSaleSate("空闲")
+//                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
+//        Dinosaur dinosaur1=Dinosaur
+//                .builder()
+//                .build()
+//                .setDinosaurId(Hash.sha3String("slz"))
+//                .setIsBreeding(true)
+//                .setDinosaurPhotoUri(null)
+//                .setDinosaurSex("FEMALE")
+//                .setSourceHash(null)
+//                .setSaleSate("空闲")
+//                .setDinosaurOwner(Hash.sha3String(String.valueOf(System.identityHashCode(person))));
+//        person.getMaleDinosaurRepository().add(dinosaur);
+//        person.getMaleDinosaurRepository().add(dinosaur1);
         model.addAttribute("eggInfo", person.getDinosaurEggsRepository());
         model.addAttribute("dinosaurInfo",personContent.getDinosaurInfo(person));
         model.addAttribute("DinosaurTitle","Your Dinosaur");

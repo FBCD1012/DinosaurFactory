@@ -8,12 +8,10 @@ import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
 import com.example.nftmarket.utils.HashUtils;
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.web3j.crypto.Hash;
 
 import java.util.ArrayList;
 import java.util.List;

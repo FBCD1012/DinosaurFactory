@@ -7,7 +7,6 @@ import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
-import com.example.nftmarket.utils.JfreeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.SneakyThrows;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -68,7 +66,7 @@ public class TheIndexController {
 //            model.addAttribute("addInfo", true);
 //        }else {
         List<DinosaurEgg> theDinosaurEgg = personContent.getTheDinosaurEgg(person);
-        if(theDinosaurEgg!=null){
+        if(theDinosaurEgg.isEmpty()){
             model.addAttribute("addInfo",true);
         }else {
             model.addAttribute("addInfo",false);
@@ -78,14 +76,6 @@ public class TheIndexController {
         //此处进行相关的Attribute逻辑判定操作
         return "person";
     }
-    //市场页面
-    @RequestMapping(value = "/button")
-    public String getTheButtonIndex(){
-        JfreeUtils.testPie();
-        JfreeUtils.testLine();
-        return "button";
-    }
-
     //获取前端传递的地址参数信息
     //传递参数之后调用相关合约的参数进行实现
     @ResponseBody
