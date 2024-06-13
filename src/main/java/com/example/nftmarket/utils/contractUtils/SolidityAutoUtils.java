@@ -51,14 +51,14 @@ public class SolidityAutoUtils {
         String abiJson = SolidityAutoUtils.getInstance().getAbiJson();
         String bytecodeJson = SolidityAutoUtils.getInstance().getBytecodeJson();
 
-        String abiFileName = "DinosaurMarket.abi";
-        String binFileName = "DinosaurMarket.bin";
+        String abiFileName = "DinosaurEggMarket.abi";
+        String binFileName = "DinosaurEggMarket.bin";
         generateAbiAndBin(abiJson,bytecodeJson,abiFileName,binFileName);
     }
 
     public static void generateAbiAndBin(String abi,String bin,String abiFileName,String binFileName){
-        File abiFile = new File(basePath + "contract/compilation/"+abiFileName);
-        File binFile = new File(basePath + "contract/compilation/"+binFileName);
+        File abiFile = new File(basePath + "contractUtils/compilation/"+abiFileName);
+        File binFile = new File(basePath + "contractUtils/compilation/"+binFileName);
         BufferedOutputStream abiBos = null;
         BufferedOutputStream binBos = null;
         try{
@@ -93,7 +93,7 @@ public class SolidityAutoUtils {
     }
 
     public static void generateJavaFile(String abiFile, String binFile){
-        String generateFile = basePath + "/contract/";
+        String generateFile = basePath + "contractUtils/contractsClass/";
         generateClass(abiFile,binFile,generateFile);
     }
 
