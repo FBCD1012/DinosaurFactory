@@ -4,7 +4,6 @@ var elementById = document.getElementById("searchInfo");
 
 
 function getTheDinosaurList(){
-
     axios.post("/searchTheDinosaur",{
         search: elementById.value
     },{
@@ -13,7 +12,6 @@ function getTheDinosaurList(){
         }
     }).then(({data})=>{
         if (data.success) {
-            alert("search successful :)")
             var value=elementById.value
             window.location.href=`/getTheDinosaur/${value}`
         }else {

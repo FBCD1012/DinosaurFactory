@@ -11,12 +11,6 @@ function getTheResult(){
 function postTheInfo(){
     window.location.href='/getTheDinosaurInfo'
 }
-var  dinosaurId=document.getElementById('dinosaurInfo').value
-//异步传递相关参数到网站中进行操作理解
-function upLoadTheMarket(){
-    document    .cookie = `dinosaurId=${dinosaurId}`
-    window.location.href='/insertTheDinosaur'
-}
 //孵化恐龙ajax请求
 function HatchTheDinosaur(elementText){
     axios.post('/hatch',{

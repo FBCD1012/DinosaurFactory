@@ -37,10 +37,13 @@ public class DinosaurMarketController {
         jsonObject.put("success", true);
         return jsonObject;
     }
-    //根据传入的参数来进行模糊查询操作，实现ElasticSearch集成操作
+    //根据传入的参数来进行模糊查询操作，实现ElasticSearch集成操作，（优化了页面的展示操作）
     @RequestMapping(value = "/getTheDinosaur/{searchValue}",method = RequestMethod.GET)
-    public String getTheDinosaur(@PathVariable("searchValue")String dinosaurFiledValue,Model model){
-        Dinosaur dinosaur = dinosaurMarketRepository.findById(dinosaurFiledValue).get();
+    public String getTheDinosaur(@PathVariable("searchValue")String dinosaurFiledValue,Model model) throws NoSuchFieldException {
+        Dinosaur dinosaur = dinosaurMarketRepository.findById(dinosaurFiledValue) .orElseThrow(
+                () -> new NoSuchFieldException("找不到参数值"));
+        ;
+        //如果我们查询不了任何数据，我们应该如何去进行操作理解呢？
         model.addAttribute("dinosaur", dinosaur);
         return "market";
     }

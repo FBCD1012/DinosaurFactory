@@ -3,6 +3,7 @@ package com.example.nftmarket.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nftmarket.entity.Dinosaur;
+import com.example.nftmarket.entity.DinosaurEgg;
 import com.example.nftmarket.entity.Person;
 import com.example.nftmarket.repository.elasticsearch.DinosaurMarketRepository;
 import com.example.nftmarket.service.PersonContent;
@@ -63,6 +64,15 @@ public class TheIndexController {
             System.out.println(request.getSession().getAttribute("userAdd"));
         }
         person.setPersonHash((String) userAdd);
+//        if (personContent.getTheDinosaurEgg(person)!=null){
+//            model.addAttribute("addInfo", true);
+//        }else {
+        List<DinosaurEgg> theDinosaurEgg = personContent.getTheDinosaurEgg(person);
+        if(theDinosaurEgg!=null){
+            model.addAttribute("addInfo",true);
+        }else {
+            model.addAttribute("addInfo",false);
+        }
         model.addAttribute("egg", person.getDinosaurEggsRepository());
         model.addAttribute("personalDinosaur", personContent.getDinosaurInfo(person));
         //此处进行相关的Attribute逻辑判定操作
