@@ -81,14 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             const index = parseInt(button.dataset.index);
-            const isHatchd = document.querySelectorAll('.card__author')[index].textContent.includes('true');
-            if (!countdownIntervals[index] && isHatchd) {
+            if (!countdownIntervals[index]) {
                 startCountdown(button, 3 * 60 * 60); // 开始倒计时
                 button.disabled = true; // 禁用按钮
             }
         });
     });
-
     //开始倒计时
     function startCountdown(button, time) {
         const index = parseInt(button.dataset.index);
@@ -108,8 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 倒计时开始后立即更新按钮文本
         updateButtonText(button, countdownTime);
     }
-
-    //更新倒计时文本
+//更新倒计时文本
     function updateButtonText(button, time) {
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time % 3600) / 60);
@@ -121,13 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(`Hatch ${index + 1} completed!`);
     }
 });
-
-
 // upload和remove the market的按钮打开弹窗
 document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
-    const uploadBtn = document.getElementById('uploadBtn');
-    const removeBtn = document.getElementById('removeBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
     const cancelBtn = document.getElementById('cancelBtn');
     const modal = document.getElementById('modal');
     const closeBtn = document.getElementById('close');
@@ -151,14 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 根据按钮状态设置确认文本
             if (bidBtn.textContent === 'Upload') {
-                document.getElementById('confirm_Text').textContent = `Are you sure you want to upload this dinosaurNFT?`;
-                uploadBtn.style.display='block';
-                removeBtn.style.display='none';
+                document.getElementById('confirm_Text').textContent = `Are you sure you want to upload this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
+                confirmBtn.textContent = 'Upload now';
                 modifyPriceBtn.style.display = 'none'; // 隐藏确定修改按钮
             } else {
-                document.getElementById('confirm_Text').textContent = `Are you sure you want to remove from the market this dinosaurNFT?`;
-                uploadBtn.style.display='none';
-                removeBtn.style.display='block';
+                document.getElementById('confirm_Text').textContent = `Are you sure you want to remove this ${dinosaurRarity} ${dinosaurSex} dinosaurNFT?`;
+                confirmBtn.textContent = 'Remove from market';
                 modifyPriceBtn.style.display = 'block'; // 显示确定修改按钮
             }
         });
@@ -174,25 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 点击确认按钮时的逻辑
-    uploadBtn.addEventListener('click', function () {
-        // 这里写发送信息给后端的逻辑
-
-        // 模拟发送成功后的操作
-        bidBtns.forEach(function(bidBtn) {
-            if (bidBtn.textContent === 'Upload') {
-                bidBtn.textContent = 'On sale';
-                bidBtn.classList.remove('nft__bid-btn--primary');
-                bidBtn.classList.add('nft__bid-btn--sold');
-            } else {
-                bidBtn.textContent = 'Upload';
-                bidBtn.classList.remove('nft__bid-btn--sold');
-                bidBtn.classList.add('nft__bid-btn--primary');
-            }
-        });
-        modal.style.display = 'none';
-    });
-    // 点击确认按钮时的逻辑
-    removeBtn.addEventListener('click', function () {
+    confirmBtn.addEventListener('click', function () {
         // 这里写发送信息给后端的逻辑
 
         // 模拟发送成功后的操作
@@ -385,22 +359,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('market_confirmBtn').addEventListener('click', function() {
         // 用户地址
         const result = document.cookie.match(/0x[a-fA-F0-9]+/g)
+        console.log('UserAddress:', result[0]);
+
         // 获取当前卡面的恐龙ID
         const dinosaurId = document.getElementById('market_confirmText').querySelector('p:nth-child(2)').textContent.replace('Dinosaur Id:', '').trim();
-        axios.post('/purchaseTheDinosaur',{
-            userAdd:result[0],
-            dIds:dinosaurId
-        },{
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(({data}) => {
-            if (data.success) {
-                alert("Purchase successful :)")
-            } else {
-                alert("Failed to Purchase :(")
-            }
-        })
+        console.log('Dinosaur ID:', dinosaurId);
+
 
         // 在这里你可以添加实际的交易逻辑，比如调用智能合约进行交易等等
 

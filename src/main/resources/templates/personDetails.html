@@ -75,7 +75,7 @@
 
 <section>
     <div class="banner" id="dinosaurBanner">
-        <h3 class="banner__title" style="font-family: 华文宋体">
+        <h3 class="banner__title">
             Click to get your dinosaur
         </h3>
         <a class="banner__button" onclick="getTheDinosaurInfo()">Get Started</a>
@@ -122,11 +122,8 @@
                             </div>
                             <button id="modifyPriceBtn">Modify price</button> <!-- 确定修改按钮 -->
                         </div>
-                        <div style="position: relative">
-                        <button style="margin-left: 47%" id="uploadBtn" onclick="uploadTheDinosaur()">Upload</button>
-                        <button style="margin-left: 47%" id="removeBtn" onclick="">Remove</button>
-                        <button style="position:absolute;right:5px;margin-outside: 5px" id="cancelBtn">Close</button>
-                        </div>
+                        <button id="confirmBtn" onclick="uploadTheDinosaur()">Confirm</button>
+                        <button id="cancelBtn">Close</button>
                     </div>
                 </div>
             </div>
