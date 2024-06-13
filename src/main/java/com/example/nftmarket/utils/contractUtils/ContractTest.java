@@ -26,7 +26,7 @@ public class ContractTest {
     // 钱包私钥
     private static String walletKey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
     // 合约地址
-    private static String contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+    private static String contractAddress = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
 
     public static void useContract(){
         try {
@@ -38,9 +38,12 @@ public class ContractTest {
             BigInteger gasPrice = web3.ethGasPrice().send().getGasPrice();
             DinosaurMarket contract = DinosaurMarket.load(contractAddress,web3,
                     transactionManager,new StaticGasProvider(gasPrice, Contract.GAS_LIMIT));
+
+            RemoteFunctionCall<TransactionReceipt> transactionReceiptRemoteFunctionCall = contract.addDinosaur("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", "MALE", "SANJIAO", true, "RED", "GLODEN", "SB", new BigInteger("12"), "0x33", true);
 //            //调用合约方法
             RemoteFunctionCall<String> setWord = contract.admin();
             System.out.println("合约返回值输出："+setWord.send());
+            System.out.println(transactionReceiptRemoteFunctionCall.send());
 
 
 //            RemoteFunctionCall<BigInteger> bigIntegerRemoteFunctionCall = contract.balanceOf("0x657cF811dBB5Ebdd83ba0Aa616A5a097f3C5387E");
