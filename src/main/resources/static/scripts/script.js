@@ -364,7 +364,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // 获取当前卡面的恐龙ID
         const dinosaurId = document.getElementById('market_confirmText').querySelector('p:nth-child(2)').textContent.replace('Dinosaur Id:', '').trim();
         console.log('Dinosaur ID:', dinosaurId);
-
+        axios.post('/purchaseTheDinosaur',{
+            userAdd:result[0],
+            dIds:dinosaurId
+        },{
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(({data}) => {
+            if (data.success) {
+                alert("Purchase successful :)")
+            } else {
+                alert("Failed to Purchase :(")
+            }
+        })
 
         // 在这里你可以添加实际的交易逻辑，比如调用智能合约进行交易等等
 

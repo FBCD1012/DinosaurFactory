@@ -120,14 +120,14 @@ public class DinosaurMarketController {
                     return jsonObject;
                 }else {
                     dinosaur.setDinosaurOwner(person.getPersonHash());
+                    if(dinosaur.getDinosaurSex().equals("MALE")){
+                        person.getMaleDinosaurRepository().add(dinosaur);
+                    }else {
+                        person.getFeMaleDinosaurRepository().add(dinosaur);
+                        dinosaurMarketRepository.deleteById(dinosaur.getDinosaurId());
+
+                    }
                 }
-                if(dinosaur.getDinosaurSex().equals("MALE")){
-                    person.getMaleDinosaurRepository().add(dinosaur);
-                }else {
-                    person.getFeMaleDinosaurRepository().add(dinosaur);
-                }
-                System.out.println("当前的用户的恐龙信息："+personContent.getDinosaurInfo(person));
-                dinosaurMarketRepository.deleteById(dinosaur.getDinosaurId());
             }
         }
         jsonObject.put("success", true);
